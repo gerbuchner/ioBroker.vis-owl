@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.0.2"
+    version: "0.1.0"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
