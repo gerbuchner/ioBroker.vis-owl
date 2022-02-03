@@ -2,3 +2,36 @@
 .vis-owl-class {
     font-style: italic;
 }
+
+.vis-owl-container {
+    background: linear-gradient( 135deg, #000000 0%, #333333 100%);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #666666 !important;
+    border-radius: 0px;
+    box-shadow: 0 25px 30px -10px rgba(114, 114, 114, 0.4);
+}
+.vis-owl-control-header {
+    background: #222222;
+    border-style: solid;
+    border-width: 1px 1px 0px 1px !important;
+    border-color: #666666 !important;
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: 0 3px 5px 0px rgba(114, 114, 114, 0.7);
+}
+.vis-owl-main {
+    background: #333333;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px !important;
+    border-color: #666666 !important;
+    border-radius: 0px 0px 0px 0px;
+    box-shadow: 0 15px 10px -10px rgba(68, 160, 177,0.0);
+}
+.vis-owl-button {
+    background: #222222 !important;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #626d6f !important;
+    border-radius: 0px !important;
+    color: #ffffff !important;
+}
