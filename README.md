@@ -13,7 +13,7 @@
 
 ## vis-owl adapter for ioBroker
 
-vis - owl
+vis - owl<br>
 Odd Widget Library
 
 ## Developer manual
