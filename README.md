@@ -13,7 +13,8 @@
 
 ## vis-owl adapter for ioBroker
 
-Describe your project here
+vis - owl
+Odd Widget Library
 
 ## Developer manual
 This section is intended for the developer. It can be deleted later
