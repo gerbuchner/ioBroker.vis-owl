@@ -1,0 +1,45 @@
+{
+  "name": "iobroker.vis-owl",
+  "version": "0.0.1",
+  "description": "vis-owl",
+  "author": {
+    "name": "Buchi",
+    "email": "temp1@act4you.de"
+  },
+  "homepage": "https://github.com/gerbuchner/ioBroker.vis-owl",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "template",
+    "Smart Home",
+    "home automation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gerbuchner/ioBroker.vis-owl"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@alcalzone/release-script": "^2.2.2",
+    "@iobroker/testing": "^2.5.4",
+    "@types/gulp": "^4.0.9",
+    "axios": "^0.25.0",
+    "gulp": "^4.0.2"
+  },
+  "main": "widgets/vis-owl.html",
+  "files": [
+    "widgets/",
+    "www/",
+    "io-package.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test:package": "mocha test/package --exit",
+    "test": "npm run test:package",
+    "release": "release-script"
+  },
+  "bugs": {
+    "url": "https://github.com/gerbuchner/ioBroker.vis-owl/issues"
+  },
+  "readmeFilename": "README.md"
+}

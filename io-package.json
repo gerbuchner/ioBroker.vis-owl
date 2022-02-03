@@ -1,0 +1,82 @@
+{
+    "common": {
+        "name": "vis-owl",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "owl - Odd Widget Library",
+        "titleLang": {
+            "en": "owl - Odd Widget Library",
+            "de": "owl - Ungerade Widget-Bibliothek",
+            "ru": "сова — Библиотека нечетных виджетов",
+            "pt": "coruja - Biblioteca de widgets ímpares",
+            "nl": "uil - Odd Widget Library",
+            "fr": "chouette - Odd Widget Library",
+            "it": "gufo - Libreria di widget dispari",
+            "es": "búho - Biblioteca de widgets impares",
+            "pl": "sowa - Dziwna biblioteka widżetów",
+            "zh-cn": "owl - 奇怪的小部件库"
+        },
+        "desc": {
+            "en": "vis-owl",
+            "de": "Vis-Eule",
+            "ru": "визави",
+            "pt": "vis-coruja",
+            "nl": "vis-uil",
+            "fr": "vis-hibou",
+            "it": "vis-gufo",
+            "es": "vis-búho",
+            "pl": "vis-sowa",
+            "zh-cn": "可见猫头鹰"
+        },
+        "authors": [
+            "Buchi <temp1@act4you.de>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "vis-owl.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/gerbuchner/ioBroker.vis-owl/main/admin/vis-owl.png",
+        "readme": "https://github.com/gerbuchner/ioBroker.vis-owl/blob/main/README.md",
+        "loglevel": "info",
+        "restartAdapters": [
+            "vis"
+        ],
+        "localLinks": {
+            "_default": "%web_protocol%://%ip%:%web_port%/vis/edit.html"
+        },
+        "onlyWWW": true,
+        "noConfig": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "mode": "once",
+        "dependencies": [
+            "vis"
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": []
+}

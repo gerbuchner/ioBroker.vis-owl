@@ -1,0 +1,21 @@
+{
+    "cli": true,
+    "target": "directory",
+    "adapterName": "vis-owl",
+    "title": "owl - Odd Widget Library",
+    "expert": "no",
+    "features": [
+        "vis"
+    ],
+    "type": "visualization-widgets",
+    "releaseScript": "yes",
+    "authorName": "Buchi",
+    "authorGithub": "gerbuchner",
+    "authorEmail": "temp1@act4you.de",
+    "gitRemoteProtocol": "HTTPS",
+    "gitCommit": "no",
+    "defaultBranch": "main",
+    "license": "MIT License",
+    "dependabot": "no",
+    "creatorVersion": "2.0.2"
+}
