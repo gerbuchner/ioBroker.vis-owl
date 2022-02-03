@@ -1,7 +1,7 @@
 <!--
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.0.1"
+    version: "0.0.2"
 
     Copyright 2022 Buchi temp1@act4you.de
 -->
@@ -15,7 +15,7 @@
 
     ----------------------------------------------------------
     Mandatory XML attributes:
-        id="tplVis-owlWIDGETNAME"
+        id="tplvis-owlWIDGETNAME"
         type="text/ejs"
         class="vis-tpl"
 
@@ -75,7 +75,7 @@
     --------------------------------------------------------
     data-vis-prev
         Html code used as preview of this widget. If widget is complex you can just use image as preview:
-        data-vis-prev='<img src="widgets/hqwidgets/img/prev/Prev_tplVis-owlShowInstance.png"></img>'
+        data-vis-prev='<img src="widgets/hqwidgets/img/prev/Prev_tplvis-owlShowInstance.png"></img>'
         Of course the image must exist.
 
     --------------------------------------------------------
@@ -99,15 +99,104 @@
     You can do "if" conditions and "for" cycles.
 
 -->
-<script id="tplVis-owlShowInstance"
+           
+<!-- #region Sprache -->
+<script language="javascript">
+// add translations for edit mode
+if (vis.editMode) {
+    $.extend(true, systemDictionary, {
+        /**
+         * tplvis-owlShowInstance
+         */
+         "oidValIst":          {"en": "Actual Value",                "de": "Istwert",                           "ru": ""},
+         "dacIst":             {"en": "Digits after comma",          "de": "Zeichen nach Komma",                "ru": ""},
+         "valEinheitIst":      {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
+         "oidValSoll":         {"en": "Set Value",                   "de": "Sollwert",                          "ru": ""},
+         "dacSoll":            {"en": "Digits after comma",          "de": "Zeichen nach Komma",                "ru": ""},
+         "valEinheitSoll":     {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
+         "valStep":            {"en": "Step",                        "de": "Step",                              "ru": ""},
+
+         "group_header":       {"en": "Header",                      "de": "Überschrift",                       "ru": ""},
+         "headerText":         {"en": "Text",                        "de": "Text",                              "ru": ""},
+         "headerBgColor":      {"en": "Background Color",            "de": "Hintergrundfarbe",                  "ru": ""},
+         "headerFgColor":      {"en": "Fore Color",                  "de": "Vordergrundfarbe",                  "ru": ""},
+         "headerShadowColor":  {"en": "Shadow Color",                "de": "Schattenfarbe",                     "ru": ""},
+
+         "group_onoff":        {"en": "On/Off",                      "de": "Ein/Aus",                           "ru": ""},
+         "oidOnOff":           {"en": "Object ID",                   "de": "Objekt ID",                         "ru": ""},
+         "imgOn":              {"en": "Image On",                    "de": "Bild Ein",                          "ru": ""},
+         "imgOff":             {"en": "Image Off",                   "de": "Bild Aus",                          "ru": ""},
+
+         "group_mode0":       {"en": "Mode[0]",                      "de": "Modus[0]",                          "ru": ""},
+         "group_mode1":       {"en": "Mode[1]",                      "de": "Modus[1]",                          "ru": ""},
+         "group_mode2":       {"en": "Mode[2]",                      "de": "Modus[2]",                          "ru": ""},
+         "group_mode3":       {"en": "Mode[3]",                      "de": "Modus[3]",                          "ru": ""},
+         "group_mode4":       {"en": "Mode[4]",                      "de": "Modus[4]",                          "ru": ""},
+         "showMode0":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
+         "showMode1":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
+         "showMode2":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
+         "showMode3":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
+         "showMode4":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
+         "oidMode0":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
+         "oidMode1":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
+         "oidMode2":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
+         "oidMode3":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
+         "oidMode4":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
+         "condMode0":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
+         "condMode1":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
+         "condMode2":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
+         "condMode3":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
+         "condMode4":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
+         "valueMode0":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
+         "valueMode1":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
+         "valueMode2":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
+         "valueMode3":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
+         "valueMode4":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
+         "imgMode0On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
+         "imgMode1On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
+         "imgMode2On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
+         "imgMode3On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
+         "imgMode4On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
+         "imgMode0Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
+         "imgMode1Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
+         "imgMode2Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
+         "imgMode3Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
+         "imgMode4Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
+
+        });
+}
+</script>
+<!-- #endregion -->  
+  
+<script id="tplvis-owlShowInstance"
         type="text/ejs"
         class="vis-tpl"
-        data-vis-prev='<div id="prev_tplVis-owlShowInstance" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev " style="width: 280px; height: 159px;" > <div class="vis-owl-class vis-widget-prev-body " style="padding:2px"> OID: hm-rpc.0.EEQ0006629.1.STATE<br> OID value: true<br> Color: <span style="color: rgb(128, 0, 0);">#800000</span><br> htmlText: <textarea readonly="" style="width:100%">asda</textarea></div>'
-        data-vis-attrs="oid/id;myColor/color;htmlText/text;"
-        data-vis-attrs0="group.extraVis-owl;extraAttr"
+        data-vis-prev='<img src="widgets/vis-owl/img/vis-owl.png"></img>'
+        data-vis-attrs="headerText;oidValIst/id;dacIst;valEinheitIst;oidValSoll/id;dacSoll;valEinheitSoll;valStep;"
+        data-vis-attrs0="group.onoff;oidOnOff/id;imgOn/image;imgOff/image;"
+        data-vis-attrs1="group.mode/byindex;showMode(0-4)/checkbox;oidMode(0-4)/id;valueMode(0-4)/number;imgModeOn(0-4)/image;imgModeOff(0-4)/image;"
         data-vis-set="vis-owl"
-        data-vis-type="helper"
-        data-vis-name="Show instance">
+        data-vis-type="Control"
+        data-vis-name="Flexible Control">
+        <div class="vis-widget <%== this.data.attr('class') %>" style="width: 172px; height: 122px;" id="<%= this.data.attr('wid') %>">
+
+        </div>
+        <% vis.binds["vis-owl"].createWidget(this.data.wid, this.view, this.data, this.style); %>
+    </script>
+    
+ 
+<!-- #region org -->   
+<!--
+<script id="tplvis-owlShowInstance"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-prev='<img src="widgets/vis-owl/img/vis-owl.png"></img>'
+        data-vis-attrs="headerText;valIst/id;oidValSoll/id;valEinheit;valStep;"
+        data-vis-attrs0="group.onoff;oidOnOff/id;imgOn/image;imgOff/image;"
+        data-vis-attrs1="group.mode/byindex;oidMode1(1-5)/id;valueMode1(1-5)/number;imgMode1On(1-5)/image;imgMode1Off(1-5)/image;"
+        data-vis-set="vis-owl"
+        data-vis-type="Control"
+        data-vis-name="Flexible Control">
     <div class="vis-widget <%== this.data.attr('class') %>" style="width:230px; height:210px;" id="<%= this.data.attr('wid') %>" >
         <div class="vis-owl-class vis-widget-body <%== this.data.attr('class') %>" style="padding:2px" >
             OID: <%= this.data.attr('oid') %><br>
@@ -120,12 +209,12 @@
     </div>
 </script>
 
-<script id="tplVis-owlHelper"
+<script id="tplvis-owlHelper"
         type="text/ejs"
         class="vis-tpl"
-        data-vis-prev='<div id="prev_tplVis-owlHelper" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev " style="width: 280px; height: 159px;" > <div class="vis-owl-class vis-widget-prev-body " style="padding:2px"> OID: hm-rpc.0.EEQ0006629.1.STATE<br> OID value: true<br> Color: <span style="color: rgb(128, 0, 0);">#800000</span><br> htmlText: <textarea readonly="" style="width:100%">asda</textarea></div>'
+        data-vis-prev='<div id="prev_tplvis-owlHelper" style="position: relative; text-align: initial;padding: 4px "><div class="vis-widget_prev " style="width: 280px; height: 159px;" > <div class="vis-owl-class vis-widget-prev-body " style="padding:2px"> OID: hm-rpc.0.EEQ0006629.1.STATE<br> OID value: true<br> Color: <span style="color: rgb(128, 0, 0);">#800000</span><br> htmlText: <textarea readonly="" style="width:100%">asda</textarea></div>'
         data-vis-attrs="oid/id;myColor/color;htmlText/text;"
-        data-vis-attrs0="group.extraVis-owl;extraAttr"
+        data-vis-attrs0="group.extravis-owl;extraAttr"
         data-vis-set="vis-owl"
         data-vis-type="helper"
         data-vis-name="Helper">
@@ -133,3 +222,5 @@
         vis.binds['vis-owl'].createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>
 </script>
+-->
+<!-- #endregion -->

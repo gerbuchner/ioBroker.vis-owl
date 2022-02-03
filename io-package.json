@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
             "0.0.1": {
                 "en": "initial release",
@@ -19,7 +19,7 @@
         "title": "owl - Odd Widget Library",
         "titleLang": {
             "en": "owl - Odd Widget Library",
-            "de": "owl - Ungerade Widget-Bibliothek",
+            "de": "owl - seltsame Widget-Bibliothek",
             "ru": "сова — Библиотека нечетных виджетов",
             "pt": "coruja - Biblioteca de widgets ímpares",
             "nl": "uil - Odd Widget Library",
