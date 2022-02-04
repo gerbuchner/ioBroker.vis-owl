@@ -45,10 +45,11 @@
             "Buchi <temp1@act4you.de>"
         ],
         "keywords": [
-            "ioBroker",
-            "template",
+            "vis",
+            "GUI",
             "Smart Home",
-            "home automation"
+            "home automation",
+            "graphical"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
