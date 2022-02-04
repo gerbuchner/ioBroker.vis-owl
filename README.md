@@ -16,8 +16,12 @@
 vis - owl<br>
 Odd Widget Library<br>
 
-<p>Widget zur Steuerung von Klimaanlagen, Luftreinigern, Heizungen, Motoren usw.<br>
-<img src="widgets/img/vis-owl.png"></p>
+<p>Aktuell gibt es nur ein Widget aber ein paar Ideen für weitere Widgets existieren bereits.</p>
+<p><strong>Flexible Control</strong></p>
+<img src="widgets/img/vis-owl.png">
+<p>Widget zur Steuerung von Klimaanlagen, Luftreinigern, Heizungen, Motoren usw.</p>
+<p>Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), die Klimaanlage (3 Steuerungen) und die Luftreiniger (4 Steuerungen) in der VIS regeln und steuern zu können. Anfänglich über Gruppen realisiert, wurde schnell klar dass es bei Updates keinen Sinn mehr macht und ein Widget der wesentlich bessere Weg ist. Deswegen entstand das "Flexible Control". Sicher kann da noch wesentlich mehr damit gesteuert werden, da sind der Phantasie wenig Grenzen gesetzt.</p>
+<p>Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.</p>
 
 
 

@@ -75,7 +75,7 @@
     --------------------------------------------------------
     data-vis-prev
         Html code used as preview of this widget. If widget is complex you can just use image as preview:
-        data-vis-prev='<img src="widgets/hqwidgets/img/prev/Prev_tplvis-owlShowInstance.png"></img>'
+        data-vis-prev='<img src="widgets/hqwidgets/img/prev/Prev_vis-owlFlexControl.png"></img>'
         Of course the image must exist.
 
     --------------------------------------------------------
@@ -106,7 +106,7 @@
 if (vis.editMode) {
     $.extend(true, systemDictionary, {
         /**
-         * tplvis-owlShowInstance
+         * vis-owlFlexControl
          */
          "oidValIst":          {"en": "Actual Value",                "de": "Istwert",                           "ru": ""},
          "dacIst":             {"en": "Digits after comma",          "de": "Zeichen nach Komma",                "ru": ""},
@@ -168,7 +168,7 @@ if (vis.editMode) {
 </script>
 <!-- #endregion -->  
   
-<script id="tplvis-owlShowInstance"
+<script id="vis-owlFlexControl"
         type="text/ejs"
         class="vis-tpl"
         data-vis-prev='<img src="widgets/vis-owl/img/vis-owl.png"></img>'
@@ -181,13 +181,13 @@ if (vis.editMode) {
         <div class="vis-widget <%== this.data.attr('class') %>" style="width: 172px; height: 122px;" id="<%= this.data.attr('wid') %>">
 
         </div>
-        <% vis.binds["vis-owl"].createWidget(this.data.wid, this.view, this.data, this.style); %>
+        <% vis.binds["vis-owl"].createFlexControl(this.data.wid, this.view, this.data, this.style); %>
     </script>
-    
+ 
  
 <!-- #region org -->   
 <!--
-<script id="tplvis-owlShowInstance"
+<script id="vis-owlFlexControl"
         type="text/ejs"
         class="vis-tpl"
         data-vis-prev='<img src="widgets/vis-owl/img/vis-owl.png"></img>'

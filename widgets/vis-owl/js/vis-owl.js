@@ -32,19 +32,19 @@ $.extend(
 
 // this code can be placed directly in vis-owl.html
 vis.binds["vis-owl"] = {
-    version: "0.0.9",
+    version: "0.1.0",
     showVersion: function () {
         if (vis.binds["vis-owl"].version) {
             console.log('Version vis-owl: ' + vis.binds["vis-owl"].version);
             vis.binds["vis-owl"].version = null;
         }
     },
-    createWidget: function (widgetID, view, data, style) {
+    createFlexControl: function (widgetID, view, data, style) {
         var $div = $('#' + widgetID);
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
-                vis.binds["vis-owl"].createWidget(widgetID, view, data, style);
+                vis.binds["vis-owl"].createFlexControl(widgetID, view, data, style);
             }, 100);
         }
 
