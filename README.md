@@ -17,6 +17,7 @@ vis - owl<br>
 Odd Widget Library<br>
 
 <p>Aktuell gibt es nur ein Widget aber ein paar Ideen für weitere Widgets existieren bereits.</p>
+<hr>
 <p><strong>Flexible Control</strong></p>
 <img src="widgets/vis-owl/img/vis-owl.png">
 <p>Widget zur Steuerung von Klimaanlagen, Luftreinigern, Heizungen, Motoren usw.</p>
