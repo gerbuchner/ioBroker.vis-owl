@@ -29,7 +29,7 @@ $.extend(
         // }
     }
 );
-
+ 
 // this code can be placed directly in vis-owl.html
 vis.binds["vis-owl"] = {
     version: "0.1.1",
@@ -64,7 +64,7 @@ vis.binds["vis-owl"] = {
         text += '</div>';
 
         text += '<!-- Hintergrund Hauptbereich -->';
-        text += '<div class="vis-widget vis-owl-flexcontrol-comp-main' + data.class + '" style="overflow: visible; width: 170px; height: 90px; left: 0px; top: 30px; z-index: 1;">';
+        text += '<div class="vis-widget vis-owl-flexcontrol-comp-main ' + data.class + '" style="overflow: visible; width: 170px; height: 90px; left: 0px; top: 30px; z-index: 1;">';
         text += '</div>';
 
         text += '<!-- Ein / Aus -->';
