@@ -3,6 +3,7 @@
     font-style: italic;
 }
 
+/* Header */
 .vis-owl-flexcontrol-comp-header {
     background-color: #222222; 
     border: 1px solid rgb(136, 136, 136); 
@@ -10,62 +11,46 @@
     color:#ffffff;
 }
 
+/* Header Text */
 .vis-owl-flexcontrol-comp-header-text {
-    color:#aaaaaa;
+    color:#ffffff;
     font-size: small;
     height: 14px;
     text-align: left;
 }
 
+/* Header Ist-Wert */
 .vis-owl-flexcontrol-comp-header-ist {
-    color:#aaaaaa;
+    color:#ffffff;
     font-size: small;
     height: 14px;
     text-align: right;
 }
 
+/* Hauptbereich */
 .vis-owl-flexcontrol-comp-main {
     background-color: #333333; 
     border: 1px solid rgb(136, 136, 136); 
     color:#ffffff;
 }
 
+/* Hauptbereich Soll-Wert */
 .vis-owl-flexcontrol-comp-main-soll {
-    color:#aaaaaa;
+    color:#ffffff;
     font-size: medium;
     height: 16px;
     text-align: right;
 }
 
-.vis-owl-container {
-    background: linear-gradient( 135deg, #000000 0%, #333333 100%);
-    border-style: solid;
-    border-width: 1px;
-    border-color: #666666 !important;
-    border-radius: 0px;
-    box-shadow: 0 25px 30px -10px rgba(114, 114, 114, 0.4);
-}
-.vis-owl-control-header {
+/* Hauptbereich Buttons Plus / Minus */
+.vis-owl-flexcontrol-comp-btnStep {
     background: #222222;
     border-style: solid;
-    border-width: 1px 1px 0px 1px !important;
-    border-color: #666666 !important;
-    border-radius: 0px 0px 0px 0px;
-    box-shadow: 0 3px 5px 0px rgba(114, 114, 114, 0.7);
-}
-.vis-owl-main {
-    background: #333333;
-    border-style: solid;
-    border-width: 0px 1px 1px 1px !important;
-    border-color: #666666 !important;
-    border-radius: 0px 0px 0px 0px;
-    box-shadow: 0 15px 10px -10px rgba(68, 160, 177,0.0);
-}
-.vis-owl-button {
-    background: #222222 !important;
-    border-style: solid;
     border-width: 1px;
-    border-color: #626d6f !important;
-    border-radius: 0px !important;
-    color: #ffffff !important;
+    border-color: #626d6f;
+    border-radius: 0px;
+    color: #ffffff;
+    font-size: medium;
+    line-height: 20px;
+    text-align: center;
 }

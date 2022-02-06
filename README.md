@@ -31,40 +31,58 @@ Um eine ordentliche Kaskadierung der CSS Klassen / Eigenschaften zu erreichen, m
 
 Für den Header stehen 2 CSS Klassen zur Verfügung:
 ```css
+/* Header */
 .myclass.vis-owl-flexcontrol-comp-header {
     background-color: #63c968; 
     border: 1px solid rgb(136, 136, 136); 
     color:#ffffff;
 }
 
+/* Header Text */
 .myclass.vis-owl-flexcontrol-comp-header-text {
-    color:#aaaaaa;
+    color:#ffffff;
     font-size: small;
     height: 14px;
     text-align: left;
 }
 
+/* Header Ist-Wert */
 .myclass.vis-owl-flexcontrol-comp-header-ist {
-    color:#aaaaaa;
+    color:#ffffff;
     font-size: small;
     height: 14px;
     text-align: right;
 }
 ```
 
-Für den Hauptbereich stehen 2 CSS Klassen zur Verfügung:
+Für den Hauptbereich stehen 3 CSS Klassen zur Verfügung:
 ```css
+/* Hauptbereich */
 .myclass.vis-owl-flexcontrol-comp-main {
     background-color: #333333; 
     border: 1px solid rgb(136, 136, 136); 
     color:#ffffff;
 }
 
+/* Hauptbereich Soll-Wert */
 .myclass.vis-owl-flexcontrol-comp-main-soll {
-    color:#aaaaaa;
+    color:#ffffff;
     font-size: medium;
     height: 16px;
     text-align: right;
+}
+
+/* Hauptbereich Buttons Plus / Minus */
+.vis-owl-flexcontrol-comp-btnStep {
+    background: #222222;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #626d6f;
+    border-radius: 0px;
+    color: #ffffff;
+    font-size: medium;
+    line-height: 20px;
+    text-align: center;
 }
 ```
 

@@ -78,12 +78,12 @@ vis.binds["vis-owl"] = {
         text += '</div>';
 
         text += '<!-- Minus -->';
-        text += '<div class="vis-widget sollMinus vis-owl-button" style="width: 20px; height: 20px; position: absolute; left: 120px; top: 40px; z-index: 3; font-size: medium; text-align: center; line-height: 20px; cursor: pointer;">';
+        text += '<div class="vis-widget sollMinus vis-owl-flexcontrol-comp-btnStep ' + data.class + '" style="width: 20px; height: 20px; position: absolute; left: 120px; top: 40px; z-index: 3; cursor: pointer;">';
         text += '        -';
         text += '</div>';
 
         text += '<!-- Plus -->';
-        text += '<div class="vis-widget sollPlus vis-owl-button" style="width: 20px; height: 20px; position: absolute; left: 145px; top: 40px; z-index: 3; font-size: medium; text-align: center; line-height: 20px; cursor: pointer;">';
+        text += '<div class="vis-widget sollPlus vis-owl-flexcontrol-comp-btnStep ' + data.class + '" style="width: 20px; height: 20px; position: absolute; left: 145px; top: 40px; z-index: 3; cursor: pointer;">';
         text += '        +';
         text += '</div>';
 
