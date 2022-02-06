@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.0"
+    version: "0.1.1"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -32,7 +32,7 @@ $.extend(
 
 // this code can be placed directly in vis-owl.html
 vis.binds["vis-owl"] = {
-    version: "0.1.0",
+    version: "0.1.1",
     showVersion: function () {
         if (vis.binds["vis-owl"].version) {
             console.log('Version vis-owl: ' + vis.binds["vis-owl"].version);
@@ -47,100 +47,69 @@ vis.binds["vis-owl"] = {
                 vis.binds["vis-owl"].createFlexControl(widgetID, view, data, style);
             }, 100);
         }
-
+ 
         var text = '';
         text += '<!-- Hintergrund Header -->';
-        text += '<div class="vis-widget vis-owl-control-header ' + data.class + '" style="background-color: #222222; overflow: visible; width: 170px; height: 30px; border: 1px solid rgb(136, 136, 136); left: 0px; top: 0px; z-index: 2;" id="' + widgetID + '">';
-        text += '    <div style="width: 100%; height: 0px; background-color: black;">';
-        text += '    </div>';
-        text += '    <div style="position: absolute; top: 2px; left: 15px; color: black;"></div>';
+        text += '<div class="vis-widget vis-owl-flexcontrol-comp-header ' + data.class + '" style="overflow: visible; width: 170px; height: 30px; left: 0px; top: 0px; z-index: 2;" id="' + widgetID + '">';
         text += '</div>';
 
         text += '<!-- Überschrift -->';
-        text += '<div class="vis-widget" style="top: 8px; left: 7px; width: 100px; height: 14px; color: rgb(255, 255, 255); z-index: 3; text-align: left; font-size: small;">';
-        text += '    <div class="vis-widget-body">';
-        text += '        <div data-oid="">';
+        text += '<div class="vis-widget vis-owl-flexcontrol-comp-header-text ' + data.class + '" style="top: 8px; left: 7px; width: 100px; z-index: 3;">';
         text += '            ' + data.headerText;
-        text += '        </div>';
-        text += '    </div>';
         text += '</div>';
         
         text += '<!-- istWert -->';
-        text += '<div class="vis-widget" style="top: 8px; left: 110px; width: 50px; height: 14px; color: rgb(255, 255, 255); z-index: 3; text-align: right; font-size: small; color: rgb(255, 255, 255);">';
-        text += '    <div class="vis-widget-body">';
-        text += '        <div class="istWert" style="color: rgb(255, 255, 255);">';
+        text += '<div class="vis-widget istWert vis-owl-flexcontrol-comp-header-ist ' + data.class + '" style="top: 8px; left: 110px; width: 50px; height: 14px; z-index: 3;">';
         text += '             ' + vis.states[data.oidValIst + '.val'] + ' ' + data.valEinheitIst;
-        text += '        </div>';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Hintergrund Hauptbereich -->';
-        text += '<div class="vis-widget vis-owl-main" style="background-color: #333333; overflow: visible; width: 170px; height: 90px; border: 1px solid rgb(136, 136, 136); left: 0px; top: 30px; z-index: 1;">';
+        text += '<div class="vis-widget vis-owl-flexcontrol-comp-main' + data.class + '" style="overflow: visible; width: 170px; height: 90px; left: 0px; top: 30px; z-index: 1;">';
         text += '</div>';
 
         text += '<!-- Ein / Aus -->';
-        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 40px; z-index: 2;">';
-        text += '    <div style="width: 30px; height: 30px; cursor: pointer;">';
+        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 40px; z-index: 2; cursor: pointer;">';
         text += '            <img class="einaus" src="' + data.imgOn + '" width="100%">';
-        text += '    </div>';
         text += '</div>';
         
         text += '<!-- sollWert -->';
-        text += '<div class="vis-widget" style="top: 44px; left: 40px; width: 74px; height: 16px; z-index: 3; text-align: right; font-size: medium; color: rgb(255, 255, 255);">';
-        text += '    <div class="vis-widget-body">';
-        text += '        <div class="sollWert" style="color: rgb(255, 255, 255);">';
+        text += '<div class="vis-widget sollWert vis-owl-flexcontrol-comp-main-soll ' + data.class + '" style="top: 44px; left: 40px; width: 74px; z-index: 3;">';
         text += '             ' + vis.states[data.oidValSoll + '.val'] + ' ' + data.valEinheitSoll;
-        text += '        </div>';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Minus -->';
-        text += '<div class="vis-widget vis-owl-button" style="width: 20px; height: 20px; position: absolute; left: 120px; top: 40px; z-index: 3; font-size: medium;">';
-        text += '    <div class="sollMinus" style="width: 20px; height: 20px; text-align: center; line-height: 20px; cursor: pointer;">';
+        text += '<div class="vis-widget sollMinus vis-owl-button" style="width: 20px; height: 20px; position: absolute; left: 120px; top: 40px; z-index: 3; font-size: medium; text-align: center; line-height: 20px; cursor: pointer;">';
         text += '        -';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Plus -->';
-        text += '<div class="vis-widget vis-owl-button" style="width: 20px; height: 20px; position: absolute; left: 145px; top: 40px; z-index: 3; font-size: medium;">';
-        text += '    <div class="sollPlus" style="width: 20px; height: 20px; text-align: center; line-height: 20px; cursor: pointer;">';
+        text += '<div class="vis-widget sollPlus vis-owl-button" style="width: 20px; height: 20px; position: absolute; left: 145px; top: 40px; z-index: 3; font-size: medium; text-align: center; line-height: 20px; cursor: pointer;">';
         text += '        +';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Modus 0 -->';
         text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 80px; z-index: 2;">';
-        text += '    <div style="width: 30px; height: 30px;">';
         text += '        <img class="imgMode0" src="" width="100%" style="cursor: pointer;">';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Modus 1 -->';
         text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 37px; top: 80px; z-index: 2;">';
-        text += '    <div style="width: 30px; height: 30px;">';
         text += '        <img class="imgMode1" src="" width="100%" style="cursor: pointer;">';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Modus 2 -->';
         text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 67px; top: 80px; z-index: 2;">';
-        text += '    <div style="width: 30px; height: 30px;">';
         text += '        <img class="imgMode2" src="" width="100%" style="cursor: pointer;">';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Modus 3 -->';
         text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 97px; top: 80px; z-index: 2;">';
-        text += '    <div style="width: 30px; height: 30px;">';
         text += '        <img class="imgMode3" src="" width="100%" style="cursor: pointer;">';
-        text += '    </div>';
         text += '</div>';
 
         text += '<!-- Modus 4 -->';
         text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 127px; top: 80px; z-index: 2;">';
-        text += '    <div style="width: 30px; height: 30px;">';
         text += '        <img class="imgMode4" src="" width="100%" style="cursor: pointer;">';
-        text += '    </div>';
         text += '</div>';
 
 

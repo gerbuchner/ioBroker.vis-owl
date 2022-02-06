@@ -3,6 +3,39 @@
     font-style: italic;
 }
 
+.vis-owl-flexcontrol-comp-header {
+    background-color: #63c968; 
+    border: 1px solid rgb(136, 136, 136); 
+    color:#ffffff;
+}
+
+.vis-owl-flexcontrol-comp-header-text {
+    color:#aaaaaa;
+    font-size: small;
+    height: 14px;
+    text-align: left;
+}
+
+.vis-owl-flexcontrol-comp-header-ist {
+    color:#aaaaaa;
+    font-size: small;
+    height: 14px;
+    text-align: right;
+}
+
+.vis-owl-flexcontrol-comp-main {
+    background-color: #333333; 
+    border: 1px solid rgb(136, 136, 136); 
+    color:#ffffff;
+}
+
+.vis-owl-flexcontrol-comp-main-soll {
+    color:#aaaaaa;
+    font-size: medium;
+    height: 16px;
+    text-align: right;
+}
+
 .vis-owl-container {
     background: linear-gradient( 135deg, #000000 0%, #333333 100%);
     border-style: solid;

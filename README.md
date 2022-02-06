@@ -25,10 +25,52 @@ Odd Widget Library<br>
 <p>Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.</p>
 
 
+## Anpassungen mit CSS
+Um eine ordentliche Kaskadierung der CSS Klassen / Eigenschaften zu erreichen, muss für das Widget unter "General" eine "CSS Class" gesetzt werden. Ich nenne diese "myclass". Dadurch können auch mehrere Designs, z.B. Hell & dunkel definiert und mittels der Klasse einfach umgestellt werden.
 
+Für den Header stehen 2 CSS Klassen zur Verfügung:
+```css
+.myclass.vis-owl-flexcontrol-comp-header {
+    background-color: #63c968; 
+    border: 1px solid rgb(136, 136, 136); 
+    color:#ffffff;
+}
+
+.myclass.vis-owl-flexcontrol-comp-header-text {
+    color:#aaaaaa;
+    font-size: small;
+    height: 14px;
+    text-align: left;
+}
+
+.myclass.vis-owl-flexcontrol-comp-header-ist {
+    color:#aaaaaa;
+    font-size: small;
+    height: 14px;
+    text-align: right;
+}
+```
+
+Für den Hauptbereich stehen 2 CSS Klassen zur Verfügung:
+```css
+.vis-owl-flexcontrol-comp-main {
+    background-color: #333333; 
+    border: 1px solid rgb(136, 136, 136); 
+    color:#ffffff;
+}
+
+.vis-owl-flexcontrol-comp-main-soll {
+    color:#aaaaaa;
+    font-size: medium;
+    height: 16px;
+    text-align: right;
+}
+```
 
 ## Changelog
-0.1.0 (2022-02-03)
+### 0.1.1 (2022-02-06)
+HTML & CSS Optimierungen
+### 0.1.0 (2022-02-03)
 Erste öffentliche Beta
 <!--
     Placeholder for the next version (at the beginning of the line):
