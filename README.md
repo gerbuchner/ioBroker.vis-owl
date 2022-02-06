@@ -13,16 +13,17 @@
 
 ## vis-owl adapter for ioBroker
 
-Odd Widget Library<br>
+Odd Widget Library
 
-<p>Aktuell gibt es nur ein Widget aber ein paar Ideen für weitere Widgets existieren bereits.</p>
-<hr>
+Aktuell gibt es nur ein Widget aber ein paar Ideen für weitere Widgets existieren bereits.
 
-### Flexible Control
+## Flexible Control
 <img src="widgets/vis-owl/img/vis-owl.png">
-<p>Widget zur Steuerung von Klimaanlagen, Luftreinigern, Heizungen, Motoren usw.</p>
-<p>Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), die Klimaanlage (3 Steuerungen) und die Luftreiniger (4 Steuerungen) in der VIS regeln und steuern zu können. Anfänglich über Gruppen realisiert, wurde schnell klar dass es bei Updates keinen Sinn mehr macht und ein Widget der wesentlich bessere Weg ist. Deswegen entstand das "Flexible Control". Sicher kann da noch wesentlich mehr damit gesteuert werden, da sind der Phantasie wenig Grenzen gesetzt.</p>
-<p>Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.</p>
+Widget zur Steuerung von Klimaanlagen, Luftreinigern, Heizungen, Motoren usw.
+
+Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), die Klimaanlage (3 Steuerungen) und die Luftreiniger (4 Steuerungen) in der VIS regeln und steuern zu können. Anfänglich über Gruppen realisiert, wurde schnell klar dass es bei Updates keinen Sinn mehr macht und ein Widget der wesentlich bessere Weg ist. Deswegen entstand das "Flexible Control". Sicher kann da noch wesentlich mehr damit gesteuert werden, da sind der Phantasie wenig Grenzen gesetzt.
+
+Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.
 
 
 ## Anpassungen mit CSS
@@ -53,13 +54,13 @@ Für den Header stehen 2 CSS Klassen zur Verfügung:
 
 Für den Hauptbereich stehen 2 CSS Klassen zur Verfügung:
 ```css
-.vis-owl-flexcontrol-comp-main {
+.myclass.vis-owl-flexcontrol-comp-main {
     background-color: #333333; 
     border: 1px solid rgb(136, 136, 136); 
     color:#ffffff;
 }
 
-.vis-owl-flexcontrol-comp-main-soll {
+.myclass.vis-owl-flexcontrol-comp-main-soll {
     color:#aaaaaa;
     font-size: medium;
     height: 16px;
