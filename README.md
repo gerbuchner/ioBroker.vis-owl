@@ -87,16 +87,21 @@ Für den Hauptbereich stehen 3 CSS Klassen zur Verfügung:
 ```
 
 ## Changelog
+### 0.1.2 (2022-02-07)
+* Textfarbe für Ist-Wert in Eigenschaften übernommen (zur Nutzung von Bindings)
+* Min & Max für Sollwert hinzugefügt
 ### 0.1.1 (2022-02-06)
-HTML & CSS Optimierungen
+* HTML & CSS Optimierungen
 ### 0.1.0 (2022-02-03)
-Erste öffentliche Beta
+* Erste öffentliche Beta
 <!--
     Placeholder for the next version (at the beginning of the line):
     ###- **WORK IN PROGRESS**
 -->-
+ 
 
 ### **WORK IN PROGRESS**
+* Plug / Light Table (Tabelle für Steckdosen / Lichter)
 * (Buchi) Code Verbesserungen / Optimierungen
 
 ## License

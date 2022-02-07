@@ -1,7 +1,7 @@
 <!--
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.1"
+    version: "0.1.2"
 
     Copyright 2022 Buchi temp1@act4you.de
 -->
@@ -109,10 +109,13 @@ if (vis.editMode) {
          * vis-owlFlexControl
          */
          "oidValIst":          {"en": "Actual Value",                "de": "Istwert",                           "ru": ""},
+         "valColorIst":        {"en": "Color Actual Value",          "de": "Farbe Istwert",                     "ru": ""},
          "dacIst":             {"en": "Digits after comma",          "de": "Zeichen nach Komma",                "ru": ""},
          "valEinheitIst":      {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
          "oidValSoll":         {"en": "Set Value",                   "de": "Sollwert",                          "ru": ""},
          "dacSoll":            {"en": "Digits after comma",          "de": "Zeichen nach Komma",                "ru": ""},
+         "minSoll":            {"en": "Min Set Value",               "de": "Min Sollwert",                      "ru": ""},
+         "maxSoll":            {"en": "Max Set Value",               "de": "Max Sollwert",                      "ru": ""},
          "valEinheitSoll":     {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
          "valStep":            {"en": "Step",                        "de": "Step",                              "ru": ""},
 
@@ -167,24 +170,44 @@ if (vis.editMode) {
 }
 </script>
 <!-- #endregion -->  
-  
+        
 <script id="vis-owlFlexControl"
         type="text/ejs"
         class="vis-tpl"
-        data-vis-prev='<img src="widgets/vis-owl/img/vis-owl.png"></img>'
-        data-vis-attrs="headerText;oidValIst/id;dacIst;valEinheitIst;oidValSoll/id;dacSoll;valEinheitSoll;valStep;"
+        data-vis-prev='<img src="widgets/vis-owl/img/vis-owlfcc.png"></img>'
+        data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst;valEinheitIst;oidValSoll/id;dacSoll;minSoll/number;maxSoll/number;valEinheitSoll;valStep;"
         data-vis-attrs0="group.onoff;oidOnOff/id;imgOn/image;imgOff/image;"
         data-vis-attrs1="group.mode/byindex;showMode(0-4)/checkbox;oidMode(0-4)/id;valueMode(0-4)/number;imgModeOn(0-4)/image;imgModeOff(0-4)/image;"
         data-vis-set="vis-owl"
-        data-vis-type="Control"
-        data-vis-name="Flexible Control">
+        data-vis-type="Steuerung"
+        data-vis-name="Flexible Control"
+        data-vis-update-style="true"
+        data-vis-beta="true">
+        <div class="vis-widget <%== this.data.attr('class') %>" style="width: 672px; height: 522px;" id="<%= this.data.attr('wid') %>">
+
+        </div>
+        <% vis.binds["vis-owlFlexControl"].createFlexControl(this.data.wid, this.view, this.data, this.style); %>
+</script>
+    
+<!--
+<script id="vis-owlPLTable"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-prev='<img src="widgets/vis-owl/img/vis-owlpltable.png"></img>'
+        data-vis-attrs="oidOnOff/id;imgOn/image;imgOff/image;numberItems/number;divider/checkbox;"
+        data-vis-attrs0="group.Items/byindex;showItem(1-numberItems)/checkbox;oidItem(1-numberItems)/id;itemName(1-numberItems);oidItemAct(1-numberItems)/id;oidItemDay(1-numberItems)/id;oidItemMonth(1-numberItems)/id;"
+        data-vis-set="vis-owl"
+        data-vis-type="Table"
+        data-vis-name="Plug / Light Table"
+        data-vis-update-style="true"
+        data-vis-beta="true">
         <div class="vis-widget <%== this.data.attr('class') %>" style="width: 172px; height: 122px;" id="<%= this.data.attr('wid') %>">
 
         </div>
-        <% vis.binds["vis-owl"].createFlexControl(this.data.wid, this.view, this.data, this.style); %>
+        <% vis.binds["vis-owlPLTable"].createPLTable(this.data.wid, this.view, this.data, this.style); %>
 </script>
-         
-       
+-->
+
 <!-- #region org -->   
 <!--
 <script id="vis-owlFlexControl"
