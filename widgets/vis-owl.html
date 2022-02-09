@@ -135,11 +135,11 @@ if (vis.editMode) {
          "group_mode2":       {"en": "Mode[2]",                      "de": "Modus[2]",                          "ru": ""},
          "group_mode3":       {"en": "Mode[3]",                      "de": "Modus[3]",                          "ru": ""},
          "group_mode4":       {"en": "Mode[4]",                      "de": "Modus[4]",                          "ru": ""},
-         "showMode0":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
-         "showMode1":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
-         "showMode2":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
-         "showMode3":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
-         "showMode4":         {"en": "Visible",                      "de": "Amzeigen",                          "ru": ""},
+         "showMode0":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
+         "showMode1":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
+         "showMode2":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
+         "showMode3":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
+         "showMode4":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
          "oidMode0":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
          "oidMode1":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
          "oidMode2":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
@@ -167,6 +167,7 @@ if (vis.editMode) {
          "imgMode4Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
 
          "group_info1":       {"en": "Info 1",                       "de": "Info 1",                            "ru": ""},
+         "showInfo1":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
          "imgInfo1":          {"en": "Image Info",                   "de": "Bild Info",                         "ru": ""},
          "oidInfo1":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
          "dacInfo1":          {"en": "Digits after comma",           "de": "Zeichen nach Komma",                "ru": ""},
@@ -174,6 +175,7 @@ if (vis.editMode) {
          "valColorInfo1":     {"en": "Fore Color",                   "de": "Vordergrundfarbe",                  "ru": ""},
 
          "group_info2":       {"en": "Info 2",                       "de": "Info 2",                            "ru": ""},
+         "showInfo2":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
          "imgInfo2":          {"en": "Image Info",                   "de": "Bild Info",                         "ru": ""},
          "oidInfo2":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
          "dacInfo2":          {"en": "Digits after comma",           "de": "Zeichen nach Komma",                "ru": ""},
@@ -192,8 +194,8 @@ if (vis.editMode) {
         data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst/number;valEinheitIst;oidValSoll/id;dacSoll/number;minSoll/number;maxSoll/number;valEinheitSoll;valStep;"
         data-vis-attrs0="group.onoff;oidOnOff/id;imgOn/image;imgOff/image;"
         data-vis-attrs1="group.mode/byindex;showMode(0-4)/checkbox;oidMode(0-4)/id;valueMode(0-4)/number;imgModeOn(0-4)/image;imgModeOff(0-4)/image;"
-        data-vis-attrs2="group.info1;imgInfo1/image;oidInfo1/id;dacInfo1/number;valEinheitInfo1;valColorInfo1/color;"
-        data-vis-attrs3="group.info2;imgInfo2/image;oidInfo2/id;dacInfo2/number;valEinheitInfo2;valColorInfo2/color;"
+        data-vis-attrs2="group.info1;showInfo1/checkbox;imgInfo1/image;oidInfo1/id;dacInfo1/number;valEinheitInfo1;valColorInfo1/color;"
+        data-vis-attrs3="group.info2;showInfo2/checkbox;imgInfo2/image;oidInfo2/id;dacInfo2/number;valEinheitInfo2;valColorInfo2/color;"
         data-vis-set="vis-owl"
         data-vis-type="Steuerung"
         data-vis-name="Flexible Control"
