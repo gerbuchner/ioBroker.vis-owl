@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.2"
+    version: "0.1.3"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -180,6 +180,30 @@ vis.binds["vis-owlFlexControl"] = {
         text += '<!-- Modus 4 -->';
         text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 127px; top: 80px; z-index: 2;">';
         text += '        <img class="imgMode4" src="" width="100%" style="cursor: pointer;">';
+        text += '</div>';
+
+        text += '<!-- Hintergrund Infopanel -->';
+        text += '<div class="vis-widget vis-owl-flexcontrol-comp-info ' + data.class + '" style="overflow: visible; width: 170px; height: 20px; left: 0px; top: 120px; z-index: 1;">';
+        text += '</div>';
+
+        text += '<!-- Info 1 Bild -->';
+        text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 10px; top: 123px; z-index: 2;">';
+        text += '        <img class="imgInfo1" src="' + data.imgInfo1 + '" width="100%">';
+        text += '</div>';
+        
+        text += '<!-- Info 1 Wert -->';
+        text += '<div class="vis-widget info1Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 123px; left: 35px; width: 50px; z-index: 3; color: ' + data.valColorInfo1 + '">';
+        text += '             ' + vis.states[data.oidInfo1 + '.val'] + ' ' + data.valEinheitInfo1;
+        text += '</div>';
+
+        text += '<!-- Info 2 Bild -->';
+        text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 90px; top: 123px; z-index: 2;">';
+        text += '        <img class="imgInfo2" src="' + data.imgInfo2 + '" width="100%">';
+        text += '</div>';
+        
+        text += '<!-- Info 2 Wert -->';
+        text += '<div class="vis-widget info2Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 123px; left: 110px; width: 50px; z-index: 3; color: ' + data.valColorInfo2 + '">';
+        text += '             ' + vis.states[data.oidInfo2 + '.val'] + ' ' + data.valEinheitInfo2;
         text += '</div>';
 
 
@@ -372,6 +396,32 @@ vis.binds["vis-owlFlexControl"] = {
             vis.setValue(data.oidMode4, parseInt(data.valueMode4)); 
         });
         // #endregion
+ 
+        // #region Info 1        
+        function onChangeInfo1(e, newVal, oldVal) {
+            $div.find('.info1Wert').html(parseFloat(newVal).toFixed(data.dacInfo1) + ' ' + data.valEinheitInfo1);
+        }
+        if (data.oidInfo1) {
+            vis.states.bind(data.oidInfo1 + '.val', onChangeInfo1);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data.oidInfo1 + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeInfo1);
+        } 
+        // #endregion
+ 
+        // #region Info 2        
+        function onChangeInfo2(e, newVal, oldVal) {
+            $div.find('.info2Wert').html(parseFloat(newVal).toFixed(data.dacInfo2) + ' ' + data.valEinheitInfo2);
+        }
+        if (data.oidInfo2) {
+            vis.states.bind(data.oidInfo2 + '.val', onChangeInfo2);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data.oidInfo2 + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeInfo2);
+        } 
+        // #endregion
 
         onChangeOO(null, vis.states[data.oidOnOff + '.val'], 0);
         onChangeIst(null, vis.states[data.oidValIst + '.val'], 0);
@@ -381,6 +431,8 @@ vis.binds["vis-owlFlexControl"] = {
         onChangeMode2(null, vis.states[data.oidMode2 + '.val'], 0);
         onChangeMode3(null, vis.states[data.oidMode3 + '.val'], 0);
         onChangeMode4(null, vis.states[data.oidMode4 + '.val'], 0);
+        onChangeInfo1(null, vis.states[data.oidInfo1 + '.val'], 0);
+        onChangeInfo2(null, vis.states[data.oidInfo2 + '.val'], 0);
     }
 };
 

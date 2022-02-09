@@ -30,10 +30,12 @@
 /* Hauptbereich */
 .vis-owl-flexcontrol-comp-main {
     background-color: #333333; 
-    border: 1px solid rgb(136, 136, 136); 
+    border-color: rgb(136, 136, 136);
+    border-style: solid; 
+    border-width: 1px 1px 0px 1px; 
     color:#ffffff;
 }
-
+ 
 /* Hauptbereich Soll-Wert */
 .vis-owl-flexcontrol-comp-main-soll {
     color:#ffffff;
@@ -53,4 +55,19 @@
     font-size: medium;
     line-height: 20px;
     text-align: center;
+}
+
+/* Infopanel */
+.vis-owl-flexcontrol-comp-info {
+    background-color: #505050; 
+    border-color: rgb(136, 136, 136);
+    border-style: solid; 
+    border-width: 0px 1px 1px 1px; 
+}
+
+/* Infopanel Wert*/
+.vis-owl-flexcontrol-comp-info-value {
+    color: bisque;
+    font-size: 12px;
+    text-align: left;
 }

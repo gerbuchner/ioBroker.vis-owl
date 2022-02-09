@@ -21,79 +21,25 @@ Aktuell gibt es nur ein Widget aber ein paar Ideen für weitere Widgets existier
 <img src="widgets/vis-owl/img/vis-owlfcc.png">
 Widget zur Steuerung von Klimaanlagen, Luftreinigern, Heizungen, Motoren usw.
 
-Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), die Klimaanlage (3 Steuerungen) und die Luftreiniger (4 Steuerungen) in der VIS regeln und steuern zu können. Anfänglich über Gruppen realisiert, wurde schnell klar dass es bei Updates keinen Sinn mehr macht und ein Widget der wesentlich bessere Weg ist. Deswegen entstand das "Flexible Control". Sicher kann da noch wesentlich mehr damit gesteuert werden, da sind der Phantasie wenig Grenzen gesetzt.
+Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), normalen Heizkörper (2 Stück), die Klimaanlage (3 Steuerungen) und die Luftreiniger (4 Steuerungen) in der VIS regeln und steuern zu können. Anfänglich über Gruppen realisiert, wurde schnell klar dass es bei Updates keinen Sinn mehr macht und ein Widget der wesentlich bessere Weg ist. Deswegen entstand das "Flexible Control". Sicher kann da noch wesentlich mehr damit gesteuert werden, da sind der Phantasie kaum Grenzen gesetzt.
 
 Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.
 
 
-## Anpassungen mit CSS
-Um eine ordentliche Kaskadierung der CSS Klassen / Eigenschaften zu erreichen, muss für das Widget unter "General" eine "CSS Class" gesetzt werden. Ich nenne diese "myclass". Dadurch können auch mehrere Designs, z.B. Hell & dunkel definiert und mittels der Klasse einfach umgestellt werden.
+## Dokumentation
+Siehe Github Wiki
 
-Für den Header stehen 2 CSS Klassen zur Verfügung:
-```css
-/* Header */
-.myclass.vis-owl-flexcontrol-comp-header {
-    background-color: #63c968; 
-    border: 1px solid rgb(136, 136, 136); 
-    color:#ffffff;
-}
-
-/* Header Text */
-.myclass.vis-owl-flexcontrol-comp-header-text {
-    color:#ffffff;
-    font-size: small;
-    height: 14px;
-    text-align: left;
-}
-
-/* Header Ist-Wert */
-.myclass.vis-owl-flexcontrol-comp-header-ist {
-    color:#ffffff;
-    font-size: small;
-    height: 14px;
-    text-align: right;
-}
-```
-
-Für den Hauptbereich stehen 3 CSS Klassen zur Verfügung:
-```css
-/* Hauptbereich */
-.myclass.vis-owl-flexcontrol-comp-main {
-    background-color: #333333; 
-    border: 1px solid rgb(136, 136, 136); 
-    color:#ffffff;
-}
-
-/* Hauptbereich Soll-Wert */
-.myclass.vis-owl-flexcontrol-comp-main-soll {
-    color:#ffffff;
-    font-size: medium;
-    height: 16px;
-    text-align: right;
-}
-
-/* Hauptbereich Buttons Plus / Minus */
-.vis-owl-flexcontrol-comp-btnStep {
-    background: #222222;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #626d6f;
-    border-radius: 0px;
-    color: #ffffff;
-    font-size: medium;
-    line-height: 20px;
-    text-align: center;
-}
-```
 
 ## Changelog
+### 0.1.3 (2022-02-09)
+* [Flexible Control comp] Info Panel hinzugefügt
 ### 0.1.2 (2022-02-07)
-* Textfarbe für Ist-Wert in Eigenschaften übernommen (zur Nutzung von Bindings)
-* Min & Max für Sollwert hinzugefügt
+* [Flexible Control comp] Textfarbe für Ist-Wert in Eigenschaften übernommen (zur Nutzung von Bindings)
+* [Flexible Control comp] Min & Max für Sollwert hinzugefügt
 ### 0.1.1 (2022-02-06)
-* HTML & CSS Optimierungen
+* [Flexible Control comp] HTML & CSS Optimierungen
 ### 0.1.0 (2022-02-03)
-* Erste öffentliche Beta
+* [Flexible Control comp] Erste öffentliche Beta
 <!--
     Placeholder for the next version (at the beginning of the line):
     ###- **WORK IN PROGRESS**
@@ -101,6 +47,7 @@ Für den Hauptbereich stehen 3 CSS Klassen zur Verfügung:
  
 
 ### **WORK IN PROGRESS**
+* Flexible Control extended
 * Plug / Light Table (Tabelle für Steckdosen / Lichter)
 * (Buchi) Code Verbesserungen / Optimierungen
 
