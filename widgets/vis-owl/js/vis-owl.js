@@ -399,11 +399,17 @@ vis.binds["vis-owlFlexControl"] = {
  
         // #region Info 1        
         function onChangeInfo1(e, newVal, oldVal) {
+            var wert;
             if (data.showInfo1) {
                 $div.find('.imgInfo1').show();
                 $div.find('.info1Wert').show();
-                $div.find('.info1Wert').html(parseFloat(newVal).toFixed(data.dacInfo1) + ' ' + data.valEinheitInfo1);
-           }
+                if (parseFloat(data.valMultiplier1) != 1) {
+                    wert = (parseFloat(newVal) * parseFloat(data.valMultiplier1)).toFixed(data.dacInfo1);
+                } else {
+                    wert = parseFloat(newVal).toFixed(data.dacInfo1);
+                }
+                $div.find('.info1Wert').html(wert + ' ' + data.valEinheitInfo1);
+            }
             else {
                 $div.find('.imgInfo1').hide();
                 $div.find('.info1Wert').hide();
@@ -420,10 +426,16 @@ vis.binds["vis-owlFlexControl"] = {
  
         // #region Info 2        
         function onChangeInfo2(e, newVal, oldVal) {
+            var wert;
             if (data.showInfo2) {
                 $div.find('.imgInfo2').show();
                 $div.find('.info2Wert').show();
-                $div.find('.info2Wert').html(parseFloat(newVal).toFixed(data.dacInfo2) + ' ' + data.valEinheitInfo2);
+                if (parseFloat(data.valMultiplier2) != 1) {
+                    wert = (parseFloat(newVal) * parseFloat(data.valMultiplier2)).toFixed(data.dacInfo2);
+                } else {
+                    wert = parseFloat(newVal).toFixed(data.dacInfo2);
+                }
+                $div.find('.info2Wert').html(wert + ' ' + data.valEinheitInfo2);
             }
             else {
                 $div.find('.imgInfo2').hide();
