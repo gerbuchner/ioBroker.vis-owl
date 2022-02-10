@@ -31,6 +31,8 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.1.4 (2022-02-xx)
+* [Flexible Control comp] Bugfix Anzeige Werte im Infopanel
 ### 0.1.3 (2022-02-09)
 * [Flexible Control comp] Info Panel hinzugefügt
 ### 0.1.2 (2022-02-07)

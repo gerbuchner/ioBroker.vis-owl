@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.3"
+    version: "0.1.4"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -100,7 +100,7 @@ vis.binds["vis-owlPLTable"] = {
 }
 
 vis.binds["vis-owlFlexControl"] = {
-    version: "0.1.2",
+    version: "0.1.4",
     showVersion: function () {
         if (vis.binds["vis-owlFlexControl"].version) {
             console.log('Version vis-owlFlexControl: ' + vis.binds["vis-owlFlexControl"].version);
@@ -118,6 +118,7 @@ vis.binds["vis-owlFlexControl"] = {
             }, 100);
         }
  
+        // #region HTML
         var text = '';
         text += '<!-- Hintergrund Header -->';
         text += '<div class="vis-widget vis-owl-flexcontrol-comp-header ' + data.class + '" style="overflow: visible; width: 170px; height: 30px; left: 0px; top: 0px; z-index: 2;" id="' + widgetID + '">';
@@ -206,8 +207,8 @@ vis.binds["vis-owlFlexControl"] = {
         text += '             ' + vis.states[data.oidInfo2 + '.val'] + ' ' + data.valEinheitInfo2;
         text += '</div>';
 
-
         $('#' + widgetID).html(text);
+        // #endregion
 
         // subscribe on updates of value
  
@@ -403,10 +404,15 @@ vis.binds["vis-owlFlexControl"] = {
             if (data.showInfo1) {
                 $div.find('.imgInfo1').show();
                 $div.find('.info1Wert').show();
-                if (parseFloat(data.valMultiplier1) != 1) {
-                    wert = (parseFloat(newVal) * parseFloat(data.valMultiplier1)).toFixed(data.dacInfo1);
-                } else {
-                    wert = parseFloat(newVal).toFixed(data.dacInfo1);
+                if (isNaN(newVal)) {
+                    wert = newVal;
+                }
+                else {
+                    if (isNaN(data.valMultiplier1) == false && data.valMultiplier1 != '') {
+                        wert = (parseFloat(newVal) * parseFloat(data.valMultiplier1)).toFixed(data.dacInfo1);
+                    } else {
+                        wert = parseFloat(newVal).toFixed(data.dacInfo1);
+                    }
                 }
                 $div.find('.info1Wert').html(wert + ' ' + data.valEinheitInfo1);
             }
@@ -430,10 +436,15 @@ vis.binds["vis-owlFlexControl"] = {
             if (data.showInfo2) {
                 $div.find('.imgInfo2').show();
                 $div.find('.info2Wert').show();
-                if (parseFloat(data.valMultiplier2) != 1) {
-                    wert = (parseFloat(newVal) * parseFloat(data.valMultiplier2)).toFixed(data.dacInfo2);
-                } else {
-                    wert = parseFloat(newVal).toFixed(data.dacInfo2);
+                if (isNaN(newVal)) {
+                    wert = newVal;
+                }
+                else {
+                    if (isNaN(data.valMultiplier2) == false && data.valMultiplier2 != '') {
+                        wert = (parseFloat(newVal) * parseFloat(data.valMultiplier2)).toFixed(data.dacInfo2);
+                    } else {
+                        wert = parseFloat(newVal).toFixed(data.dacInfo2);
+                    }
                 }
                 $div.find('.info2Wert').html(wert + ' ' + data.valEinheitInfo2);
             }
