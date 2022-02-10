@@ -7,7 +7,7 @@
 */
 "use strict";
 
- 
+
 
 // add translations for edit mode
 $.extend(
