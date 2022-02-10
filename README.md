@@ -48,7 +48,7 @@ Siehe Github Wiki
 -->-
  
 
-### **WORK IN PROGRESS**
+### 0.1.5 (2022-02-10)
 * Flexible Control extended
 * Plug / Light Table (Tabelle für Steckdosen / Lichter)
 * (Buchi) Code Verbesserungen / Optimierungen
