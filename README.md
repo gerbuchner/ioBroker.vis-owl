@@ -46,12 +46,12 @@ Siehe Github Wiki
     Placeholder for the next version (at the beginning of the line):
     ###- **WORK IN PROGRESS**
 -->-
- 
-
 ### 0.1.5 (2022-02-10)
 * Flexible Control extended
 * Plug / Light Table (Tabelle für Steckdosen / Lichter)
 * (Buchi) Code Verbesserungen / Optimierungen
+### **WORK IN PROGRESS**
+
 
 ## License
 MIT License
