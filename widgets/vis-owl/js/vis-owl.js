@@ -135,7 +135,7 @@ vis.binds["vis-owlFlexControl"] = {
         text += '</div>';
 
         text += '<!-- Hintergrund Hauptbereich -->';
-        text += '<div class="vis-widget vis-owl-flexcontrol-comp-main ' + data.class + '" style="overflow: visible; width: 170px; height: 90px; left: 0px; top: 30px; z-index: 1;">';
+        text += '<div class="vis-widget vis-owl-flexcontrol-comp-main ' + data.class + '" style="position: relativ; overflow: visible; width: 170px; height: 90px; left: 0px; top: 30px; z-index: 1;">';
         text += '</div>';
 
         text += '<!-- Ein / Aus -->';
@@ -143,6 +143,25 @@ vis.binds["vis-owlFlexControl"] = {
         text += '            <img class="einaus" src="' + data.imgOn + '" width="100%">';
         text += '</div>';
         
+        // Test mit Popup
+        text += '<div class="vis-widget eaPopup" style="width: 300px; height: 300px; left: 7px; top: 40px; z-index: 99; background-color:rgba(255, 255, 255, 0.5);">';
+        //text += '            <img class="einaus" src="' + data.imgOn + '" width="100%">';
+        text += '</div>';
+        text += '';
+        text += '';
+        text += '';
+        text += '';
+        text += '';
+        text += '';
+        text += '';
+        text += '';
+        text += '';
+        text += '';
+
+
+
+
+
         text += '<!-- sollWert -->';
         text += '<div class="vis-widget sollWert vis-owl-flexcontrol-comp-main-soll ' + data.class + '" style="top: 44px; left: 40px; width: 74px; z-index: 3;">';
         text += '             ' + vis.states[data.oidValSoll + '.val'] + ' ' + data.valEinheitSoll;
@@ -273,8 +292,19 @@ vis.binds["vis-owlFlexControl"] = {
             $div.data('bindHandler', onChangeOO);
         }
 
-        $div.find('.einaus').on('click', function (e){
+        $div.find('.einaus').on('click', function (e) {
             if (vis.states[data.oidOnOff + '.val'] == 1) { vis.setValue(data.oidOnOff, false); } else { vis.setValue(data.oidOnOff, true); }
+
+            // berechne Position für Popup
+            /* var $this = $(this);
+            var $dialog;
+            $dialog = $this.find('.vis-owl-flexcontrol-comp-header'); */
+            $div.find('.eaPopup').css({left: '-50px', top: '-50px'});
+            $div.find('.eaPopup').show();
+        })
+        
+        $div.find('.eaPopup').on('click', function (e) {
+            $div.find('.eaPopup').hide();
         });
         // #endregion
 
