@@ -296,9 +296,6 @@ vis.binds["vis-owlFlexControl"] = {
             if (vis.states[data.oidOnOff + '.val'] == 1) { vis.setValue(data.oidOnOff, false); } else { vis.setValue(data.oidOnOff, true); }
 
             // berechne Position für Popup
-            /* var $this = $(this);
-            var $dialog;
-            $dialog = $this.find('.vis-owl-flexcontrol-comp-header'); */
             $div.find('.eaPopup').css({left: '-50px', top: '-50px'});
             $div.find('.eaPopup').show();
         })
