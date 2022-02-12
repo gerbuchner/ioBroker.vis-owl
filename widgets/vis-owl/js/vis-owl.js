@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.4"
+    version: "0.2.0"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -100,7 +100,7 @@ vis.binds["vis-owlPLTable"] = {
 }
 
 vis.binds["vis-owlFlexControl"] = {
-    version: "0.1.4",
+    version: "0.2.0",
     showVersion: function () {
         if (vis.binds["vis-owlFlexControl"].version) {
             console.log('Version vis-owlFlexControl: ' + vis.binds["vis-owlFlexControl"].version);
