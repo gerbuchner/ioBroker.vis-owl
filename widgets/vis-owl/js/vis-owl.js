@@ -111,6 +111,7 @@ vis.binds["vis-owlFlexControl"] = {
     // Flex Control compact
     createFlexControl: function (widgetID, view, data, style) {
         var $div = $('#' + widgetID);
+        var itemLeft = 20;
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
@@ -143,20 +144,24 @@ vis.binds["vis-owlFlexControl"] = {
         text += '            <img class="einaus" src="' + data.imgOn + '" width="100%">';
         text += '</div>';
         
+
+
         // Test mit Popup
-        text += '<div class="vis-widget eaPopup" style="width: 300px; height: 300px; left: 7px; top: 40px; z-index: 99; background-color:rgba(255, 255, 255, 0.5);">';
-        //text += '            <img class="einaus" src="' + data.imgOn + '" width="100%">';
-        text += '</div>';
-        text += '';
-        text += '';
-        text += '';
-        text += '';
-        text += '';
-        text += '';
-        text += '';
-        text += '';
-        text += '';
-        text += '';
+        if(data.numOpMode > 1) {
+            text += '<div class="vis-widget eaPopup vis-owl-flexcontrol-comp-popup-hintergrund ' + data.class + '" style="width: 300px; height: 80px; left: 0px; top: 0px; z-index: 90; display: none;">';
+        
+            for (var i = 1; i <= data.numOpMode; i++) {
+                text += '<div class="vis-widget" style="top: 15px; left: ' + itemLeft + 'px; width: 35px; z-index: 91; cursor: pointer;">';
+                text += '            <img class="opMode' + i + '" src="' + data['imgOpModeOn' + i] + '" width="100%">';
+                text += '</div>';
+                text += '<div class="vis-widget vis-owl-flexcontrol-comp-popup-desc ' + data.class + '" style="top: 55px; left: ' + (itemLeft - 15) + 'px; width: 65px; height: 14px; z-index: 91;">';
+                text += '             ' + data['nameOpMode' + i];
+                text += '</div>';
+
+                itemLeft += 75;
+            }
+            text += '</div>';
+        }        
 
 
 
@@ -279,27 +284,114 @@ vis.binds["vis-owlFlexControl"] = {
         // #endregion
 
         // #region Ein / Aus
-        function onChangeOO(e, newVal, oldVal) {
-            var img = '';
-            if (newVal == 1) { img = data.imgOn; } else { img = data.imgOff; }
-            $div.find('.einaus').attr('src', img);
-        }
-        if (data.oidOnOff) {
-            vis.states.bind(data.oidOnOff + '.val', onChangeOO);
-            //remember bound state that vis can release if didnt needed
-            $div.data('bound', [data.oidOnOff + '.val']);
-            //remember onchange handler to release bound states
-            $div.data('bindHandler', onChangeOO);
-        }
-
         $div.find('.einaus').on('click', function (e) {
-            if (vis.states[data.oidOnOff + '.val'] == 1) { vis.setValue(data.oidOnOff, false); } else { vis.setValue(data.oidOnOff, true); }
+            if(data.numOpMode == 1) {
+                vis.setValue(data.oidOpMode1, data['valOpMode1']);
+            } else {
+                // berechne Position für Popup
+                var childPos = $div.find('.vis-owl-flexcontrol-comp-main').offset();
+                var parentPos = $div.find('.vis-owl-flexcontrol-comp-main').parent().offset();
+                //var childOffset = {
+                //    top: childPos.top - parentPos.top,
+                //    left: childPos.left - parentPos.left
+                //}
+                $div.find('.eaPopup').css({left: childPos.left - parentPos.left - 10 + 'px', top: childPos.top - parentPos.top - 10 + 'px'});
+                $div.find('.eaPopup').css({width: data.numOpMode * 70 + 20 + 'px'});
+                $div.find('.eaPopup').show();
+        
+                $(document).mouseup(function(e) 
+                {
+                    var container = $($div.find('.eaPopup'));
 
-            // berechne Position für Popup
-            $div.find('.eaPopup').css({left: '-50px', top: '-50px'});
-            $div.find('.eaPopup').show();
+                    // if the target of the click isn't the container nor a descendant of the container
+                    if (!container.is(e.target) && container.has(e.target).length === 0) 
+                    {
+                        container.hide();
+                    }
+                });
+            }
         })
         
+        if(data.numOpMode > 1) {
+            for (let i = 1; i <= data.numOpMode; i++) {
+                $div.find('.opMode' + i).on('click', function (e) {
+                    vis.setValue(data['oidOpMode' + i], data['valOpMode' + i]);
+                });
+            }
+
+        }
+        
+        let ooImg;
+        function onChangeOpMode1(e, newVal, oldVal) {
+            var img = '';
+            if (newVal == data['valOpMode1']) { img = data['imgOpModeOn1']; ooImg = img; } else { img = data['imgOpModeOff1']; }
+            $div.find('.opMode1').attr('src', img);
+            $div.find('.einaus').attr('src', ooImg);
+        }
+        if (data['oidOpMode1']) {
+            vis.states.bind(data['oidOpMode1'] + '.val', onChangeOpMode1);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data['oidOpMode1'] + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeOpMode1);
+        }
+                    
+        function onChangeOpMode2(e, newVal, oldVal) {
+            var img = '';
+            if (newVal == data['valOpMode2']) { img = data['imgOpModeOn2']; ooImg = img; } else { img = data['imgOpModeOff2']; }
+            $div.find('.opMode2').attr('src', img);
+            $div.find('.einaus').attr('src', ooImg);
+        }
+        if (data['oidOpMode2']) {
+            vis.states.bind(data['oidOpMode2'] + '.val', onChangeOpMode2);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data['oidOpMode2'] + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeOpMode2);
+        }
+                    
+        function onChangeOpMode3(e, newVal, oldVal) {
+            var img = '';
+            if (newVal == data['valOpMode3']) { img = data['imgOpModeOn3']; ooImg = img; } else { img = data['imgOpModeOff3']; }
+            $div.find('.opMode3').attr('src', img);
+            $div.find('.einaus').attr('src', ooImg);
+        }
+        if (data['oidOpMode3']) {
+            vis.states.bind(data['oidOpMode3'] + '.val', onChangeOpMode3);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data['oidOpMode3'] + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeOpMode3);
+        }
+                    
+        function onChangeOpMode4(e, newVal, oldVal) {
+            var img = '';
+            if (newVal == data['valOpMode4']) { img = data['imgOpModeOn4']; ooImg = img; } else { img = data['imgOpModeOff4']; }
+            $div.find('.opMode4').attr('src', img);
+            $div.find('.einaus').attr('src', ooImg);
+        }
+        if (data['oidOpMode4']) {
+            vis.states.bind(data['oidOpMode4'] + '.val', onChangeOpMode4);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data['oidOpMode4'] + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeOpMode4);
+        }
+                    
+        function onChangeOpMode5(e, newVal, oldVal) {
+            var img = '';
+            if (newVal == data['valOpMode5']) { img = data['imgOpModeOn5']; ooImg = img; } else { img = data['imgOpModeOff5']; }
+            $div.find('.opMode5').attr('src', img);
+            $div.find('.einaus').attr('src', ooImg);
+        }
+        if (data['oidOpMode5']) {
+            vis.states.bind(data['oidOpMode5'] + '.val', onChangeOpMode5);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data['oidOpMode5'] + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeOpMode5);
+        }
+
         $div.find('.eaPopup').on('click', function (e) {
             $div.find('.eaPopup').hide();
         });
@@ -489,7 +581,7 @@ vis.binds["vis-owlFlexControl"] = {
         } 
         // #endregion
 
-        onChangeOO(null, vis.states[data.oidOnOff + '.val'], 0);
+        //onChangeOO(null, vis.states[data.oidOnOff + '.val'], 0);
         onChangeIst(null, vis.states[data.oidValIst + '.val'], 0);
         onChangeSoll(null, vis.states[data.oidValSoll + '.val'], 0);
         onChangeMode0(null, vis.states[data.oidMode0 + '.val'], 0);
@@ -499,8 +591,13 @@ vis.binds["vis-owlFlexControl"] = {
         onChangeMode4(null, vis.states[data.oidMode4 + '.val'], 0);
         onChangeInfo1(null, vis.states[data.oidInfo1 + '.val'], 0);
         onChangeInfo2(null, vis.states[data.oidInfo2 + '.val'], 0);
+        onChangeOpMode1(null, vis.states[data.oidOpMode1 + '.val'], 0);
+        onChangeOpMode2(null, vis.states[data.oidOpMode2 + '.val'], 0);
+        onChangeOpMode3(null, vis.states[data.oidOpMode3 + '.val'], 0);
+        onChangeOpMode4(null, vis.states[data.oidOpMode4 + '.val'], 0);
+        onChangeOpMode5(null, vis.states[data.oidOpMode5 + '.val'], 0);
     }
 };
 
 
-vis.binds["vis-owl"].showVersion();
+vis.binds["vis-owlFlexControl"].showVersion();

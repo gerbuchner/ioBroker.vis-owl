@@ -99,7 +99,7 @@
     You can do "if" conditions and "for" cycles.
 
 -->
-               
+                
 <!-- #region Sprache -->
 <script language="javascript">
 // add translations for edit mode
@@ -184,16 +184,15 @@ if (vis.editMode) {
 }
 </script>
 <!-- #endregion -->  
-                
+                  
 <script id="vis-owlFlexControl"
         type="text/ejs"
         class="vis-tpl"
         data-vis-prev='<img src="widgets/vis-owl/img/vis-owlfcc.png"></img>'
-        data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst/number;valEinheitIst;oidValSoll/id;dacSoll/number;minSoll/number;maxSoll/number;valEinheitSoll;valStep;"
-        data-vis-attrs0="group.onoff;oidOnOff/id;imgOn/image;imgOff/image;"
-        data-vis-attrs1="group.mode/byindex;showMode(0-4)/checkbox;oidMode(0-4)/id;valueMode(0-4)/number;imgModeOn(0-4)/image;imgModeOff(0-4)/image;"
-        data-vis-attrs2="group.info1;showInfo1/checkbox;imgInfo1/image;oidInfo1/id;dacInfo1/number;valEinheitInfo1;valMultiplier1;valColorInfo1/color;"
-        data-vis-attrs3="group.info2;showInfo2/checkbox;imgInfo2/image;oidInfo2/id;dacInfo2/number;valEinheitInfo2;valMultiplier2;valColorInfo2/color;"
+        data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst/number;valEinheitIst;oidValSoll/id;dacSoll/number;minSoll/number;maxSoll/number;valEinheitSoll;valStep;numOpMode[2]/number,1,5,1;"
+        data-vis-attrs0="group.opmode/byindex;nameOpMode(1-numOpMode);oidOpMode(1-numOpMode)/id;valOpMode(1-numOpMode);imgOpModeOn(1-numOpMode)/image;imgOpModeOff(1-numOpMode)/image;"
+        data-vis-attrs1="group.mode/byindex;showMode(1-5)/checkbox;oidMode(1-5)/id;valueMode(1-5)/number;imgModeOn(1-5)/image;imgModeOff(1-5)/image;"
+        data-vis-attrs2="group.info/byindex;showInfo(1-2)/checkbox;imgInfo(1-2)/image;oidInfo(1-2)/id;dacInfo(1-2)/number;valEinheitInfo(1-2);valMultiplier(1-2);valColorInfo(1-2)/color;"
         data-vis-set="vis-owl"
         data-vis-type="Steuerung"
         data-vis-name="Flexible Control"
