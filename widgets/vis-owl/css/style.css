@@ -74,13 +74,11 @@
 
 /* Popup */
 .vis-owl-flexcontrol-comp-popup-hintergrund {
-    background-color: rgba(44, 44, 44, 0.8); 
+    background-color: rgba(44, 44, 44, 0.9); 
     border-color: rgb(197, 255, 223);
     border-style: solid; 
     border-width: 1px 1px 1px 1px; 
     color:#ffffff;
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.8s;
   }
 
 /* Popup Betriebsmodus */
@@ -90,26 +88,6 @@
     text-align: center;
 }
 
-
-
-/* Add Animation */
-@-webkit-keyframes animatetop {
-    from {opacity:0} 
-    to {opacity:1}
-  }
-  
-@keyframes animatetop {
-    from {opacity:0}
-    to {opacity:1}
-  }
-/*
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
-  }
-  
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-  }
-*/
+.vis-owl-flexcontrol-comp-popup-activ {
+    background-color: rgba(186, 231, 112); 
+}
