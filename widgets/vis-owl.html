@@ -100,6 +100,7 @@
 
 -->
                 
+                  
 <!-- #region Sprache -->
 <script language="javascript">
 // add translations for edit mode
@@ -108,85 +109,49 @@ if (vis.editMode) {
         /**
          * vis-owlFlexControl
          */
-         "oidValIst":         {"en": "Act. Value",                  "de": "Ist-Wert",                           "ru": ""},
-         "valColorIst":       {"en": "Color Actual Value",          "de": "Farbe Istwert",                     "ru": ""},
-         "dacIst":            {"en": "Digits after comma",          "de": "Zeichen nach Komma",                "ru": ""},
+         "oidValIst":         {"en": "Act. Value",                  "de": "Ist Wert",                          "ru": ""},
+         "valColorIst":       {"en": "Color Actual Value",          "de": "Farbe Ist Wert",                    "ru": ""},
+         "dacIst":            {"en": "Digits after comma (act)",    "de": "Stellen nach Komma (Ist)",          "ru": ""},
          "valEinheitIst":     {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
-         "oidValSoll":        {"en": "Set Value",                   "de": "Sollwert",                          "ru": ""},
-         "dacSoll":           {"en": "Digits after comma",          "de": "Zeichen nach Komma",                "ru": ""},
-         "minSoll":           {"en": "Min Set Value",               "de": "Min Sollwert",                      "ru": ""},
-         "maxSoll":           {"en": "Max Set Value",               "de": "Max Sollwert",                      "ru": ""},
+         "oidValSoll":        {"en": "Set Value",                   "de": "Soll Wert",                         "ru": ""},
+         "dacSoll":           {"en": "Digits after comma (set)",    "de": "Stellen nach Komma (Soll)",         "ru": ""},
+         "minSoll":           {"en": "Min Set Value",               "de": "Min Soll Wert",                     "ru": ""},
+         "maxSoll":           {"en": "Max Set Value",               "de": "Max Soll Wert",                     "ru": ""},
          "valEinheitSoll":    {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
          "valStep":           {"en": "Step",                        "de": "Step",                              "ru": ""},
-         "numOpMode":         {"en": "",                            "de": "",                              "ru": ""},
+         "numOpMode":         {"en": "Number of Operating Modes",   "de": "Anzahl Betriebsodi",                "ru": ""},
+         "opModeMarkActive":  {"en": "Mark active Mode",            "de": "Markiere aktiven Modus",            "ru": ""},
+         
+         "group_opmode":      {"en": "Operating Modes ",            "de": "Betriebsmodus ",                    "ru": ""},
+         "nameOpMode":        {"en": "Name",                        "de": "Name",                              "ru": ""},
+         "oidOpMode":         {"en": "Object ID",                   "de": "Objekt ID",                         "ru": ""},
+         "valOpMode":         {"en": "Value(s)",                    "de": "Wert(e)",                           "ru": ""},
+         "imgOpModeOn":       {"en": "Image Mode On",               "de": "Bild Modus Ein",                    "ru": ""},
+         "imgOpModeOff":      {"en": "Image Mode Off",              "de": "Bild Modus Aus",                    "ru": ""},
 
-         "group_opmode":      {"en": "",                            "de": "",                              "ru": ""},
-         "numOpMode":         {"en": "",                            "de": "",                              "ru": ""},
-         "numOpMode":         {"en": "",                            "de": "",                              "ru": ""},
-         "numOpMode":         {"en": "",                            "de": "",                              "ru": ""},
-         "numOpMode":         {"en": "",                            "de": "",                              "ru": ""},
-
-         "group_header":      {"en": "Header",                      "de": "Überschrift",                       "ru": ""},
-         "headerText":        {"en": "Text",                        "de": "Text",                              "ru": ""},
-         "headerBgColor":     {"en": "Background Color",            "de": "Hintergrundfarbe",                  "ru": ""},
-         "headerFgColor":     {"en": "Fore Color",                  "de": "Vordergrundfarbe",                  "ru": ""},
-         "headerShadowColor": {"en": "Shadow Color",                "de": "Schattenfarbe",                     "ru": ""},
+         "headerText":        {"en": "Headline",                    "de": "Überschrift",                       "ru": ""},
 
          "group_onoff":       {"en": "On/Off",                      "de": "Ein/Aus",                           "ru": ""},
          "oidOnOff":          {"en": "Object ID",                   "de": "Objekt ID",                         "ru": ""},
          "imgOn":             {"en": "Image On",                    "de": "Bild Ein",                          "ru": ""},
          "imgOff":            {"en": "Image Off",                   "de": "Bild Aus",                          "ru": ""},
 
-         "group_mode":        {"en": "Mode ",                        "de": "Modus ",                            "ru": ""},
-         "showMode0":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
-         "showMode1":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
-         "showMode2":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
-         "showMode3":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
-         "showMode4":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
-         "oidMode0":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
-         "oidMode1":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
-         "oidMode2":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
-         "oidMode3":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
-         "oidMode4":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
-         "condMode0":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
-         "condMode1":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
-         "condMode2":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
-         "condMode3":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
-         "condMode4":         {"en": "Condition",                    "de": "Bedingung",                         "ru": ""},
-         "valueMode0":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
-         "valueMode1":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
-         "valueMode2":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
-         "valueMode3":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
-         "valueMode4":        {"en": "Value Mode",                   "de": "Wert Modus",                        "ru": ""},
-         "imgMode0On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
-         "imgMode1On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
-         "imgMode2On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
-         "imgMode3On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
-         "imgMode4On":        {"en": "Image Mode On",                "de": "Bild Modus Ein",                    "ru": ""},
-         "imgMode0Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
-         "imgMode1Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
-         "imgMode2Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
-         "imgMode3Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
-         "imgMode4Off":       {"en": "Image Mode Off",               "de": "Bild Modus Aus",                    "ru": ""},
+         "group_mode":        {"en": "Settings ",                    "de": "Eigenschaften ",                   "ru": ""},
+         "showMode":          {"en": "Visible",                      "de": "Anzeigen",                         "ru": ""},
+         "oidMode":           {"en": "Object ID",                    "de": "Objekt ID",                        "ru": ""},
+         "condMode":          {"en": "Condition",                    "de": "Bedingung",                        "ru": ""},
+         "valueMode":         {"en": "Value Mode",                   "de": "Wert Modus",                       "ru": ""},
+         "imgModeOn":         {"en": "Image Mode On",                "de": "Bild Modus Ein",                   "ru": ""},
+         "imgModeOff":        {"en": "Image Mode Off",               "de": "Bild Modus Aus",                   "ru": ""},
 
-         "group_info1":       {"en": "Info 1",                       "de": "Info 1",                            "ru": ""},
-         "showInfo1":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
-         "imgInfo1":          {"en": "Image Info",                   "de": "Bild Info",                         "ru": ""},
-         "oidInfo1":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
-         "dacInfo1":          {"en": "Digits after comma",           "de": "Zeichen nach Komma",                "ru": ""},
-         "valEinheitInfo1":   {"en": "Unit",                         "de": "Einheit",                           "ru": ""},
-         "valMultiplier1":    {"en": "Multiplier",                   "de": "Multiplikator",                     "ru": ""},
-         "valColorInfo1":     {"en": "Fore Color",                   "de": "Vordergrundfarbe",                  "ru": ""},
-
-         "group_info2":       {"en": "Info 2",                       "de": "Info 2",                            "ru": ""},
-         "showInfo2":         {"en": "Visible",                      "de": "Anzeigen",                          "ru": ""},
-         "imgInfo2":          {"en": "Image Info",                   "de": "Bild Info",                         "ru": ""},
-         "oidInfo2":          {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
-         "dacInfo2":          {"en": "Digits after comma",           "de": "Zeichen nach Komma",                "ru": ""},
-         "valEinheitInfo2":   {"en": "Unit",                         "de": "Einheit",                           "ru": ""},
-         "valMultiplier2":    {"en": "Multiplier",                   "de": "Multiplikator",                     "ru": ""},
-         "valColorInfo2":     {"en": "Fore Color",                   "de": "Vordergrundfarbe",                  "ru": ""},
-
+         "group_info":        {"en": "Info ",                        "de": "Info ",                             "ru": ""},
+         "showInfo":          {"en": "Visible",                      "de": "Sichtbar",                          "ru": ""},
+         "imgInfo":           {"en": "Image",                        "de": "Bild",                              "ru": ""},
+         "oidInfo":           {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
+         "dacInfo":           {"en": "Digits after comma",           "de": "Stellen nach Komma",                "ru": ""},
+         "valEinheitInfo":    {"en": "Unit",                         "de": "Einheit",                           "ru": ""},
+         "valMultiplier":     {"en": "Multiplier",                   "de": "Multiplikator",                     "ru": ""},
+         "valColorInfo":      {"en": "Fore Color",                   "de": "Vordergrundfarbe",                  "ru": ""},
         });
 }
 </script>
@@ -196,10 +161,10 @@ if (vis.editMode) {
         type="text/ejs"
         class="vis-tpl"
         data-vis-prev='<img src="widgets/vis-owl/img/vis-owlfcc.png"></img>'
-        data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst/number;valEinheitIst;oidValSoll/id;dacSoll/number;minSoll/number;maxSoll/number;valEinheitSoll;valStep;numOpMode[2]/number,1,5,1;opModeMarkActive/checkbox;"
-        data-vis-attrs0="group.opmode/byindex;nameOpMode(1-numOpMode);oidOpMode(1-numOpMode)/id;valOpMode(1-numOpMode);imgOpModeOn(1-numOpMode)/image;imgOpModeOff(1-numOpMode)/image;"
+        data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst/number,0,3,1;valEinheitIst;oidValSoll/id;dacSoll/number,0,3,1;valEinheitSoll;minSoll/number;maxSoll/number;valStep;numOpMode[2]/number,1,5,1;opModeMarkActive/checkbox;"
+        data-vis-attrs0="group.opmode/byindex;nameOpMode(0-numOpMode-1);oidOpMode(0-numOpMode-1)/id;valOpMode(0-numOpMode-1);imgOpModeOn(0-numOpMode-1)/image;imgOpModeOff(0-numOpMode-1)/image;"
         data-vis-attrs1="group.mode/byindex;showMode(0-4)/checkbox;oidMode(0-4)/id;valueMode(0-4)/number;imgModeOn(0-4)/image;imgModeOff(0-4)/image;"
-        data-vis-attrs2="group.info/byindex;showInfo(0-1)/checkbox;imgInfo(0-1)/image;oidInfo(0-1)/id;dacInfo(0-1)/number;valEinheitInfo(0-1);valMultiplier(0-1);valColorInfo(0-1)/color;"
+        data-vis-attrs2="group.info/byindex;showInfo(0-1)/checkbox;imgInfo(0-1)/image;oidInfo(0-1)/id;dacInfo(0-1)/number,0,3,1;valEinheitInfo(0-1);valMultiplier(0-1);valColorInfo(0-1)/color;"
         data-vis-set="vis-owl"
         data-vis-type="Steuerung"
         data-vis-name="Flexible Control"
