@@ -71,3 +71,23 @@
     font-size: 12px;
     text-align: left;
 }
+
+/* Popup */
+.vis-owl-flexcontrol-comp-popup-hintergrund {
+    background-color: rgba(44, 44, 44, 0.9); 
+    border-color: rgb(197, 255, 223);
+    border-style: solid; 
+    border-width: 1px 1px 1px 1px; 
+    color:#ffffff;
+  }
+
+/* Popup Betriebsmodus */
+.vis-owl-flexcontrol-comp-popup-desc {
+    color: rgb(186, 231, 112);
+    font-size: 12px;
+    text-align: center;
+}
+
+.vis-owl-flexcontrol-comp-popup-activ {
+    background-color: rgba(186, 231, 112); 
+}
