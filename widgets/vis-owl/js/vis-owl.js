@@ -149,7 +149,7 @@ vis.binds["vis-owlFlexControl"] = {
             text += '<!-- Betriebsmodus Popup -->';
             text += '<div class="vis-widget eaPopup vis-owl-flexcontrol-comp-popup-hintergrund ' + data.class + '" style="width: 300px; height: 80px; left: 0px; top: 0px; z-index: 90; display: none;">';
         
-            for (var i = 0; i <= data.numOpMode-1; i++) {
+            for (var i = 1; i <= data.numOpMode; i++) {
                 text += '<div class="vis-widget" style="top: 15px; left: ' + itemLeft + 'px; width: 35px; z-index: 99; cursor: pointer;">';
                 text += '            <img class="opMode' + i + '" src="' + data['imgOpModeOn' + i] + '" width="100%">';
                 text += '</div>';
@@ -181,29 +181,29 @@ vis.binds["vis-owlFlexControl"] = {
         text += '        +';
         text += '</div>';
 
-        text += '<!-- Modus 0 -->';
-        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 80px; z-index: 2;">';
-        text += '        <img class="imgMode0" src="" width="100%" style="cursor: pointer;">';
-        text += '</div>';
-
         text += '<!-- Modus 1 -->';
-        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 37px; top: 80px; z-index: 2;">';
+        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 80px; z-index: 2;">';
         text += '        <img class="imgMode1" src="" width="100%" style="cursor: pointer;">';
         text += '</div>';
 
         text += '<!-- Modus 2 -->';
-        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 67px; top: 80px; z-index: 2;">';
+        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 37px; top: 80px; z-index: 2;">';
         text += '        <img class="imgMode2" src="" width="100%" style="cursor: pointer;">';
         text += '</div>';
 
         text += '<!-- Modus 3 -->';
-        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 97px; top: 80px; z-index: 2;">';
+        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 67px; top: 80px; z-index: 2;">';
         text += '        <img class="imgMode3" src="" width="100%" style="cursor: pointer;">';
         text += '</div>';
 
         text += '<!-- Modus 4 -->';
-        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 127px; top: 80px; z-index: 2;">';
+        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 97px; top: 80px; z-index: 2;">';
         text += '        <img class="imgMode4" src="" width="100%" style="cursor: pointer;">';
+        text += '</div>';
+
+        text += '<!-- Modus 5 -->';
+        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 127px; top: 80px; z-index: 2;">';
+        text += '        <img class="imgMode5" src="" width="100%" style="cursor: pointer;">';
         text += '</div>';
 
         text += '<!-- Hintergrund Infopanel -->';
@@ -212,22 +212,22 @@ vis.binds["vis-owlFlexControl"] = {
 
         text += '<!-- Info 1 Bild -->';
         text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 10px; top: 123px; z-index: 2;">';
-        text += '        <img class="imgInfo1" src="' + data.imgInfo0 + '" width="100%">';
+        text += '        <img class="imgInfo1" src="' + data.imgInfo1 + '" width="100%">';
         text += '</div>';
         
         text += '<!-- Info 1 Wert -->';
         text += '<div class="vis-widget info1Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 123px; left: 35px; width: 50px; z-index: 3; color: ' + data.valColorInfo1 + '">';
-        text += '             ' + vis.states[data.oidInfo0 + '.val'] + ' ' + data.valEinheitInfo0;
+        text += '             ' + vis.states[data.oidInfo1 + '.val'] + ' ' + data.valEinheitInfo1;
         text += '</div>';
 
         text += '<!-- Info 2 Bild -->';
         text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 90px; top: 123px; z-index: 2;">';
-        text += '        <img class="imgInfo2" src="' + data.imgInfo1 + '" width="100%">';
+        text += '        <img class="imgInfo2" src="' + data.imgInfo2 + '" width="100%">';
         text += '</div>';
         
         text += '<!-- Info 2 Wert -->';
         text += '<div class="vis-widget info2Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 123px; left: 110px; width: 50px; z-index: 3; color: ' + data.valColorInfo2 + '">';
-        text += '             ' + vis.states[data.oidInfo1 + '.val'] + ' ' + data.valEinheitInfo1;
+        text += '             ' + vis.states[data.oidInfo2 + '.val'] + ' ' + data.valEinheitInfo2;
         text += '</div>';
  
         $('#' + widgetID).html(text);
@@ -285,8 +285,8 @@ vis.binds["vis-owlFlexControl"] = {
         // #region Ein / Aus
         $div.find('.einaus').on('click', function (e) {
             if(data.numOpMode == 1) {
-                const {on, off} = getOnOff(data['valOpMode0']);
-                if (on != vis.states[data['oidOpMode0'] + '.val']) { vis.setValue(data.oidOpMode0, on); } else { vis.setValue(data.oidOpMode0, off); };
+                const {on, off} = getOnOff(data['valOpMode1']);
+                if (on != vis.states[data['oidOpMode1'] + '.val']) { vis.setValue(data.oidOpMode1, on); } else { vis.setValue(data.oidOpMode1, off); };
             } else {
                 // berechne Position für Popup
                 console.log(window.innerWidth);
@@ -321,7 +321,7 @@ vis.binds["vis-owlFlexControl"] = {
         })
         
         if(data.numOpMode > 1) {
-            for (let i = 0; i <= data.numOpMode-1; i++) {
+            for (let i = 1; i <= data.numOpMode; i++) {
                 $div.find('.opMode' + i).on('click', function (e) {
                     const {on, off} = getOnOff(data['valOpMode' + i]);
                     if (on != vis.states[data['oidOpMode' + i] + '.val']) { 
@@ -336,14 +336,14 @@ vis.binds["vis-owlFlexControl"] = {
         
         function setOnOffImage() {
             let _img;
-            for (let i = 0; i <= data.numOpMode-1; i++) {
+            for (let i = 1; i <= data.numOpMode; i++) {
                 const {on, off} = getOnOff(data['valOpMode' + i]);
                 if (on == vis.states[data['oidOpMode' + i] + '.val']) { 
                     _img = data['imgOpModeOn' + i];
                 };
             }
             if (!_img) {
-                for (let i = 0; i <= data.numOpMode-1; i++) {
+                for (let i = 1; i <= data.numOpMode; i++) {
                     const {on, off} = getOnOff(data['valOpMode' + i]);
                     if (off == vis.states[data['oidOpMode' + i] + '.val']) { 
                         _img = data['imgOpModeOff' + i];
@@ -355,7 +355,6 @@ vis.binds["vis-owlFlexControl"] = {
 
         function onChangeOpMode1(e, newVal, oldVal) {
             let img;
-            let ooImg;
             const {on, off} = getOnOff(data['valOpMode1']);
             if (newVal == on) { 
                 img = data['imgOpModeOn1']; 
@@ -377,7 +376,6 @@ vis.binds["vis-owlFlexControl"] = {
                     
         function onChangeOpMode2(e, newVal, oldVal) {
             let img;
-            let ooImg;
             const {on, off} = getOnOff(data['valOpMode2']);
             if (newVal == on) { img = data['imgOpModeOn2']; $div.find('.fcc-pu-activ2').show();} else { img = data['imgOpModeOff2']; $div.find('.fcc-pu-activ2').hide();}
             $div.find('.opMode2').attr('src', img);
@@ -393,7 +391,6 @@ vis.binds["vis-owlFlexControl"] = {
                     
         function onChangeOpMode3(e, newVal, oldVal) {
             let img;
-            let ooImg;
             const {on, off} = getOnOff(data['valOpMode3']);
             if (newVal == on) { img = data['imgOpModeOn3']; $div.find('.fcc-pu-activ3').show();} else { img = data['imgOpModeOff3']; $div.find('.fcc-pu-activ3').hide();}
             $div.find('.opMode3').attr('src', img);
@@ -409,7 +406,6 @@ vis.binds["vis-owlFlexControl"] = {
                     
         function onChangeOpMode4(e, newVal, oldVal) {
             let img;
-            let ooImg;
             const {on, off} = getOnOff(data['valOpMode4']);
             if (newVal == on) { img = data['imgOpModeOn4']; $div.find('.fcc-pu-activ4').show();} else { img = data['imgOpModeOff4']; $div.find('.fcc-pu-activ4').hide();}
             $div.find('.opMode4').attr('src', img);
@@ -423,50 +419,25 @@ vis.binds["vis-owlFlexControl"] = {
             $div.data('bindHandler', onChangeOpMode4);
         }
                     
-        function onChangeOpMode0(e, newVal, oldVal) {
+        function onChangeOpMode5(e, newVal, oldVal) {
             let img;
-            let ooImg;
-            const {on, off} = getOnOff(data['valOpMode0']);
-            console.log(data['imgOpModeOn0']);
-            console.log(data['imgOpModeOff0']);
-            if (newVal == on) { img = data['imgOpModeOn0']; $div.find('.fcc-pu-activ0').show();} else { img = data['imgOpModeOff0']; $div.find('.fcc-pu-activ0').hide();}
-            $div.find('.opMode0').attr('src', img);
+            const {on, off} = getOnOff(data['valOpMode5']);
+            console.log(data['imgOpModeOn5']);
+            console.log(data['imgOpModeOff5']);
+            if (newVal == on) { img = data['imgOpModeOn5']; $div.find('.fcc-pu-activ5').show();} else { img = data['imgOpModeOff5']; $div.find('.fcc-pu-activ5').hide();}
+            $div.find('.opMode5').attr('src', img);
             setOnOffImage();
         }
-        if (data['oidOpMode0']) {
-            vis.states.bind(data['oidOpMode0'] + '.val', onChangeOpMode0);
+        if (data['oidOpMode5']) {
+            vis.states.bind(data['oidOpMode5'] + '.val', onChangeOpMode5);
             //remember bound state that vis can release if didnt needed
-            $div.data('bound', [data['oidOpMode0'] + '.val']);
+            $div.data('bound', [data['oidOpMode5'] + '.val']);
             //remember onchange handler to release bound states
-            $div.data('bindHandler', onChangeOpMode0);
+            $div.data('bindHandler', onChangeOpMode5);
         }
 
         $div.find('.eaPopup').on('click', function (e) {
             $div.find('.eaPopup').fadeOut(500);
-        });
-        // #endregion
-
-        // #region Modus0
-        function onChangeMode0(e, newVal, oldVal) {
-            var img = '';
-            if (newVal == data.valueMode0) { img = data.imgModeOn0; } else { img = data.imgModeOff0; }
-            if (data.showMode0) {
-                $div.find('.imgMode0').attr('src', img);
-            }
-            else {
-                $div.find('.imgMode0').hide();
-            }
-        }
-        if (data.oidMode0) {
-            vis.states.bind(data.oidMode0 + '.val', onChangeMode0);
-            //remember bound state that vis can release if didnt needed
-            $div.data('bound', [data.oidMode0 + '.val']);
-            //remember onchange handler to release bound states
-            $div.data('bindHandler', onChangeMode0);
-        }
-
-        $div.find('.imgMode0').on('click', function (e){
-            vis.setValue(data.oidMode0, parseInt(data.valueMode0)); 
         });
         // #endregion
 
@@ -518,7 +489,7 @@ vis.binds["vis-owlFlexControl"] = {
         });
         // #endregion
 
-        // #region Mode3
+        // #region Modus3
         function onChangeMode3(e, newVal, oldVal) {
             var img = '';
             if (newVal == data.valueMode3) { img = data.imgModeOn3; } else { img = data.imgModeOff3; }
@@ -542,7 +513,7 @@ vis.binds["vis-owlFlexControl"] = {
         });
         // #endregion
 
-        // #region Mode4
+        // #region Modus4
         function onChangeMode4(e, newVal, oldVal) {
             var img = '';
             if (newVal == data.valueMode4) { img = data.imgModeOn4; } else { img = data.imgModeOff4; }
@@ -565,45 +536,37 @@ vis.binds["vis-owlFlexControl"] = {
             vis.setValue(data.oidMode4, parseInt(data.valueMode4)); 
         });
         // #endregion
+
+        // #region Modus5
+        function onChangeMode5(e, newVal, oldVal) {
+            var img = '';
+            if (newVal == data.valueMode5) { img = data.imgModeOn5; } else { img = data.imgModeOff5; }
+            if (data.showMode5) {
+                $div.find('.imgMode5').attr('src', img);
+            }
+            else {
+                $div.find('.imgMode5').hide();
+            }
+        }
+        if (data.oidMode5) {
+            vis.states.bind(data.oidMode5 + '.val', onChangeMode5);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data.oidMode5 + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeMode5);
+        }
+
+        $div.find('.imgMode5').on('click', function (e){
+            vis.setValue(data.oidMode5, parseInt(data.valueMode5)); 
+        });
+        // #endregion
  
         // #region Info 1        
         function onChangeInfo1(e, newVal, oldVal) {
             var wert;
-            if (data.showInfo0) {
+            if (data.showInfo1) {
                 $div.find('.imgInfo1').show();
                 $div.find('.info1Wert').show();
-                if (isNaN(newVal)) {
-                    wert = newVal;
-                }
-                else {
-                    if (isNaN(data.valMultiplier0) == false && data.valMultiplier0 != '') {
-                        wert = (parseFloat(newVal) * parseFloat(data.valMultiplier0)).toFixed(data.dacInfo0);
-                    } else {
-                        wert = parseFloat(newVal).toFixed(data.dacInfo0);
-                    }
-                }
-                $div.find('.info1Wert').html(wert + ' ' + data.valEinheitInfo0);
-            }
-            else {
-                $div.find('.imgInfo1').hide();
-                $div.find('.info1Wert').hide();
-            }
-        }
-        if (data.oidInfo0) {
-            vis.states.bind(data.oidInfo0 + '.val', onChangeInfo1);
-            //remember bound state that vis can release if didnt needed
-            $div.data('bound', [data.oidInfo0 + '.val']);
-            //remember onchange handler to release bound states
-            $div.data('bindHandler', onChangeInfo1);
-        } 
-        // #endregion
- 
-        // #region Info 2        
-        function onChangeInfo2(e, newVal, oldVal) {
-            var wert;
-            if (data.showInfo1) {
-                $div.find('.imgInfo2').show();
-                $div.find('.info2Wert').show();
                 if (isNaN(newVal)) {
                     wert = newVal;
                 }
@@ -614,17 +577,49 @@ vis.binds["vis-owlFlexControl"] = {
                         wert = parseFloat(newVal).toFixed(data.dacInfo1);
                     }
                 }
-                $div.find('.info2Wert').html(wert + ' ' + data.valEinheitInfo1);
+                $div.find('.info1Wert').html(wert + ' ' + data.valEinheitInfo1);
+            }
+            else {
+                $div.find('.imgInfo1').hide();
+                $div.find('.info1Wert').hide();
+            }
+        }
+        if (data.oidInfo1) {
+            vis.states.bind(data.oidInfo1 + '.val', onChangeInfo1);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data.oidInfo1 + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeInfo1);
+        } 
+        // #endregion
+ 
+        // #region Info 2        
+        function onChangeInfo2(e, newVal, oldVal) {
+            var wert;
+            if (data.showInfo2) {
+                $div.find('.imgInfo2').show();
+                $div.find('.info2Wert').show();
+                if (isNaN(newVal)) {
+                    wert = newVal;
+                }
+                else {
+                    if (isNaN(data.valMultiplier2) == false && data.valMultiplier2 != '') {
+                        wert = (parseFloat(newVal) * parseFloat(data.valMultiplier2)).toFixed(data.dacInfo2);
+                    } else {
+                        wert = parseFloat(newVal).toFixed(data.dacInfo2);
+                    }
+                }
+                $div.find('.info2Wert').html(wert + ' ' + data.valEinheitInfo2);
             }
             else {
                 $div.find('.imgInfo2').hide();
                 $div.find('.info2Wert').hide();
             }
         }
-        if (data.oidInfo1) {
-            vis.states.bind(data.oidInfo1 + '.val', onChangeInfo2);
+        if (data.oidInfo2) {
+            vis.states.bind(data.oidInfo2 + '.val', onChangeInfo2);
             //remember bound state that vis can release if didnt needed
-            $div.data('bound', [data.oidInfo1 + '.val']);
+            $div.data('bound', [data.oidInfo2 + '.val']);
             //remember onchange handler to release bound states
             $div.data('bindHandler', onChangeInfo2);
         } 
@@ -645,19 +640,19 @@ vis.binds["vis-owlFlexControl"] = {
         //onChangeOO(null, vis.states[data.oidOnOff + '.val'], 0);
         onChangeIst(null, vis.states[data.oidValIst + '.val'], 0);
         onChangeSoll(null, vis.states[data.oidValSoll + '.val'], 0);
-        onChangeMode0(null, vis.states[data.oidMode0 + '.val'], 0);
         onChangeMode1(null, vis.states[data.oidMode1 + '.val'], 0);
         onChangeMode2(null, vis.states[data.oidMode2 + '.val'], 0);
         onChangeMode3(null, vis.states[data.oidMode3 + '.val'], 0);
         onChangeMode4(null, vis.states[data.oidMode4 + '.val'], 0);
-        onChangeInfo1(null, vis.states[data.oidInfo0 + '.val'], 0);
-        onChangeInfo2(null, vis.states[data.oidInfo1 + '.val'], 0);
+        onChangeMode5(null, vis.states[data.oidMode5 + '.val'], 0);
+        onChangeInfo1(null, vis.states[data.oidInfo1 + '.val'], 0);
+        onChangeInfo2(null, vis.states[data.oidInfo2 + '.val'], 0);
         setOnOffImage();
         onChangeOpMode1(null, vis.states[data.oidOpMode1 + '.val'], 0);
         onChangeOpMode2(null, vis.states[data.oidOpMode2 + '.val'], 0);
         onChangeOpMode3(null, vis.states[data.oidOpMode3 + '.val'], 0);
         onChangeOpMode4(null, vis.states[data.oidOpMode4 + '.val'], 0);
-        onChangeOpMode0(null, vis.states[data.oidOpMode0 + '.val'], 0);
+        onChangeOpMode5(null, vis.states[data.oidOpMode5 + '.val'], 0);
     }
 };
 
