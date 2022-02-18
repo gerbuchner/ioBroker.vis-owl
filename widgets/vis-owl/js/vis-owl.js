@@ -34,7 +34,7 @@ $.extend(
 
 
 vis.binds["vis-owlPLTable"] = {
-    version: "0.1.2",
+    version: "0.1.5",
     showVersion: function () {
         if (vis.binds["vis-owlPLTable"].version) {
             console.log('Version vis-owlPLTable: ' + vis.binds["vis-owlPLTable"].version);
@@ -632,7 +632,12 @@ vis.binds["vis-owlFlexControl"] = {
         function getOnOff(strValues) {
             let _on = strValues;
             let _off = '';
-            if (/;/.test(strValues) == true) { _on = strValues.split(';')[0]; _off = strValues.split(';')[1]; }
+            if (/;/.test(strValues) == true) { 
+                _on = strValues.split(';')[0];
+                if(isNaN(_on) == false) { _on = parseInt(_on); };
+                 _off = strValues.split(';')[1]; 
+                if(isNaN(_off) == false) { _off = parseInt(_off); };
+                }
 
             return {
                 on: _on,
