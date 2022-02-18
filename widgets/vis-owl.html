@@ -1,7 +1,7 @@
 <!--
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.0"
+    version: "0.1.5"
 
     Copyright 2022 Buchi temp1@act4you.de
 -->
@@ -99,8 +99,8 @@
     You can do "if" conditions and "for" cycles.
 
 -->
-                
-                  
+
+            
 <!-- #region Sprache -->
 <script language="javascript">
 // add translations for edit mode
@@ -170,7 +170,7 @@ if (vis.editMode) {
         data-vis-name="Flexible Control"
         data-vis-update-style="true"
         data-vis-beta="false">
-        <div class="vis-widget <%== this.data.attr('class') %>" style="width: 172px; height: 142px; overflow: visible;" id="<%= this.data.attr('wid') %>">
+        <div class="vis-widget vis-owl-flexcontrol-comp-container <%== this.data.attr('class') %>" style="width: 172px; height: 142px; overflow: visible;" id="<%= this.data.attr('wid') %>">
 
         </div>
         <% vis.binds["vis-owlFlexControl"].createFlexControl(this.data.wid, this.view, this.data, this.style); %>

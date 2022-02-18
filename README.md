@@ -31,6 +31,11 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.1.5 (2022-02-17)
+* [Flexible Control comp] Erweiterung Betriebsmodus durch Popup
+* [Flexible Control comp] Eigenschaften im VIS-Editor angepasst
+* [Flexible Control comp] CSS Möglichkeiten weiter ausgebaut
+* [Flexible Control comp] Codeoptimierungen
 ### 0.1.4 (2022-02-10)
 * [Flexible Control comp] Bugfix Anzeige Werte im Infopanel
 ### 0.1.3 (2022-02-09)

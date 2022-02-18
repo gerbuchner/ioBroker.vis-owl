@@ -11,12 +11,19 @@
     color:#ffffff;
 }
 
+/* Header Text Hintergrund */
+.vis-owl-flexcontrol-comp-header-text-bg {
+    height: 30px;
+    width: 100px;
+}
+
 /* Header Text */
 .vis-owl-flexcontrol-comp-header-text {
     color:#ffffff;
     font-size: small;
     height: 14px;
     text-align: left;
+    top: 8px;
 }
 
 /* Header Ist-Wert */
@@ -25,6 +32,8 @@
     font-size: small;
     height: 14px;
     text-align: right;
+    top: 8px; 
+    left: 110px; 
 }
 
 /* Hauptbereich */
@@ -67,15 +76,15 @@
 
 /* Infopanel Wert*/
 .vis-owl-flexcontrol-comp-info-value {
-    color: bisque;
+    color: rgb(255, 255, 255);
     font-size: 12px;
     text-align: left;
 }
-
+ 
 /* Popup */
 .vis-owl-flexcontrol-comp-popup-hintergrund {
-    background-color: rgba(44, 44, 44, 0.9); 
-    border-color: rgb(197, 255, 223);
+    background-color: rgba(44, 44, 44); 
+    border-color: rgb(139, 139, 139);
     border-style: solid; 
     border-width: 1px 1px 1px 1px; 
     color:#ffffff;
@@ -83,11 +92,11 @@
 
 /* Popup Betriebsmodus */
 .vis-owl-flexcontrol-comp-popup-desc {
-    color: rgb(186, 231, 112);
+    color: rgb(255, 255, 255);
     font-size: 12px;
     text-align: center;
 }
 
 .vis-owl-flexcontrol-comp-popup-activ {
-    background-color: rgba(186, 231, 112); 
+    background-color: rgb(255, 255, 255); 
 }

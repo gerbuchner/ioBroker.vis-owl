@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.0",
+        "version": "0.1.5",
         "news": {
+            "0.1.5": {
+                "en": "Erweiterung Betriebsmodus durch Popup, Eigenschaften im VIS-Editor angepasst, Codeoptimierungen",
+                "de": "Erweiterung Betriebsmodus durch Popup, Eigenschaften im VIS-Editor angepasst, Codeoptimierungen"
+            },
             "0.1.4": {
                 "en": "Bugfix values in infopanel",
                 "de": "Bugfix Anzeige Werte im Infopanel"
