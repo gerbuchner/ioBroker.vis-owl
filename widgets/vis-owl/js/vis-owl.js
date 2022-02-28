@@ -143,10 +143,10 @@ vis.binds["vis-owlFlexControl"] = {
         text += '<div class="vis-widget vis-owl-flexcontrol-comp-main ' + data.class + '" style="position: relativ; overflow: visible; width: 100%; height: 92px; left: 0px; top: 30px; z-index: 1;">';
         text += '</div>';
 
-        if(data.imgOpModeOn0) {
+        if(data.imgOpModeOn1) {
             text += '<!-- Ein / Aus -->';
             text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 40px; z-index: 2; cursor: pointer;">';
-            text += '            <img class="einaus" src="' + data.imgOpModeOn0 + '" width="100%">';
+            text += '            <img class="einaus" src="' + data.imgOpModeOn1 + '" width="100%">';
             text += '</div>';
         }
 
