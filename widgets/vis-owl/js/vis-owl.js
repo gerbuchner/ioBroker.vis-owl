@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.5"
+    version: "0.1.6"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -34,7 +34,7 @@ $.extend(
 
 
 vis.binds["vis-owlPLTable"] = {
-    version: "0.1.5",
+    version: "0.1.6",
     showVersion: function () {
         if (vis.binds["vis-owlPLTable"].version) {
             console.log('Version vis-owlPLTable: ' + vis.binds["vis-owlPLTable"].version);
@@ -128,24 +128,28 @@ vis.binds["vis-owlFlexControl"] = {
         text += '<!-- Überschrift -->';
         text += '<div class="vis-widget vis-owl-flexcontrol-comp-header-text-bg ' + data.class + '" style="left: 7px; z-index: 3;">';
         text += '    <div class="vis-widget vis-owl-flexcontrol-comp-header-text ' + data.class + '" style="left: 7px; z-index: 4;">';
-        text += '            ' + data.headerText;
+        if(data.headerText) { text += '            ' + data.headerText; }
         text += '    </div>';
         text += '</div>';
         
-        text += '<!-- istWert -->';
-        text += '<div class="vis-widget istWert vis-owl-flexcontrol-comp-header-ist ' + data.class + '" style="width: 50px; height: 14px; z-index: 3; color: ' + data.valColorIst + '">';
-        text += '             ' + vis.states[data.oidValIst + '.val'] + ' ' + data.valEinheitIst;
-        text += '</div>';
+        if (data.oidValIst) {
+            text += '<!-- istWert -->';
+            text += '<div class="vis-widget istWert vis-owl-flexcontrol-comp-header-ist ' + data.class + '" style="width: 50px; height: 14px; z-index: 3; color: ' + data.valColorIst + '">';
+            text += '             ' + vis.states[data.oidValIst + '.val'] + ' ' + data.valEinheitIst;
+            text += '</div>';
+        }
 
         text += '<!-- Hintergrund Hauptbereich -->';
         text += '<div class="vis-widget vis-owl-flexcontrol-comp-main ' + data.class + '" style="position: relativ; overflow: visible; width: 100%; height: 92px; left: 0px; top: 30px; z-index: 1;">';
         text += '</div>';
 
-        text += '<!-- Ein / Aus -->';
-        text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 40px; z-index: 2; cursor: pointer;">';
-        text += '            <img class="einaus" src="' + data.imgOpModeOn0 + '" width="100%">';
-        text += '</div>';
-        
+        if(data.imgOpModeOn0) {
+            text += '<!-- Ein / Aus -->';
+            text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 40px; z-index: 2; cursor: pointer;">';
+            text += '            <img class="einaus" src="' + data.imgOpModeOn0 + '" width="100%">';
+            text += '</div>';
+        }
+
         // Popup
         if(data.numOpMode > 1) {
             text += '<!-- Betriebsmodus Popup -->';
@@ -170,20 +174,22 @@ vis.binds["vis-owlFlexControl"] = {
             text += '</div>';
         }        
 
-        text += '<!-- sollWert -->';
-        text += '<div class="vis-widget sollWert vis-owl-flexcontrol-comp-main-soll ' + data.class + '" style="top: 44px; left: 40px; width: 74px; z-index: 3;">';
-        text += '             ' + vis.states[data.oidValSoll + '.val'] + ' ' + data.valEinheitSoll;
-        text += '</div>';
+        if (data.oidValSoll) {
+            text += '<!-- sollWert -->';
+            text += '<div class="vis-widget sollWert vis-owl-flexcontrol-comp-main-soll ' + data.class + '" style="top: 44px; left: 40px; width: 74px; z-index: 3;">';
+            text += '             ' + vis.states[data.oidValSoll + '.val'] + ' ' + data.valEinheitSoll;
+            text += '</div>';
 
-        text += '<!-- Minus -->';
-        text += '<div class="vis-widget sollMinus vis-owl-flexcontrol-comp-btnStep ' + data.class + '" style="width: 20px; height: 20px; position: absolute; left: 120px; top: 40px; z-index: 3; cursor: pointer;">';
-        text += '        -';
-        text += '</div>';
-
-        text += '<!-- Plus -->';
-        text += '<div class="vis-widget sollPlus vis-owl-flexcontrol-comp-btnStep ' + data.class + '" style="width: 20px; height: 20px; position: absolute; left: 145px; top: 40px; z-index: 3; cursor: pointer;">';
-        text += '        +';
-        text += '</div>';
+            text += '<!-- Minus -->';
+            text += '<div class="vis-widget sollMinus vis-owl-flexcontrol-comp-btnStep ' + data.class + '" style="width: 20px; height: 20px; position: absolute; left: 120px; top: 40px; z-index: 3; cursor: pointer;">';
+            text += '        -';
+            text += '</div>';
+    
+            text += '<!-- Plus -->';
+            text += '<div class="vis-widget sollPlus vis-owl-flexcontrol-comp-btnStep ' + data.class + '" style="width: 20px; height: 20px; position: absolute; left: 145px; top: 40px; z-index: 3; cursor: pointer;">';
+            text += '        +';
+            text += '</div>';
+        }
 
         text += '<!-- Modus 1 -->';
         text += '<div class="vis-widget" style="width: 30px; height: 30px; left: 7px; top: 80px; z-index: 2;">';
@@ -214,25 +220,33 @@ vis.binds["vis-owlFlexControl"] = {
         text += '<div class="vis-widget vis-owl-flexcontrol-comp-info ' + data.class + '" style="overflow: visible; width: 100%; height: 20px; left: 0px; top: 122px; z-index: 1;">';
         text += '</div>';
 
-        text += '<!-- Info 1 Bild -->';
-        text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 10px; top: 124px; z-index: 2;">';
-        text += '        <img class="imgInfo1" src="' + data.imgInfo1 + '" width="100%">';
-        text += '</div>';
-        
-        text += '<!-- Info 1 Wert -->';
-        text += '<div class="vis-widget info1Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 35px; width: 50px; z-index: 3; color: ' + data.valColorInfo1 + '">';
-        text += '             ' + vis.states[data.oidInfo1 + '.val'] + ' ' + data.valEinheitInfo1;
-        text += '</div>';
+        if(data.oidInfo1) {
+            text += '<!-- Info 1 Bild -->';
+            text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 10px; top: 124px; z-index: 2;">';
+            text += '        <img class="imgInfo1" src="' + data.imgInfo1 + '" width="100%">';
+            text += '</div>';
+        }
 
-        text += '<!-- Info 2 Bild -->';
-        text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 90px; top: 124px; z-index: 2;">';
-        text += '        <img class="imgInfo2" src="' + data.imgInfo2 + '" width="100%">';
-        text += '</div>';
+        if (data.oidInfo1) {
+            text += '<!-- Info 1 Wert -->';
+            text += '<div class="vis-widget info1Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 35px; width: 50px; z-index: 3; color: ' + data.valColorInfo1 + '">';
+            text += '             ' + vis.states[data.oidInfo1 + '.val'] + ' ' + data.valEinheitInfo1;
+            text += '</div>';
+        }
+
+        if(data.oidInfo1) {
+            text += '<!-- Info 2 Bild -->';
+            text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 90px; top: 124px; z-index: 2;">';
+            text += '        <img class="imgInfo2" src="' + data.imgInfo2 + '" width="100%">';
+            text += '</div>';
+        }
         
-        text += '<!-- Info 2 Wert -->';
-        text += '<div class="vis-widget info2Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 110px; width: 50px; z-index: 3; color: ' + data.valColorInfo2 + '">';
-        text += '             ' + vis.states[data.oidInfo2 + '.val'] + ' ' + data.valEinheitInfo2;
-        text += '</div>';
+        if (data.oidInfo1) {
+            text += '<!-- Info 2 Wert -->';
+            text += '<div class="vis-widget info2Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 110px; width: 50px; z-index: 3; color: ' + data.valColorInfo2 + '">';
+            text += '             ' + vis.states[data.oidInfo2 + '.val'] + ' ' + data.valEinheitInfo2;
+            text += '</div>';
+        }
  
         $('#' + widgetID).html(text);
         // #endregion
@@ -241,7 +255,11 @@ vis.binds["vis-owlFlexControl"] = {
  
         // #region IstWert        
         function onChangeIst(e, newVal, oldVal) {
-            $div.find('.istWert').html(parseFloat(newVal).toFixed(data.dacIst) + ' ' + data.valEinheitIst);
+            let val = '';
+            val = newVal;
+            if (typeof val == 'boolean' || isNaN(val) == true) { val = val; }
+            else { val = parseFloat(val).toFixed(data.dacIst); }
+            $div.find('.istWert').html(val + ' ' + data.valEinheitIst);
         }
         if (data.oidValIst) {
             vis.states.bind(data.oidValIst + '.val', onChangeIst);
@@ -254,7 +272,9 @@ vis.binds["vis-owlFlexControl"] = {
 
         // #region SollWert        
         function onChangeSoll(e, newVal, oldVal) {
-            $div.find('.sollWert').html(parseFloat(newVal).toFixed(data.dacSoll) + ' ' + data.valEinheitSoll);
+            let val = '';
+            if(isNaN(newVal) == false) { val = parseFloat(newVal).toFixed(data.dacIst); } else { val = newVal; }
+            $div.find('.sollWert').html(val + ' ' + data.valEinheitSoll);
         }
         if (data.oidValSoll) {
             vis.states.bind(data.oidValSoll + '.val', onChangeSoll);
@@ -293,18 +313,24 @@ vis.binds["vis-owlFlexControl"] = {
                 if (on != vis.states[data['oidOpMode1'] + '.val']) { vis.setValue(data.oidOpMode1, on); } else { vis.setValue(data.oidOpMode1, off); };
             } else {
                 // berechne Position für Popup
-                console.log(window.innerWidth);
-                console.log(window.innerHeight);
                 let childPos = $div.find('.vis-owl-flexcontrol-comp-main').offset();
                 let parentPos = $div.find('.vis-owl-flexcontrol-comp-main').parent().offset();
                 let _top = childPos.top - parentPos.top - 10;
                 let _left = childPos.left - parentPos.left - 10;
                 let _width = data.numOpMode * 70 + 20;
 
+                // find maximal z-index
+                /* var zindexMax = 900;
+                for (var z = 0; z < vis.binds.owl.zindex.length; z++) {
+                    if (vis.binds.owl.zindex[z] > zindexMax) zindexMax = vis.binds.owl.zindex[z];
+                }
+                zindexMax++;
+                alert(zindexMax);
+                */
+
                 // prüfen ob ausserhalb des Fensters
                 if (parentPos.left - 10 + _width > window.innerWidth - 5) {_left = window.innerWidth - parentPos.left - 5 - _width}
                 if (parentPos.left - 10 < 0) {_left = parentPos.left}
-                console.log(_left);
                 //if (_top + 80 > window.innerHeight - 5) {_top = window.innerHeight - 5 - 80}
                 //if (_top < 5) {_top = 5}
                 $div.find('.eaPopup').css({left: _left + 'px', top: _top + 'px'});
@@ -426,8 +452,6 @@ vis.binds["vis-owlFlexControl"] = {
         function onChangeOpMode5(e, newVal, oldVal) {
             let img;
             const {on, off} = getOnOff(data['valOpMode5']);
-            console.log(data['imgOpModeOn5']);
-            console.log(data['imgOpModeOff5']);
             if (newVal == on) { img = data['imgOpModeOn5']; $div.find('.fcc-pu-activ5').show();} else { img = data['imgOpModeOff5']; $div.find('.fcc-pu-activ5').hide();}
             $div.find('.opMode5').attr('src', img);
             setOnOffImage();
@@ -638,6 +662,9 @@ vis.binds["vis-owlFlexControl"] = {
                  _off = strValues.split(';')[1]; 
                 if(isNaN(_off) == false) { _off = parseInt(_off); };
                 }
+            else {
+                if(isNaN(_on) == false) { _on = parseInt(_on); };
+            }
 
             return {
                 on: _on,

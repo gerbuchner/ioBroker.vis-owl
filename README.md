@@ -31,6 +31,10 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.1.6 (2022-02-28)
+* [Flexible Control comp] Kleinere Bugfixes
+* [Flexible Control comp] Fehlebehandlung erweitert
+* [Flexible Control comp] Rechtschreibfehler behoben
 ### 0.1.5 (2022-02-17)
 * [Flexible Control comp] Erweiterung Betriebsmodus durch Popup
 * [Flexible Control comp] Eigenschaften im VIS-Editor angepasst

@@ -1,7 +1,7 @@
 <!--
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.5"
+    version: "0.1.6"
 
     Copyright 2022 Buchi temp1@act4you.de
 -->
@@ -100,7 +100,7 @@
 
 -->
 
-             
+        
 <!-- #region Sprache -->
 <script language="javascript">
 // add translations for edit mode
@@ -119,7 +119,7 @@ if (vis.editMode) {
          "maxSoll":           {"en": "Max Set Value",               "de": "Max Soll Wert",                     "ru": ""},
          "valEinheitSoll":    {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
          "valStep":           {"en": "Step",                        "de": "Step",                              "ru": ""},
-         "numOpMode":         {"en": "Number of Operating Modes",   "de": "Anzahl Betriebsodi",                "ru": ""},
+         "numOpMode":         {"en": "Number of Operating Modes",   "de": "Anzahl Betriebsmodi",               "ru": ""},
          "opModeMarkActive":  {"en": "Mark active Mode",            "de": "Markiere aktiven Modus",            "ru": ""},
          
          "group_opmode":      {"en": "Operating Modes ",            "de": "Betriebsmodus ",                    "ru": ""},
@@ -161,11 +161,11 @@ if (vis.editMode) {
         type="text/ejs"
         class="vis-tpl"
         data-vis-prev='<img src="widgets/vis-owl/img/vis-owlfcc.png"></img>'
-        data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst/number,0,3,1;valEinheitIst;oidValSoll/id;dacSoll/number,0,3,1;valEinheitSoll;minSoll/number;maxSoll/number;valStep;numOpMode[2]/number,1,5,1;opModeMarkActive/checkbox;"
+        data-vis-attrs="headerText;oidValIst/id;valColorIst/color;dacIst/number,0,3,1;valEinheitIst;oidValSoll/id;dacSoll/number,0,3,1;valEinheitSoll;minSoll/number;maxSoll/number;valStep;numOpMode[1]/number,1,5,1;opModeMarkActive/checkbox;"
         data-vis-attrs0="group.opmode/byindex;nameOpMode(1-numOpMode);oidOpMode(1-numOpMode)/id;valOpMode(1-numOpMode);imgOpModeOn(1-numOpMode)/image;imgOpModeOff(1-numOpMode)/image;"
         data-vis-attrs1="group.mode/byindex;showMode(1-5)/checkbox;oidMode(1-5)/id;valueMode(1-5)/number;imgModeOn(1-5)/image;imgModeOff(1-5)/image;"
         data-vis-attrs2="group.info/byindex;showInfo(1-2)/checkbox;imgInfo(1-2)/image;oidInfo(1-2)/id;dacInfo(1-2)/number,0,3,1;valEinheitInfo(1-2);valMultiplier(1-2);valColorInfo(1-2)/color;"
-        data-vis-set="vis-owl"
+        data-vis-set="owl"
         data-vis-type="Steuerung"
         data-vis-name="Flexible Control"
         data-vis-update-style="true"
