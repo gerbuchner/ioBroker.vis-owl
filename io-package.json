@@ -1,8 +1,16 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.1.6",
+        "version": "0.1.7",
         "news": {
+            "0.1.7": {
+                "en": "Bugfix",
+                "de": "Bugfixes"
+            },
+            "0.1.6": {
+                "en": "Bugfix, enhanced errorhandling",
+                "de": "Bugfixes, erweiterte Fehlerbehandlung"
+            },
             "0.1.5": {
                 "en": "Erweiterung Betriebsmodus durch Popup, Eigenschaften im VIS-Editor angepasst, Codeoptimierungen",
                 "de": "Erweiterung Betriebsmodus durch Popup, Eigenschaften im VIS-Editor angepasst, Codeoptimierungen"

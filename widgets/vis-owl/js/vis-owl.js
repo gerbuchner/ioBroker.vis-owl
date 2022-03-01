@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.6"
+    version: "0.1.7"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -134,7 +134,7 @@ vis.binds["vis-owlFlexControl"] = {
         
         if (data.oidValIst) {
             text += '<!-- istWert -->';
-            text += '<div class="vis-widget istWert vis-owl-flexcontrol-comp-header-ist ' + data.class + '" style="width: 50px; height: 14px; z-index: 3; color: ' + data.valColorIst + '">';
+            text += '<div class="vis-widget istWert vis-owl-flexcontrol-comp-header-ist ' + data.class + '" style="z-index: 3; color: ' + data.valColorIst + '">';
             text += '             ' + vis.states[data.oidValIst + '.val'] + ' ' + data.valEinheitIst;
             text += '</div>';
         }
@@ -229,21 +229,21 @@ vis.binds["vis-owlFlexControl"] = {
 
         if (data.oidInfo1) {
             text += '<!-- Info 1 Wert -->';
-            text += '<div class="vis-widget info1Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 35px; width: 50px; z-index: 3; color: ' + data.valColorInfo1 + '">';
+            text += '<div class="vis-widget info1Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 35px; z-index: 3; color: ' + data.valColorInfo1 + '">';
             text += '             ' + vis.states[data.oidInfo1 + '.val'] + ' ' + data.valEinheitInfo1;
             text += '</div>';
         }
 
-        if(data.oidInfo1) {
+        if(data.oidInfo2) {
             text += '<!-- Info 2 Bild -->';
             text += '<div class="vis-widget" style="width: 15px; height: 15px; left: 90px; top: 124px; z-index: 2;">';
             text += '        <img class="imgInfo2" src="' + data.imgInfo2 + '" width="100%">';
             text += '</div>';
         }
         
-        if (data.oidInfo1) {
+        if (data.oidInfo2) {
             text += '<!-- Info 2 Wert -->';
-            text += '<div class="vis-widget info2Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 110px; width: 50px; z-index: 3; color: ' + data.valColorInfo2 + '">';
+            text += '<div class="vis-widget info2Wert vis-owl-flexcontrol-comp-info-value ' + data.class + '" style="top: 125px; left: 110px; z-index: 3; color: ' + data.valColorInfo2 + '">';
             text += '             ' + vis.states[data.oidInfo2 + '.val'] + ' ' + data.valEinheitInfo2;
             text += '</div>';
         }
@@ -257,9 +257,11 @@ vis.binds["vis-owlFlexControl"] = {
         function onChangeIst(e, newVal, oldVal) {
             let val = '';
             val = newVal;
+            let vEinheit = '';
+            if(data.valEinheitIst) { vEinheit = ' ' + data.valEinheitIst; }
             if (typeof val == 'boolean' || isNaN(val) == true) { val = val; }
             else { val = parseFloat(val).toFixed(data.dacIst); }
-            $div.find('.istWert').html(val + ' ' + data.valEinheitIst);
+            $div.find('.istWert').html(val + vEinheit);
         }
         if (data.oidValIst) {
             vis.states.bind(data.oidValIst + '.val', onChangeIst);
@@ -273,8 +275,10 @@ vis.binds["vis-owlFlexControl"] = {
         // #region SollWert        
         function onChangeSoll(e, newVal, oldVal) {
             let val = '';
+            let vEinheit = '';
+            if(data.valEinheitSoll) { vEinheit = ' ' + data.valEinheitSoll; }
             if(isNaN(newVal) == false) { val = parseFloat(newVal).toFixed(data.dacIst); } else { val = newVal; }
-            $div.find('.sollWert').html(val + ' ' + data.valEinheitSoll);
+            $div.find('.sollWert').html(val + vEinheit);
         }
         if (data.oidValSoll) {
             vis.states.bind(data.oidValSoll + '.val', onChangeSoll);
@@ -592,6 +596,8 @@ vis.binds["vis-owlFlexControl"] = {
         // #region Info 1        
         function onChangeInfo1(e, newVal, oldVal) {
             let wert;
+            let vEinheit = '';
+            if(data.valEinheitInfo1) { vEinheit = ' ' + data.valEinheitInfo1; }
             if (data.showInfo1) {
                 $div.find('.imgInfo1').show();
                 $div.find('.info1Wert').show();
@@ -605,7 +611,7 @@ vis.binds["vis-owlFlexControl"] = {
                         wert = parseFloat(newVal).toFixed(data.dacInfo1);
                     }
                 }
-                $div.find('.info1Wert').html(wert + ' ' + data.valEinheitInfo1);
+                $div.find('.info1Wert').html(wert + vEinheit);
             }
             else {
                 $div.find('.imgInfo1').hide();
@@ -624,6 +630,8 @@ vis.binds["vis-owlFlexControl"] = {
         // #region Info 2        
         function onChangeInfo2(e, newVal, oldVal) {
             let wert;
+            let vEinheit = '';
+            if(data.valEinheitInfo2) { vEinheit = ' ' + data.valEinheitInfo2; }
             if (data.showInfo2) {
                 $div.find('.imgInfo2').show();
                 $div.find('.info2Wert').show();
@@ -637,7 +645,7 @@ vis.binds["vis-owlFlexControl"] = {
                         wert = parseFloat(newVal).toFixed(data.dacInfo2);
                     }
                 }
-                $div.find('.info2Wert').html(wert + ' ' + data.valEinheitInfo2);
+                $div.find('.info2Wert').html(wert + vEinheit);
             }
             else {
                 $div.find('.imgInfo2').hide();
