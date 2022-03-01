@@ -31,6 +31,8 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.1.7 (2022-03-01)
+* [Flexible Control comp] Kleinere Bugfixes
 ### 0.1.6 (2022-02-28)
 * [Flexible Control comp] Kleinere Bugfixes
 * [Flexible Control comp] Fehlebehandlung erweitert
