@@ -277,7 +277,7 @@ vis.binds["vis-owlFlexControl"] = {
             let val = '';
             let vEinheit = '';
             if(data.valEinheitSoll) { vEinheit = ' ' + data.valEinheitSoll; }
-            if(isNaN(newVal) == false) { val = parseFloat(newVal).toFixed(data.dacIst); } else { val = newVal; }
+            if(isNaN(newVal) == false) { val = parseFloat(newVal).toFixed(data.dacSoll); } else { val = newVal; }
             $div.find('.sollWert').html(val + vEinheit);
         }
         if (data.oidValSoll) {
@@ -290,10 +290,10 @@ vis.binds["vis-owlFlexControl"] = {
 
         $div.find('.sollMinus').on('click', function (e){
             let value;
-            if ((parseFloat(vis.states[data.oidValSoll + '.val']) - parseFloat(data.valStep)).toFixed(data.dacIst) < data.minSoll) {
+            if ((parseFloat(vis.states[data.oidValSoll + '.val']) - parseFloat(data.valStep)).toFixed(data.dacSoll) < data.minSoll) {
                 value = data.minSoll;
             } else {
-                value = (parseFloat(vis.states[data.oidValSoll + '.val']) - parseFloat(data.valStep)).toFixed(data.dacIst);
+                value = (parseFloat(vis.states[data.oidValSoll + '.val']) - parseFloat(data.valStep)).toFixed(data.dacSoll);
             }
             vis.setValue(data.oidValSoll, value); 
         })
