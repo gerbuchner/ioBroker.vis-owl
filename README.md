@@ -26,7 +26,7 @@ Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), normalen Heizkörper (2
 Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.
 
 ## Diskussion und Fragen
-![https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github] (https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github)
+![https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github](https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github)
 ## Dokumentation
 Siehe Github Wiki
 
