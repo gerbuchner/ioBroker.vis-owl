@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.1.7",
+        "version": "0.2.0",
         "news": {
+            "0.2.0": {
+                "en": "Initial Parcel Widget",
+                "de": "Initial Sendungsverfolgungs Widget"
+            },
             "0.1.7": {
                 "en": "Bugfix",
                 "de": "Bugfixes"

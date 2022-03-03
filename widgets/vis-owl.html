@@ -1,14 +1,16 @@
 <!--
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.7"
+    version: "0.2.0"
 
     Copyright 2022 Buchi temp1@act4you.de
 -->
 <!-- here you can include so many css as you want -->
 <link rel="stylesheet" href="widgets/vis-owl/css/style.css" />
+<link rel="stylesheet" href="widgets/vis-owl/css/style-parcel.css" />
 <!-- here you can include so many js-files as you want -->
 <script type="text/javascript" src="widgets/vis-owl/js/vis-owl.js"></script>
+<script type="text/javascript" src="widgets/vis-owl/js/vis-owlparcel.js"></script>
 
 <!-- the full description of format in data-vis-attrs can be found here:
     https://github.com/ioBroker/ioBroker.vis/blob/master/www/js/visEditInspect.js#L39
@@ -99,8 +101,8 @@
     You can do "if" conditions and "for" cycles.
 
 -->
-
-             
+  
+               
 <!-- #region Sprache -->
 <script language="javascript">
 // add translations for edit mode
@@ -108,7 +110,6 @@ if (vis.editMode) {
     $.extend(true, systemDictionary, {
         /**
          * vis-owlFlexControl
-         */
          "oidValIst":         {"en": "Act. Value",                  "de": "Ist Wert",                          "ru": ""},
          "valColorIst":       {"en": "Color Actual Value",          "de": "Farbe Ist Wert",                    "ru": ""},
          "dacIst":            {"en": "Digits after comma (act)",    "de": "Stellen nach Komma (Ist)",          "ru": ""},
@@ -152,6 +153,8 @@ if (vis.editMode) {
          "valEinheitInfo":    {"en": "Unit",                         "de": "Einheit",                           "ru": ""},
          "valMultiplier":     {"en": "Multiplier",                   "de": "Multiplikator",                     "ru": ""},
          "valColorInfo":      {"en": "Fore Color",                   "de": "Vordergrundfarbe",                  "ru": ""},
+                  */
+
         });
 }
 </script>
@@ -165,7 +168,7 @@ if (vis.editMode) {
         data-vis-attrs0="group.opmode/byindex;nameOpMode(1-numOpMode);oidOpMode(1-numOpMode)/id;valOpMode(1-numOpMode);imgOpModeOn(1-numOpMode)/image;imgOpModeOff(1-numOpMode)/image;"
         data-vis-attrs1="group.mode/byindex;showMode(1-5)/checkbox;oidMode(1-5)/id;valueMode(1-5)/number;imgModeOn(1-5)/image;imgModeOff(1-5)/image;"
         data-vis-attrs2="group.info/byindex;showInfo(1-2)/checkbox;imgInfo(1-2)/image;oidInfo(1-2)/id;dacInfo(1-2)/number,0,3,1;valEinheitInfo(1-2);valMultiplier(1-2);valColorInfo(1-2)/color;"
-        data-vis-set="owl"
+        data-vis-set="vis-owl"
         data-vis-type="Steuerung"
         data-vis-name="Flexible Control"
         data-vis-update-style="true"
@@ -175,7 +178,30 @@ if (vis.editMode) {
         </div>
         <% vis.binds["vis-owlFlexControl"].createFlexControl(this.data.wid, this.view, this.data, this.style); %>
 </script>
-     
+                                    
+<script id="vis-owlParcel"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-prev='<img src="widgets/vis-owl/img/vis-owlparcel.png"></img>'
+        data-vis-attrs="instanz[parcel.0];imgProgress1/image;imgProgress2/image;imgProgress3/image;imgProgress4/image;imgProgress5/image;"
+        data-vis-attrs0="group.amazon;showCarrier-amazon/checkbox;imgCarrier-amazon/image;showDelivered-amazon/checkbox;numParcels-amazon/number;"
+        data-vis-attrs1="group.dhl;showCarrier-dhl/checkbox;imgCarrier-dhl/image;showDelivered-dhl/checkbox;numParcels-dhl/number;"
+        data-vis-attrs2="group.dpd;showCarrier-dpd/checkbox;imgCarrier-dpd/image;showDelivered-dpd/checkbox;numParcels-dpd/number;"
+        data-vis-attrs3="group.gls;showCarrier-gls/checkbox;imgCarrier-gls/image;showDelivered-gls/checkbox;numParcels-gls/number;"
+        data-vis-attrs4="group.ups;showCarrier-ups/checkbox;imgCarrier-ups/image;showDelivered-ups/checkbox;numParcels-ups/number;"
+        data-vis-attrs5="group.hermes;sshowCarrier-hermes/checkbox;imgCarrier-hermes/image;showDelivered-hermes/checkbox;numParcels-hermes/number;"
+        data-vis-attrs6="group.17track;showCarrier-17track/checkbox;imgCarrier-17track/image;showDelivered-17track/checkbox;numParcels-17track/number;"
+        data-vis-set="vis-owl"
+        data-vis-type="Anzeige"
+        data-vis-name="Parcel Control"
+        data-vis-update-style="true"
+        data-vis-beta="true">
+        <div class="vis-widget vis-owl-parcel-comp-container <%== this.data.attr('class') %>" style="width: 172px; height: 142px; overflow: visible;" id="<%= this.data.attr('wid') %>">
+
+        </div>
+        <% vis.binds["vis-owlParcel"].createParcel(this.data.wid, this.view, this.data, this.style); %>
+</script>
+
 <!--
 <script id="vis-owlPLTable"
         type="text/ejs"

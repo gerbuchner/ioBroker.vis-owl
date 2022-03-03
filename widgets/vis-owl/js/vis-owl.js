@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.1.7"
+    version: "0.2.0"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -27,7 +27,50 @@ $.extend(
         // 	"pl": "Rozmiar",
         // 	"zh-cn": "尺寸"
         // }
-    }
+        "oidValIst":         {"en": "Act. Value",                  "de": "Ist Wert",                          "ru": ""},
+        "valColorIst":       {"en": "Color Actual Value",          "de": "Farbe Ist Wert",                    "ru": ""},
+        "dacIst":            {"en": "Digits after comma (act)",    "de": "Stellen nach Komma (Ist)",          "ru": ""},
+        "valEinheitIst":     {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
+        "oidValSoll":        {"en": "Set Value",                   "de": "Soll Wert",                         "ru": ""},
+        "dacSoll":           {"en": "Digits after comma (set)",    "de": "Stellen nach Komma (Soll)",         "ru": ""},
+        "minSoll":           {"en": "Min Set Value",               "de": "Min Soll Wert",                     "ru": ""},
+        "maxSoll":           {"en": "Max Set Value",               "de": "Max Soll Wert",                     "ru": ""},
+        "valEinheitSoll":    {"en": "Unit",                        "de": "Einheit",                           "ru": ""},
+        "valStep":           {"en": "Step",                        "de": "Step",                              "ru": ""},
+        "numOpMode":         {"en": "Number of Operating Modes",   "de": "Anzahl Betriebsmodi",               "ru": ""},
+        "opModeMarkActive":  {"en": "Mark active Mode",            "de": "Markiere aktiven Modus",            "ru": ""},
+        
+        "group_opmode":      {"en": "Operating Modes ",            "de": "Betriebsmodus ",                    "ru": ""},
+        "nameOpMode":        {"en": "Name",                        "de": "Name",                              "ru": ""},
+        "oidOpMode":         {"en": "Object ID",                   "de": "Objekt ID",                         "ru": ""},
+        "valOpMode":         {"en": "Value(s)",                    "de": "Wert(e)",                           "ru": ""},
+        "imgOpModeOn":       {"en": "Image Mode On",               "de": "Bild Modus Ein",                    "ru": ""},
+        "imgOpModeOff":      {"en": "Image Mode Off",              "de": "Bild Modus Aus",                    "ru": ""},
+
+        "headerText":        {"en": "Headline",                    "de": "Überschrift",                       "ru": ""},
+
+        "group_onoff":       {"en": "On/Off",                      "de": "Ein/Aus",                           "ru": ""},
+        "oidOnOff":          {"en": "Object ID",                   "de": "Objekt ID",                         "ru": ""},
+        "imgOn":             {"en": "Image On",                    "de": "Bild Ein",                          "ru": ""},
+        "imgOff":            {"en": "Image Off",                   "de": "Bild Aus",                          "ru": ""},
+
+        "group_mode":        {"en": "Settings ",                    "de": "Eigenschaften ",                   "ru": ""},
+        "showMode":          {"en": "Visible",                      "de": "Anzeigen",                         "ru": ""},
+        "oidMode":           {"en": "Object ID",                    "de": "Objekt ID",                        "ru": ""},
+        "condMode":          {"en": "Condition",                    "de": "Bedingung",                        "ru": ""},
+        "valueMode":         {"en": "Value Mode",                   "de": "Wert Modus",                       "ru": ""},
+        "imgModeOn":         {"en": "Image Mode On",                "de": "Bild Modus Ein",                   "ru": ""},
+        "imgModeOff":        {"en": "Image Mode Off",               "de": "Bild Modus Aus",                   "ru": ""},
+
+        "group_info":        {"en": "Info ",                        "de": "Info ",                             "ru": ""},
+        "showInfo":          {"en": "Visible",                      "de": "Sichtbar",                          "ru": ""},
+        "imgInfo":           {"en": "Image",                        "de": "Bild",                              "ru": ""},
+        "oidInfo":           {"en": "Object ID",                    "de": "Objekt ID",                         "ru": ""},
+        "dacInfo":           {"en": "Digits after comma",           "de": "Stellen nach Komma",                "ru": ""},
+        "valEinheitInfo":    {"en": "Unit",                         "de": "Einheit",                           "ru": ""},
+        "valMultiplier":     {"en": "Multiplier",                   "de": "Multiplikator",                     "ru": ""},
+        "valColorInfo":      {"en": "Fore Color",                   "de": "Vordergrundfarbe",                  "ru": ""}
+   }
 );
  
 // this code can be placed directly in vis-owl.html
@@ -100,7 +143,7 @@ vis.binds["vis-owlPLTable"] = {
 }
 
 vis.binds["vis-owlFlexControl"] = {
-    version: "0.1.5",
+    version: "0.2.0",
     showVersion: function () {
         if (vis.binds["vis-owlFlexControl"].version) {
             console.log('Version vis-owlFlexControl: ' + vis.binds["vis-owlFlexControl"].version);

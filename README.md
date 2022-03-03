@@ -31,6 +31,8 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.0 (2022-03-03)
+* [Sendungsverfolgung] Initial upload
 ### 0.1.7 (2022-03-01)
 * [Flexible Control comp] Kleinere Bugfixes
 ### 0.1.6 (2022-02-28)
@@ -53,10 +55,10 @@ Siehe Github Wiki
 * [Flexible Control comp] HTML & CSS Optimierungen
 ### 0.1.0 (2022-02-03)
 * [Flexible Control comp] Erste öffentliche Beta
-<!--
-    Placeholder for the next version (at the beginning of the line):
-    ###- **WORK IN PROGRESS**
--->-
+
+Placeholder for the next version (at the beginning of the line):
+### **WORK IN PROGRESS**
+
 
 ## License
 MIT License
