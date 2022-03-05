@@ -114,17 +114,17 @@ vis.binds["vis-owlParcel"] = {
         let top = 10;
         let left = 10;
         let imgAMZ = data.imgCarrierAmazon;
-        if (imgAMZ == '') {imgAMZ = 'widgets/vis-owl/img/logo-amazon.svg';}
+        if (imgAMZ == '' || imgAMZ == null) {imgAMZ = 'widgets/vis-owl/img/logo-amazon.svg';}
         let imgDHL = data.imgCarrierDhl;
-        if (imgDHL == '') {imgDHL = 'widgets/vis-owl/img/logo-dhl.svg';}
+        if (imgDHL == '' || imgDHL == null) {imgDHL = 'widgets/vis-owl/img/logo-dhl.svg';}
         let imgDPD = data.imgCarrierDpd;
-        if (imgDPD == '') {imgDPD = 'widgets/vis-owl/img/logo-dpd.svg';}
+        if (imgDPD == '' || imgDPD == null) {imgDPD = 'widgets/vis-owl/img/logo-dpd.svg';}
         let imgGLS = data.imgCarrierGls;
-        if (imgGLS == '') {imgGLS = 'widgets/vis-owl/img/logo-gls.svg';}
+        if (imgGLS == '' || imgGLS == null) {imgGLS = 'widgets/vis-owl/img/logo-gls.svg';}
         let imgUPS = data.imgCarrierUps;
-        if (imgUPS == '') {imgUPS = 'widgets/vis-owl/img/logo-ups.svg';}
+        if (imgUPS == '' || imgUPS == null) {imgUPS = 'widgets/vis-owl/img/logo-ups.svg';}
         let imgHERMES = data.imgCarrierHermes;
-        if (imgHERMES == '') {imgHERMES = 'widgets/vis-owl/img/logo-hermes.svg';}
+        if (imgHERMES == '' || imgHERMES == null) {imgHERMES = 'widgets/vis-owl/img/logo-hermes.svg';}
         let img17T = data.imgCarrier17track;
         //if (img17T == '') {img17T = 'widgets/vis-owl/img/logo-17track.svg';}
 
