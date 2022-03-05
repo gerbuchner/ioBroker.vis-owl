@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "news": {
+            "0.2.1": {
+                "en": "First table version",
+                "de": "Erste Tabellenversion"
+            },
             "0.2.0": {
                 "en": "Initial Parcel Widget",
                 "de": "Initial Sendungsverfolgungs Widget"

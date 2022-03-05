@@ -1,10 +1,55 @@
 /* Style your widget here */
 
-/* Header */
-.vis-owl-parcel-comp-container {
-    background-color: #aaaaaa; 
-    border: 1px solid rgb(136, 136, 136); 
-    box-shadow: 0 3px 5px 0px rgba(114, 114, 114, 0.7);
-    color:#ffffff;
+.vis-owl-parcel-container{
+    background-color: #222222; 
+    z-index: 10;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
+.vis-owl-parcel{
+    background-color: #adadad; 
+    z-index: 13;
+    width: 95%;
+    align-self: center;
+    height: 55px;
+}
+
+.vis-owl-parcel-source{
+    z-index: 14;
+    width: 80px;
+    height: 40px;
+    top: 5px;
+    left: 5px;
+}
+
+.vis-owl-parcel-id{
+    color:#292929;
+    z-index: 14;
+    width: 200px;
+    height: 20px;
+    top: 5px;
+    left: 110px;
+}
+
+.vis-owl-parcel-name{
+    color:#292929;
+    z-index: 14;
+    width: 460px;
+    height: 20px;
+    top: 5px;
+    left: 315px;
+}
+
+.vis-owl-parcel-status{
+    color:#292929;
+    z-index: 14;
+    width: 660px;
+    height: 20px;
+    top: 30px;
+    left: 110px;
+}

@@ -32,6 +32,8 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.1 (2022-03-05)
+* [Sendungsverfolgung] Erste Tabellenversion
 ### 0.2.0 (2022-03-03)
 * [Sendungsverfolgung] Initial upload
 ### 0.1.7 (2022-03-01)
