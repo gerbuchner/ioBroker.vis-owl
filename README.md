@@ -15,8 +15,6 @@
 
 Odd Widget Library
 
-Aktuell gibt es nur ein Widget aber ein paar Ideen für weitere Widgets existieren bereits.
-
 ## Flexible Control
 <img src="widgets/vis-owl/img/vis-owlfcc.png">
 Widget zur Steuerung von Klimaanlagen, Luftreinigern, Heizungen, Motoren usw.
@@ -25,6 +23,11 @@ Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), normalen Heizkörper (2
 
 Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.
 
+## Parcel Control
+Widget zur Anzeige von Sendungen (Sendungsverfolgung).
+
+Danke dem ![parcel adapter](https://github.com/TA2k/ioBroker.parcel) von ![tombox](https://forum.iobroker.net/user/tombox) können von verschiedensten Paket Versendern die Daten zu dem Status von Sendungen ausgelesen und in Datenpunkten gespeichert werden. Das Widget setzt auf dem Adapter auf und stellt eine einfache Möglichkeit zur Verfügung die Daten in der VIS anzuzeigen.
+
 ## Diskussion und Fragen
 [https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github](https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github)
 ## Dokumentation
@@ -32,6 +35,9 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.2 (2022-03-05)
+* [Sendungsverfolgung] Bilddimensionen korrigiert
+* [Sendungsverfolgung] Zugestellte ein-/ausblendbar
 ### 0.2.1 (2022-03-05)
 * [Sendungsverfolgung] Erste Tabellenversion
 ### 0.2.0 (2022-03-03)

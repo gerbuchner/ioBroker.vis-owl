@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.1"
+    version: "0.2.2"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -29,6 +29,7 @@ $.extend(
         // }
         "oidJson": { "en": "DP Json", "de": "DP Json", "ru": "" },
         "numParcels": { "en": "Number parcels", "de": "Anzahl Sendungen", "ru": "" },
+        "showDelivered": { "en": "NShow delivered", "de": "Zeige zugestellte", "ru": "" },
         "imgProgress1": { "en": "Pic progress 1", "de": "Bild Fortschritt 1", "ru": "" },
         "imgProgress2": { "en": "Pic progress 2", "de": "Bild Fortschritt 2", "ru": "" },
         "imgProgress3": { "en": "Pic progress 3", "de": "Bild Fortschritt 3", "ru": "" },
@@ -89,7 +90,7 @@ $.extend(
 
 
 vis.binds["vis-owlParcel"] = {
-    version: "0.2.1",
+    version: "0.2.2",
     showVersion: function () {
         if (vis.binds["vis-owlParcel"].version) {
             console.log('Version vis-owlParcel: ' + vis.binds["vis-owlParcel"].version);
@@ -130,10 +131,14 @@ vis.binds["vis-owlParcel"] = {
 
         let maxEntries = data['numParcels'];
         if (maxEntries == 0 || maxEntries == null) {maxEntries = 9999;}
-        const parcels = JSON.parse(vis.states[data.oidJson + '.val']);
-        if (maxEntries > parcels.length) {maxEntries = parcels.length;}
-        //const filtered = parcels.filter(source => source.source === 'DHL');
+        let par = JSON.parse(vis.states[data.oidJson + '.val']);
+        console.log(par.length);
+        let filtered = par.filter(ent => ent.status.indexOf('Zugestellt') == -1 && ent.status.indexOf('Zustellung erfolgreich') == -1 && ent.status.indexOf('Paket zugestellt') == -1 );
+        console.log(filtered.length);
+        if (data.showDelivered == false) {var parcels = [].concat(filtered);} else {var parcels = [].concat(par);}
         console.log(parcels);
+        console.log(parcels.length);
+        if (maxEntries > parcels.length) {maxEntries = parcels.length;}
 
         text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
         for (x = 0; x < maxEntries; x++) {

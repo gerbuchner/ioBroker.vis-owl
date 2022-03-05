@@ -3,6 +3,10 @@
         "name": "vis-owl",
         "version": "0.2.1",
         "news": {
+            "0.2.2": {
+                "en": "Fix picture dimensions, show / hide delivered parcels",
+                "de": "Bugfix Bilddimensionen, Zugestellte ein-/ausblendbar"
+            },
             "0.2.1": {
                 "en": "First table version",
                 "de": "Erste Tabellenversion"

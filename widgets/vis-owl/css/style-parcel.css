@@ -21,8 +21,8 @@
 
 .vis-owl-parcel-source{
     z-index: 14;
-    width: 80px;
-    height: 40px;
+    max-width: 80px;
+    max-height: 40px;
     top: 5px;
     left: 5px;
 }
