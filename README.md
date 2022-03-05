@@ -26,7 +26,7 @@ Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedba
 ## Parcel Control
 Widget zur Anzeige von Sendungen (Sendungsverfolgung).
 
-Danke dem ![parcel adapter](https://github.com/TA2k/ioBroker.parcel) von ![tombox](https://forum.iobroker.net/user/tombox) können von verschiedensten Paket Versendern die Daten zu dem Status von Sendungen ausgelesen und in Datenpunkten gespeichert werden. Das Widget setzt auf dem Adapter auf und stellt eine einfache Möglichkeit zur Verfügung die Daten in der VIS anzuzeigen.
+Dank dem [parcel adapter](https://github.com/TA2k/ioBroker.parcel) von [tombox](https://forum.iobroker.net/user/tombox) können von verschiedensten Paket Versendern die Daten zu dem Status von Sendungen ausgelesen und in Datenpunkten gespeichert werden. Das Widget setzt auf dem Adapter auf und stellt eine einfache Möglichkeit zur Verfügung die Daten in der VIS anzuzeigen.
 
 ## Diskussion und Fragen
 [https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github](https://forum.iobroker.net/topic/53045/test-widget-vis-owl-v0-2-x-github)
