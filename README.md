@@ -35,6 +35,8 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.3 (2022-03-06)
+* [Sendungsverfolgung] Trennlinie zwischen Sendungen
 ### 0.2.2 (2022-03-05)
 * [Sendungsverfolgung] Bilddimensionen korrigiert
 * [Sendungsverfolgung] Zugestellte ein-/ausblendbar
