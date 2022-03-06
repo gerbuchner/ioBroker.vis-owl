@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.2"
+    version: "0.2.3"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -29,7 +29,9 @@ $.extend(
         // }
         "oidJson": { "en": "DP Json", "de": "DP Json", "ru": "" },
         "numParcels": { "en": "Number parcels", "de": "Anzahl Sendungen", "ru": "" },
-        "showDelivered": { "en": "NShow delivered", "de": "Zeige zugestellte", "ru": "" },
+        "showDelivered": { "en": "Show delivered", "de": "Zeige zugestellte", "ru": "" },
+        "separateEntries": { "en": "Separate entries", "de": "Trennlinie zwischen Sendungen", "ru": "" },
+        "separatorHeight": { "en": "Separator height", "de": "Höhe der Trennlinie", "ru": "" },
         "imgProgress1": { "en": "Pic progress 1", "de": "Bild Fortschritt 1", "ru": "" },
         "imgProgress2": { "en": "Pic progress 2", "de": "Bild Fortschritt 2", "ru": "" },
         "imgProgress3": { "en": "Pic progress 3", "de": "Bild Fortschritt 3", "ru": "" },
@@ -178,7 +180,11 @@ vis.binds["vis-owlParcel"] = {
             text += '<div class="vis-widget vis-owl-parcel-status ' + data.class + '">' + parcels[x].status + '</div>';
             text += '</div>';
             left = 10;
-            top += 45;
+            top += 35;
+            if(data.separateEntries) {
+                text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';
+                top += parseInt(data.separatorHeight);
+            }
         }
         text += '</div>';
 

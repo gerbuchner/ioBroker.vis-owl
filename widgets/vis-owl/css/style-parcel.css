@@ -53,3 +53,10 @@
     top: 30px;
     left: 110px;
 }
+
+.vis-owl-parcel-sepline{
+    z-index: 14;
+    width: 740px;
+    width: 95%;
+    align-self: center;
+}
