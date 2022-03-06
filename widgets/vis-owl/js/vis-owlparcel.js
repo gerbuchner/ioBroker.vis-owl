@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.3"
+    version: "0.2.4"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -133,7 +133,8 @@ vis.binds["vis-owlParcel"] = {
 
         let maxEntries = data['numParcels'];
         if (maxEntries == 0 || maxEntries == null) {maxEntries = 9999;}
-        let par = JSON.parse(vis.states[data.oidJson + '.val']);
+        let parFull = JSON.parse(vis.states[data.oidJson + '.val']);
+        let par = parFull.filter(ent => ent.id.length > 0 );
         console.log(par.length);
         let filtered = par.filter(ent => ent.status.indexOf('Zugestellt') == -1 && ent.status.indexOf('Zustellung erfolgreich') == -1 && ent.status.indexOf('Paket zugestellt') == -1 );
         console.log(filtered.length);
