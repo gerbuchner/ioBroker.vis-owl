@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.5"
+    version: "0.2.6"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -29,7 +29,6 @@ $.extend(
         // }
         "txtHeader": { "en": "Headline", "de": "Überschrift", "ru": "" },
         "oidJson": { "en": "DP Json", "de": "DP Json", "ru": "" },
-        "distFirstDivTop": { "en": "Spacing top", "de": "Abstand oben", "ru": "" },
         "numParcels": { "en": "Number parcels", "de": "Anzahl Sendungen", "ru": "" },
         "showDelivered": { "en": "Show delivered", "de": "Zeige zugestellte", "ru": "" },
         "separateEntries": { "en": "Separate entries", "de": "Trennlinie zwischen Sendungen", "ru": "" },
@@ -116,8 +115,9 @@ vis.binds["vis-owlParcel"] = {
 
         let x = 1;
         let text = '';
-        let top = parseInt(data.distFirstDivTop);
-        let left = 10;
+        //let top = parseInt(data.distFirstDivTop);
+        let top = 0;
+        //let left = 10;
         
         let imgAMZ = data.imgCarrierAmazon;
         if (imgAMZ == '' || imgAMZ == null) {imgAMZ = 'widgets/vis-owl/img/logo-amazon.png';}
@@ -157,10 +157,10 @@ vis.binds["vis-owlParcel"] = {
         console.log("Sortiert:");
         console.log(byStatus);
 
-        text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
         if(data.txtHeader) {
             text += '<div class="vis-widget vis-owl-parcel-headline ' + data.class + '"><div class="vis-widget vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
         }
+        text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
         for (x = 0; x < maxEntries; x++) {
             let classInDelievery = byStatus[x].delivery_status > 1? "-inDelievery" : ""; 
             text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
@@ -190,15 +190,15 @@ vis.binds["vis-owlParcel"] = {
                     break;
             }
             text += '"></div>';
-            left += 60;
+            //left += 60;
             text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
-            left += 200;
+            //left += 200;
             text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
             top += 20;
-            left = 70;
+            //left = 70;
             text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
             text += '</div>';
-            left = 10;
+            //left = 10;
             top += 35;
             if(data.separateEntries) {
                 text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';

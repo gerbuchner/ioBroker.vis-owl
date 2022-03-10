@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.5",
+        "version": "0.2.6",
         "news": {
+            "0.2.6": {
+                "en": "Optimized title bar and arrangement",
+                "de": "Titelzeile und Anordnung optimiert"
+            },
             "0.2.5": {
                 "en": "Sorting, title bar, showing/hiding delivered programs, optimized images",
                 "de": "Sortierung, Titelzeile, ein- / ausblenden gelieferter Sendungen, Bilder optimiert"

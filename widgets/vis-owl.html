@@ -1,7 +1,7 @@
 <!--
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.5"
+    version: "0.2.6"
 
     Copyright 2022 Buchi temp1@act4you.de
 -->
@@ -101,8 +101,8 @@
     You can do "if" conditions and "for" cycles.
 
 -->
-                                                          
-                    
+                                                             
+                       
 <!-- #region Sprache -->
 <script language="javascript">
     // add translations for edit mode
@@ -178,11 +178,11 @@
 
 <script id="vis-owlParcel" type="text/ejs" class="vis-tpl"
     data-vis-prev='<img src="widgets/vis-owl/img/vis-owlparcel.png"></img>'
-    data-vis-attrs="txtHeader/html;oidJson[parcel.0.allProviderJson]/id;distFirstDivTop[10]/number;numParcels/number;showDelivered/checkbox;separateEntries/checkbox;separatorHeight[5]/number;imgProgress1/image;imgProgress2/image;imgProgress3/image;imgProgress4/image;imgProgress5/image;"
+    data-vis-attrs="txtHeader/html;oidJson[parcel.0.allProviderJson]/id;numParcels/number;showDelivered/checkbox;separateEntries/checkbox;separatorHeight[5]/number;imgProgress1/image;imgProgress2/image;imgProgress3/image;imgProgress4/image;imgProgress5/image;"
     data-vis-attrs0="group.carrier;imgCarrierAmazon/image;imgCarrierDhl/image;imgCarrierDpd/image;imgCarrierGls/image;imgCarrierUps/image;imgCarrierHermes/image;imgCarrier17track/image;"
     data-vis-set="vis-owl" data-vis-type="Anzeige" data-vis-name="Parcel Control" data-vis-update-style="true"
     data-vis-beta="true">
-        <div class="vis-widget vis-owl-parcel-container <%== this.data.attr('class') %>" style="width: 172px; height: 142px; overflow: visible;" id="<%= this.data.attr('wid') %>">
+        <div class="vis-widget vis-owl-parcel-widget <%== this.data.attr('class') %>" style="width: 172px; height: 142px; overflow: visible;" id="<%= this.data.attr('wid') %>">
 
         </div>
         <% vis.binds["vis-owlParcel"].createParcel(this.data.wid, this.view, this.data, this.style); %>

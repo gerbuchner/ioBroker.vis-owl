@@ -35,6 +35,8 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.6 (2022-03-10)
+* [Sendungsverfolgung] Titelzeile und Anordnung optimiert
 ### 0.2.5 (2022-03-10)
 * [Sendungsverfolgung] Sortierung der Sendungen nach Status
 * [Sendungsverfolgung] Ein- / ausblenden von gelieferten Sendungen verbessert

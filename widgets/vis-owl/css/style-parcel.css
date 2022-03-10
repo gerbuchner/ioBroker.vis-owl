@@ -1,18 +1,24 @@
 /* Style your widget here */
 
 .vis-owl-parcel-headline{
-    background-color: #2e4472; 
+    background-color: #3c3d3d; 
     z-index: 10;
-    height: 30px;
-    width: 95%;
-    top: 0px;
-    align-items: center;
-    display: flex;
+    height: 28px;
+    width: 300px;
+    top: 8px;
     text-align: left;
 }
 
 .vis-owl-parcel-headline-text{
     color: #ffffff;
+    padding-left: 10px;
+    padding-top: 3px;
+    font-size: 20px;
+}
+
+.vis-owl-parcel-widget{
+    background-color: #222222; 
+    z-index: 10;
     padding-left: 10px;
 }
 
@@ -23,8 +29,8 @@
     height: 100%;
     width: 100%;
     align-items: center;
-    justify-content: center;
     display: flex;
+    top: 42px;
 }
 
 .vis-owl-parcel{
