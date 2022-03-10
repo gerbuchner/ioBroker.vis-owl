@@ -1,5 +1,21 @@
 /* Style your widget here */
 
+.vis-owl-parcel-headline{
+    background-color: #2e4472; 
+    z-index: 10;
+    height: 30px;
+    width: 95%;
+    top: 0px;
+    align-items: center;
+    display: flex;
+    text-align: left;
+}
+
+.vis-owl-parcel-headline-text{
+    color: #ffffff;
+    padding-left: 10px;
+}
+
 .vis-owl-parcel-container{
     background-color: #222222; 
     z-index: 10;
@@ -47,6 +63,33 @@
 
 .vis-owl-parcel-status{
     color:#292929;
+    z-index: 14;
+    width: 660px;
+    height: 20px;
+    top: 30px;
+    left: 110px;
+}
+
+.vis-owl-parcel-id-inDelievery{
+    color:#195721;
+    z-index: 14;
+    width: 200px;
+    height: 20px;
+    top: 5px;
+    left: 110px;
+}
+
+.vis-owl-parcel-name-inDelievery{
+    color:#195721;
+    z-index: 14;
+    width: 460px;
+    height: 20px;
+    top: 5px;
+    left: 315px;
+}
+
+.vis-owl-parcel-status-inDelievery{
+    color:#195721;
     z-index: 14;
     width: 660px;
     height: 20px;

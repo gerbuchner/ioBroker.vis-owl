@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.4"
+    version: "0.2.5"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -27,7 +27,9 @@ $.extend(
         // 	"pl": "Rozmiar",
         // 	"zh-cn": "尺寸"
         // }
+        "txtHeader": { "en": "Headline", "de": "Überschrift", "ru": "" },
         "oidJson": { "en": "DP Json", "de": "DP Json", "ru": "" },
+        "distFirstDivTop": { "en": "Spacing top", "de": "Abstand oben", "ru": "" },
         "numParcels": { "en": "Number parcels", "de": "Anzahl Sendungen", "ru": "" },
         "showDelivered": { "en": "Show delivered", "de": "Zeige zugestellte", "ru": "" },
         "separateEntries": { "en": "Separate entries", "de": "Trennlinie zwischen Sendungen", "ru": "" },
@@ -114,20 +116,21 @@ vis.binds["vis-owlParcel"] = {
 
         let x = 1;
         let text = '';
-        let top = 10;
+        let top = parseInt(data.distFirstDivTop);
         let left = 10;
+        
         let imgAMZ = data.imgCarrierAmazon;
-        if (imgAMZ == '' || imgAMZ == null) {imgAMZ = 'widgets/vis-owl/img/logo-amazon.svg';}
+        if (imgAMZ == '' || imgAMZ == null) {imgAMZ = 'widgets/vis-owl/img/logo-amazon.png';}
         let imgDHL = data.imgCarrierDhl;
-        if (imgDHL == '' || imgDHL == null) {imgDHL = 'widgets/vis-owl/img/logo-dhl.svg';}
+        if (imgDHL == '' || imgDHL == null) {imgDHL = 'widgets/vis-owl/img/logo-dhl.png';}
         let imgDPD = data.imgCarrierDpd;
-        if (imgDPD == '' || imgDPD == null) {imgDPD = 'widgets/vis-owl/img/logo-dpd.svg';}
+        if (imgDPD == '' || imgDPD == null) {imgDPD = 'widgets/vis-owl/img/logo-dpd.png';}
         let imgGLS = data.imgCarrierGls;
-        if (imgGLS == '' || imgGLS == null) {imgGLS = 'widgets/vis-owl/img/logo-gls.svg';}
+        if (imgGLS == '' || imgGLS == null) {imgGLS = 'widgets/vis-owl/img/logo-gls.png';}
         let imgUPS = data.imgCarrierUps;
-        if (imgUPS == '' || imgUPS == null) {imgUPS = 'widgets/vis-owl/img/logo-ups.svg';}
+        if (imgUPS == '' || imgUPS == null) {imgUPS = 'widgets/vis-owl/img/logo-ups.png';}
         let imgHERMES = data.imgCarrierHermes;
-        if (imgHERMES == '' || imgHERMES == null) {imgHERMES = 'widgets/vis-owl/img/logo-hermes.svg';}
+        if (imgHERMES == '' || imgHERMES == null) {imgHERMES = 'widgets/vis-owl/img/logo-hermes.png';}
         let img17T = data.imgCarrier17track;
         //if (img17T == '') {img17T = 'widgets/vis-owl/img/logo-17track.svg';}
 
@@ -135,20 +138,35 @@ vis.binds["vis-owlParcel"] = {
         if (maxEntries == 0 || maxEntries == null) {maxEntries = 9999;}
         let parFull = JSON.parse(vis.states[data.oidJson + '.val']);
         let par = parFull.filter(ent => ent.id.length > 0 );
+        
         console.log(par.length);
-        let filtered = par.filter(ent => ent.status.indexOf('Zugestellt') == -1 && ent.status.indexOf('Zustellung erfolgreich') == -1 && ent.status.indexOf('Paket zugestellt') == -1 );
+        let filtered = par.filter(ent => ent.delivery_status > 1 );
         console.log(filtered.length);
         if (data.showDelivered == false) {var parcels = [].concat(filtered);} else {var parcels = [].concat(par);}
         console.log(parcels);
         console.log(parcels.length);
         if (maxEntries > parcels.length) {maxEntries = parcels.length;}
+        let byStatus = parcels.slice(0);
+        byStatus.sort((a,b) => {
+            return b.delivery_status - a.delivery_status;
+        });
+
+        byStatus.forEach((e) => {
+            console.log(e.id);
+        });
+        console.log("Sortiert:");
+        console.log(byStatus);
 
         text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
+        if(data.txtHeader) {
+            text += '<div class="vis-widget vis-owl-parcel-headline ' + data.class + '"><div class="vis-widget vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
+        }
         for (x = 0; x < maxEntries; x++) {
+            let classInDelievery = byStatus[x].delivery_status > 1? "-inDelievery" : ""; 
             text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
             // Bild des Paketdienstes
             text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '"><img class="vis-owl-parcel-source" src="';
-            switch (parcels[x].source.toUpperCase()) {
+            switch (byStatus[x].source.toUpperCase()) {
                 case 'AMZ':
                     text += imgAMZ;
                     break;
@@ -173,12 +191,12 @@ vis.binds["vis-owlParcel"] = {
             }
             text += '"></div>';
             left += 60;
-            text += '<div class="vis-widget vis-owl-parcel-id ' + data.class + '">' + parcels[x].id + '</div>';
+            text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
             left += 200;
-            text += '<div class="vis-widget vis-owl-parcel-name ' + data.class + '">' + parcels[x].name + '</div>';
+            text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
             top += 20;
             left = 70;
-            text += '<div class="vis-widget vis-owl-parcel-status ' + data.class + '">' + parcels[x].status + '</div>';
+            text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
             text += '</div>';
             left = 10;
             top += 35;

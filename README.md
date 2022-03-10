@@ -35,6 +35,12 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.5 (2022-03-10)
+* [Sendungsverfolgung] Sortierung der Sendungen nach Status
+* [Sendungsverfolgung] Ein- / ausblenden von gelieferten Sendungen verbessert
+* [Sendungsverfolgung] Titelzeile eingebaut
+* [Sendungsverfolgung] Bilder als PNG bereitgestellt wegen Problemen mit SVG
+
 ### 0.2.4 (2022-03-06)
 * [Sendungsverfolgung] Rücksendungen (ohne ID) herausgefiltert
 ### 0.2.3 (2022-03-06)

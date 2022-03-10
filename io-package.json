@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.4",
+        "version": "0.2.5",
         "news": {
+            "0.2.5": {
+                "en": "Sorting, title bar, showing/hiding delivered programs, optimized images",
+                "de": "Sortierung, Titelzeile, ein- / ausblenden gelieferter Sendungen, Bilder optimiert"
+            },
             "0.2.4": {
                 "en": "Reshipment filtered",
                 "de": "Rücksendungen (ohne ID) herausgefiltert"
