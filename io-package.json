@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.6",
+        "version": "0.2.7",
         "news": {
+            "0.2.7": {
+                "en": "Bugfix update, opening website shipment tracking",
+                "de": "Bugfix Aktualisierung, Öffnen Webseite Sendungsverfolgung"
+            },
             "0.2.6": {
                 "en": "Optimized title bar and arrangement",
                 "de": "Titelzeile und Anordnung optimiert"

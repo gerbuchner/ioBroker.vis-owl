@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.6"
+    version: "0.2.7"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -93,7 +93,7 @@ $.extend(
 
 
 vis.binds["vis-owlParcel"] = {
-    version: "0.2.2",
+    version: "0.2.7",
     showVersion: function () {
         if (vis.binds["vis-owlParcel"].version) {
             console.log('Version vis-owlParcel: ' + vis.binds["vis-owlParcel"].version);
@@ -102,201 +102,173 @@ vis.binds["vis-owlParcel"] = {
     },
 
     createParcel: function (widgetID, view, data, style) {
-        let $div = $('#' + widgetID);
-        let itemTop = 20;
+            let $div = $('#' + widgetID);
 
-        console.log('Start Funktion');
-        // if nothing found => wait
-        if (!$div.length) {
-            return setTimeout(function () {
-                vis.binds["vis-owlParcel"].createParcel(widgetID, view, data, style);
-            }, 100);
-        }
-
-        let x = 1;
-        let text = '';
-        //let top = parseInt(data.distFirstDivTop);
-        let top = 0;
-        //let left = 10;
-        
-        let imgAMZ = data.imgCarrierAmazon;
-        if (imgAMZ == '' || imgAMZ == null) {imgAMZ = 'widgets/vis-owl/img/logo-amazon.png';}
-        let imgDHL = data.imgCarrierDhl;
-        if (imgDHL == '' || imgDHL == null) {imgDHL = 'widgets/vis-owl/img/logo-dhl.png';}
-        let imgDPD = data.imgCarrierDpd;
-        if (imgDPD == '' || imgDPD == null) {imgDPD = 'widgets/vis-owl/img/logo-dpd.png';}
-        let imgGLS = data.imgCarrierGls;
-        if (imgGLS == '' || imgGLS == null) {imgGLS = 'widgets/vis-owl/img/logo-gls.png';}
-        let imgUPS = data.imgCarrierUps;
-        if (imgUPS == '' || imgUPS == null) {imgUPS = 'widgets/vis-owl/img/logo-ups.png';}
-        let imgHERMES = data.imgCarrierHermes;
-        if (imgHERMES == '' || imgHERMES == null) {imgHERMES = 'widgets/vis-owl/img/logo-hermes.png';}
-        let img17T = data.imgCarrier17track;
-        //if (img17T == '') {img17T = 'widgets/vis-owl/img/logo-17track.svg';}
-
-        let maxEntries = data['numParcels'];
-        if (maxEntries == 0 || maxEntries == null) {maxEntries = 9999;}
-        let parFull = JSON.parse(vis.states[data.oidJson + '.val']);
-        let par = parFull.filter(ent => ent.id.length > 0 );
-        
-        console.log(par.length);
-        let filtered = par.filter(ent => ent.delivery_status > 1 );
-        console.log(filtered.length);
-        if (data.showDelivered == false) {var parcels = [].concat(filtered);} else {var parcels = [].concat(par);}
-        console.log(parcels);
-        console.log(parcels.length);
-        if (maxEntries > parcels.length) {maxEntries = parcels.length;}
-        let byStatus = parcels.slice(0);
-        byStatus.sort((a,b) => {
-            return b.delivery_status - a.delivery_status;
-        });
-
-        byStatus.forEach((e) => {
-            console.log(e.id);
-        });
-        console.log("Sortiert:");
-        console.log(byStatus);
-
-        if(data.txtHeader) {
-            text += '<div class="vis-widget vis-owl-parcel-headline ' + data.class + '"><div class="vis-widget vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
-        }
-        text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
-        for (x = 0; x < maxEntries; x++) {
-            let classInDelievery = byStatus[x].delivery_status > 1? "-inDelievery" : ""; 
-            text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
-            // Bild des Paketdienstes
-            text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '"><img class="vis-owl-parcel-source" src="';
-            switch (byStatus[x].source.toUpperCase()) {
-                case 'AMZ':
-                    text += imgAMZ;
-                    break;
-                case 'DHL':
-                    text += imgDHL;
-                    break;
-                case 'DPD':
-                    text += imgDPD;
-                    break;
-                case 'GLS':
-                    text += imgGLS;
-                    break;
-                case 'UPS':
-                    text += imgUPS;
-                    break;
-                case 'HERMES':
-                    text += imgHERMES;
-                    break;
-                case '17TRACK':
-                    text += img17T;
-                    break;
+            if (!$div.length) {
+                return setTimeout(function () {
+                    vis.binds["vis-owlParcel"].createParcel(widgetID, view, data, style);
+                }, 100);
             }
-            text += '"></div>';
-            //left += 60;
-            text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
-            //left += 200;
-            text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
-            top += 20;
-            //left = 70;
-            text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
+
+
+        function buildTable() {
+
+            let urlTrackingDHL = "http://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=de&rfn=&extendedSearch=true&idc=";
+            let urlTrackingDPD = "https://tracking.dpd.de/parcelstatus?locale=de_DE&query=";
+            let urlTrackingGLS = "https://gls-group.eu/DE/de/paketverfolgung?match=";
+            let urlTrackingHermes = "https://tracking.hermesworld.com/?TrackID=";
+            let urlTrackingUPS = "http://wwwapps.ups.com/ietracking/tracking.cgi?IATA=de&Lang=ge&tracknum=";
+            //let urlTrackingAmazon = "https://www.amazon.de" + vis.states[data['signInRedirectUrl'] + '.val'];
+            //let urlTracking17Track = "";
+            //console.log(urlTrackingAmazon);
+
+            //let itemTop = 20;
+
+            //console.log('Start Funktion');
+            // if nothing found => wait
+
+            let x = 1;
+            let text = '';
+            //let top = parseInt(data.distFirstDivTop);
+            let top = 0;
+            //let left = 10;
+
+            let imgAMZ = data.imgCarrierAmazon;
+            if (imgAMZ == '' || imgAMZ == null) { imgAMZ = 'widgets/vis-owl/img/logo-amazon.png'; }
+            let imgDHL = data.imgCarrierDhl;
+            if (imgDHL == '' || imgDHL == null) { imgDHL = 'widgets/vis-owl/img/logo-dhl.png'; }
+            let imgDPD = data.imgCarrierDpd;
+            if (imgDPD == '' || imgDPD == null) { imgDPD = 'widgets/vis-owl/img/logo-dpd.png'; }
+            let imgGLS = data.imgCarrierGls;
+            if (imgGLS == '' || imgGLS == null) { imgGLS = 'widgets/vis-owl/img/logo-gls.png'; }
+            let imgUPS = data.imgCarrierUps;
+            if (imgUPS == '' || imgUPS == null) { imgUPS = 'widgets/vis-owl/img/logo-ups.png'; }
+            let imgHERMES = data.imgCarrierHermes;
+            if (imgHERMES == '' || imgHERMES == null) { imgHERMES = 'widgets/vis-owl/img/logo-hermes.png'; }
+            let img17T = data.imgCarrier17track;
+            //if (img17T == '') {img17T = 'widgets/vis-owl/img/logo-17track.svg';}
+
+            let maxEntries = data['numParcels'];
+            if (maxEntries == 0 || maxEntries == null) { maxEntries = 9999; }
+            let parFull = JSON.parse(vis.states[data.oidJson + '.val']);
+            let par = parFull.filter(ent => ent.id.length > 0);
+
+            console.log(par.length);
+            let filtered = par.filter(ent => ent.delivery_status > 1);
+            //console.log(filtered.length);
+            if (data.showDelivered == false) { var parcels = [].concat(filtered); } else { var parcels = [].concat(par); }
+            //console.log(parcels);
+            //console.log(parcels.length);
+            if (maxEntries > parcels.length) { maxEntries = parcels.length; }
+            let byStatus = parcels.slice(0);
+            byStatus.sort((a, b) => {
+                return b.delivery_status - a.delivery_status;
+            });
+
+            //console.log("Sortiert:");
+            //console.log(byStatus);
+
+            if (data.txtHeader) {
+                text += '<div class="vis-widget vis-owl-parcel-headline ' + data.class + '"><div class="vis-widget vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
+            }
+            text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
+            for (x = 0; x < maxEntries; x++) {
+                let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelievery" : "";
+                text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
+                // Bild des Paketdienstes
+                text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '">';
+
+                switch (byStatus[x].source.toUpperCase()) {
+                    case 'AMZ':
+                        break;
+                    case 'DHL':
+                        text += '<a href="' + urlTrackingDHL + byStatus[x].id + '" target="_blank">';
+                        break;
+                    case 'DPD':
+                        text += '<a href="' + urlTrackingDPD + byStatus[x].id + '" target="_blank">';
+                        break;
+                    case 'GLS':
+                        text += '<a href="' + urlTrackingGLS + byStatus[x].id + '" target="_blank">';
+                        break;
+                    case 'UPS':
+                        text += '<a href="' + urlTrackingUPS + byStatus[x].id + '" target="_blank">';
+                        break;
+                    case 'HERMES':
+                        text += '<a href="' + urlTrackingHermes + byStatus[x].id + '" target="_blank">';
+                        break;
+                    case '17TRACK':
+                        break;
+                }
+
+
+
+                text += '<img class="vis-owl-parcel-source" src="';
+                switch (byStatus[x].source.toUpperCase()) {
+                    case 'AMZ':
+                        text += imgAMZ;
+                        break;
+                    case 'DHL':
+                        text += imgDHL;
+                        break;
+                    case 'DPD':
+                        text += imgDPD;
+                        break;
+                    case 'GLS':
+                        text += imgGLS;
+                        break;
+                    case 'UPS':
+                        text += imgUPS;
+                        break;
+                    case 'HERMES':
+                        text += imgHERMES;
+                        break;
+                    case '17TRACK':
+                        text += img17T;
+                        break;
+                }
+                text += '">';
+                text += '</div>';
+
+                if (byStatus[x].source.toUpperCase() == 'DHL' || byStatus[x].source.toUpperCase() == 'DPD' || byStatus[x].source.toUpperCase() == 'GLS' || byStatus[x].source.toUpperCase() == 'UPS' || byStatus[x].source.toUpperCase() == 'HERMES') {
+                    text += '</a>';
+                }
+
+                //left += 60;
+                text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
+                //left += 200;
+                text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
+                top += 20;
+                //left = 70;
+                text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
+                text += '</div>';
+                //left = 10;
+                top += 35;
+                if (data.separateEntries) {
+                    text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';
+                    top += parseInt(data.separatorHeight);
+                }
+            }
             text += '</div>';
-            //left = 10;
-            top += 35;
-            if(data.separateEntries) {
-                text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';
-                top += parseInt(data.separatorHeight);
-            }
-        }
-        text += '</div>';
 
-
-        /*
-                console.log(data['numParcels-dhl']);
-                for (x = 1; x <= data['numParcels-dhl']; x++) {
-                    //dp = data.oidJson;
-                    //console.log(dp);
-                    //data['oidTmp' + x] = 'parcel.0.dhl.sendungen0' + x + '.val';
-                    sendung = vis.states['parcel.0.dhl.sendungen0' + x + '.val'];
-                    console.log(sendung);
-                }
-        
-        
-                let carrier = [{
-                    "id": "00340434467222410886",
-                    "updtDT": "2022-03-03T12:59:00+01:00",
-                    "sender": "Sertronics GmbH",
-                    "delivered": true,
-                    "statusLong": "Die Sendung wurde im Rahmen der kontaktlosen Zustellung zugestellt.",
-                    "statusShort": "Zustellung erfolgreich.",
-                    "progress": 5,
-                    "progressMax": 5
-                }];
-        
-                let dhl = {
-                    "id": "4711",
-                    "updtDT": "2022-03-03",
-                    "sender": "privat",
-                    "delivered": false,
-                    "statusLong": "Die Sendung wurde im Rahmen der kontaktlosen Zustellung zugestellt.",
-                    "statusShort": "Zustellung erfolgreich.",
-                    "progress": 3,
-                    "progressMax": 5
-                };
-        
-                carrier.unshift(dhl);
-        
-        
-                let list = carrier.filter(parcel => parcel.progressMax === 8);
-        
-                let i = 0;
-                console.log('Start Debug');
-                for (i = 0; i < list.length; i++) {
-                    console.log(list[i]);
-                }
-        */
-
-        /* 
-        text += '<!-- Hintergrund Header -->';
-        text += '<div class="vis-widget vis-owl-pltable-header ' + data.class + '" style="background-color: #aaaaaa; overflow: visible; width: 570px; height: 530px; left: 0px; top: 0px; z-index: 2;" id="' + widgetID + '">';
-        text += '</div>';
-
-
-        for (let i = 1; i <= data.numberItems; i++) {
-            itemTop += 15;
-
-            if (data['showItem' + i] == true) {
-                // text += i + ': ' + data['itemName' + i] + '<br>';
-                text += '<div class="vis-widget vis-owl-pltable-header ' + data.class + '" style="top: ' + itemTop + 'px; left: 35px; width: 35px; z-index: 3;">';
-                text += '            <img class="einaus" src="' + data.imgOn + '" width="100%">';
-                text += '</div>';
-
-                itemTop += 10;
-
-                text += '<div class="vis-widget vis-owl-pltable ' + data.class + '" style="top: ' + itemTop + 'px; left: 85px; width: 100px; z-index: 3;">';
-                text += '            ' + data['itemName' + i];
-                text += '</div>';
-                text += '<div class="vis-widget istWert vis-owl-pltable ' + data.class + '" style="top: ' + itemTop + 'px; left: 216px; width: 50px; height: 14px; z-index: 3;">';
-                text += '             ' + vis.states[data['oidItemAct' + i] + '.val'];
-                text += '</div>';
-                text += '<div class="vis-widget istWert vis-owl-pltable ' + data.class + '" style="top: ' + itemTop + 'px; left: 340px; width: 50px; height: 14px; z-index: 3;">';
-                text += '             ' + vis.states[data['oidItemDay' + i] + '.val'];
-                text += '</div>';
-                text += '<div class="vis-widget istWert vis-owl-pltable ' + data.class + '" style="top: ' + itemTop + 'px; left: 465px; width: 50px; height: 14px; z-index: 3;">';
-                text += '             ' + vis.states[data['oidItemMonth' + i] + '.val'];
-                text += '</div>';
-
-                itemTop += 20;
-
-                if (data.divider == true) {
-                    text += '<div class="vis-widget istWert vis-owl-pltable ' + data.class + '" style="top: ' + itemTop + 'px; width: 461px; height: 2px; left: 85px; background-color: #ffffff; z-index: 2;">';
-                    text += '</div>';
-                }
-            }
+            $('#' + widgetID).html(text);
 
         }
-        */
 
 
-        $('#' + widgetID).html(text);
 
+        function onChangeAllProviderJson(e, newVal, oldVal) {
+            buildTable();
+        }
+
+        if (data['oidJson']) {
+            vis.states.bind(data['oidJson'] + '.val', onChangeAllProviderJson);
+            //remember bound state that vis can release if didnt needed
+            $div.data('bound', [data['oidJson'] + '.val']);
+            //remember onchange handler to release bound states
+            $div.data('bindHandler', onChangeAllProviderJson);
+        }
+        buildTable();
+        onChangeAllProviderJson(null, vis.states[data.oidJson + '.val'], 0);
     }
 }
 
