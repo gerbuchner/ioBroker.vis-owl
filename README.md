@@ -35,7 +35,7 @@ Siehe Github Wiki
 
 
 ## Changelog
-### 0.2.7 (2022-03-10)
+### 0.2.7 (2022-03-12)
 * [Sendungsverfolgung] Bug bei der automatischen Aktualisierung behoben
 * [Sendungsverfolgung] Klick auf Logo öffnet Webseite mit der Sendungsverfolgung
 ### 0.2.6 (2022-03-10)
