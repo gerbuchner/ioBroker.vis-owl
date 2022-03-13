@@ -29,7 +29,6 @@
   "main": "widgets/vis-owl.html",
   "files": [
     "widgets/",
-    "www/",
     "io-package.json",
     "LICENSE"
   ],
