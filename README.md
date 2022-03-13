@@ -35,6 +35,9 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.8 (2022-03-13)
+* [Sendungsverfolgung] Typo in CSS Klasse behoben (inDelivery)
+* [Sendungsverfolgung] Korrektur Höhe Trennlinie
 ### 0.2.7 (2022-03-12)
 * [Sendungsverfolgung] Bug bei der automatischen Aktualisierung behoben
 * [Sendungsverfolgung] Klick auf Logo öffnet Webseite mit der Sendungsverfolgung

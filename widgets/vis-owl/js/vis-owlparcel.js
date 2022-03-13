@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.7"
+    version: "0.2.8"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -93,7 +93,7 @@ $.extend(
 
 
 vis.binds["vis-owlParcel"] = {
-    version: "0.2.7",
+    version: "0.2.8",
     showVersion: function () {
         if (vis.binds["vis-owlParcel"].version) {
             console.log('Version vis-owlParcel: ' + vis.binds["vis-owlParcel"].version);
@@ -173,7 +173,7 @@ vis.binds["vis-owlParcel"] = {
             }
             text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
             for (x = 0; x < maxEntries; x++) {
-                let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelievery" : "";
+                let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelivery" : "";
                 text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
                 // Bild des Paketdienstes
                 text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '">';
