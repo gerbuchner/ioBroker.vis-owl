@@ -35,6 +35,8 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.9 (2022-03-14)
+* [Sendungsverfolgung] Bild und Text wenn keine Sendung
 ### 0.2.8 (2022-03-13)
 * [Sendungsverfolgung] Typo in CSS Klasse behoben (inDelivery)
 * [Sendungsverfolgung] Korrektur Höhe Trennlinie

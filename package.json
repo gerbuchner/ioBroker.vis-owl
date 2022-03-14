@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-owl",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "vis-owl",
   "author": {
     "name": "Buchi",
@@ -29,6 +29,7 @@
   "main": "widgets/vis-owl.html",
   "files": [
     "widgets/",
+    "www/",
     "io-package.json",
     "LICENSE"
   ],

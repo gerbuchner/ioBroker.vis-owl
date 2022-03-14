@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.8",
+        "version": "0.2.9",
         "news": {
+            "0.2.9": {
+                "en": "Image and text if no shipment",
+                "de": "Bild und Text wenn keine Sendung"
+            },
             "0.2.8": {
                 "en": "Correction of height dividing line, typo in CSS class",
                 "de": "Korrektur Höhe Trennlinie, Typo in CSS Klasse"

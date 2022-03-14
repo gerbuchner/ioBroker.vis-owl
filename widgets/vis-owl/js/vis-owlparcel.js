@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.8"
+    version: "0.2.9"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -33,11 +33,8 @@ $.extend(
         "showDelivered": { "en": "Show delivered", "de": "Zeige zugestellte", "ru": "" },
         "separateEntries": { "en": "Separate entries", "de": "Trennlinie zwischen Sendungen", "ru": "" },
         "separatorHeight": { "en": "Separator height", "de": "Höhe der Trennlinie", "ru": "" },
-        "imgProgress1": { "en": "Pic progress 1", "de": "Bild Fortschritt 1", "ru": "" },
-        "imgProgress2": { "en": "Pic progress 2", "de": "Bild Fortschritt 2", "ru": "" },
-        "imgProgress3": { "en": "Pic progress 3", "de": "Bild Fortschritt 3", "ru": "" },
-        "imgProgress4": { "en": "Pic progress 4", "de": "Bild Fortschritt 4", "ru": "" },
-        "imgProgress5": { "en": "Pic progress 5", "de": "Bild Fortschritt 5", "ru": "" },
+        "imgNoDelivery": { "en": "Pic no delivery", "de": "Bild keine Lieferung", "ru": "" },
+        "txtNoDelivery": { "en": "Text no delivery", "de": "Text keine Lieferung", "ru": "" },
 
         "group_carrier": { "en": "Carrier", "de": "Paket Dienst", "ru": "" },
         "imgCarrierAmazon": { "en": "Logo Amazon", "de": "Logo Amazon", "ru": "" },
@@ -46,7 +43,14 @@ $.extend(
         "imgCarrierGls": { "en": "Logo GLS", "de": "Logo GLS", "ru": "" },
         "imgCarrierUps": { "en": "Logo UPS", "de": "Logo UPS", "ru": "" },
         "imgCarrierHermes": { "en": "Logo Hermes", "de": "Logo Hermes", "ru": "" },
-        "imgCarrier17track": { "en": "Logo 17TRACK", "de": "Logo 17TRACK", "ru": "" }
+        "imgCarrier17track": { "en": "Logo 17TRACK", "de": "Logo 17TRACK", "ru": "" },
+
+        "group_progress": { "en": "Progress", "de": "Fortschritt", "ru": "" },
+        "imgProgress1": { "en": "Pic progress 1", "de": "Bild Fortschritt 1", "ru": "" },
+        "imgProgress2": { "en": "Pic progress 2", "de": "Bild Fortschritt 2", "ru": "" },
+        "imgProgress3": { "en": "Pic progress 3", "de": "Bild Fortschritt 3", "ru": "" },
+        "imgProgress4": { "en": "Pic progress 4", "de": "Bild Fortschritt 4", "ru": "" },
+        "imgProgress5": { "en": "Pic progress 5", "de": "Bild Fortschritt 5", "ru": "" }
 
         /*
         "group_amazon": { "en": "Amazon", "de": "Amazon", "ru": "" },
@@ -93,7 +97,7 @@ $.extend(
 
 
 vis.binds["vis-owlParcel"] = {
-    version: "0.2.8",
+    version: "0.2.9",
     showVersion: function () {
         if (vis.binds["vis-owlParcel"].version) {
             console.log('Version vis-owlParcel: ' + vis.binds["vis-owlParcel"].version);
@@ -102,13 +106,13 @@ vis.binds["vis-owlParcel"] = {
     },
 
     createParcel: function (widgetID, view, data, style) {
-            let $div = $('#' + widgetID);
+        let $div = $('#' + widgetID);
 
-            if (!$div.length) {
-                return setTimeout(function () {
-                    vis.binds["vis-owlParcel"].createParcel(widgetID, view, data, style);
-                }, 100);
-            }
+        if (!$div.length) {
+            return setTimeout(function () {
+                vis.binds["vis-owlParcel"].createParcel(widgetID, view, data, style);
+            }, 100);
+        }
 
 
         function buildTable() {
@@ -147,6 +151,8 @@ vis.binds["vis-owlParcel"] = {
             if (imgHERMES == '' || imgHERMES == null) { imgHERMES = 'widgets/vis-owl/img/logo-hermes.png'; }
             let img17T = data.imgCarrier17track;
             //if (img17T == '') {img17T = 'widgets/vis-owl/img/logo-17track.svg';}
+            let imgNoDelivery = data.imgNoDelivery;
+            if (imgNoDelivery == '' || imgNoDelivery == null) { imgNoDelivery = 'widgets/vis-owl/img/truck-ban.png'; }
 
             let maxEntries = data['numParcels'];
             if (maxEntries == 0 || maxEntries == null) { maxEntries = 9999; }
@@ -168,88 +174,101 @@ vis.binds["vis-owlParcel"] = {
             //console.log("Sortiert:");
             //console.log(byStatus);
 
-            if (data.txtHeader) {
-                text += '<div class="vis-widget vis-owl-parcel-headline ' + data.class + '"><div class="vis-widget vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
-            }
-            text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
-            for (x = 0; x < maxEntries; x++) {
-                let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelivery" : "";
-                text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
-                // Bild des Paketdienstes
-                text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '">';
+            if (byStatus.length > 0) {
 
-                switch (byStatus[x].source.toUpperCase()) {
-                    case 'AMZ':
-                        break;
-                    case 'DHL':
-                        text += '<a href="' + urlTrackingDHL + byStatus[x].id + '" target="_blank">';
-                        break;
-                    case 'DPD':
-                        text += '<a href="' + urlTrackingDPD + byStatus[x].id + '" target="_blank">';
-                        break;
-                    case 'GLS':
-                        text += '<a href="' + urlTrackingGLS + byStatus[x].id + '" target="_blank">';
-                        break;
-                    case 'UPS':
-                        text += '<a href="' + urlTrackingUPS + byStatus[x].id + '" target="_blank">';
-                        break;
-                    case 'HERMES':
-                        text += '<a href="' + urlTrackingHermes + byStatus[x].id + '" target="_blank">';
-                        break;
-                    case '17TRACK':
-                        break;
+                if (data.txtHeader) {
+                    text += '<div class="vis-widget vis-owl-parcel-headline ' + data.class + '"><div class="vis-widget vis-owl-parcel-headline-text ' + data.class + '">' + data.txtHeader + '</div></div>';
                 }
+                text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
+                for (x = 0; x < maxEntries; x++) {
+                    let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelivery" : "";
+                    text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
+                    // Bild des Paketdienstes
+                    text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '">';
+
+                    switch (byStatus[x].source.toUpperCase()) {
+                        case 'AMZ':
+                            break;
+                        case 'DHL':
+                            text += '<a href="' + urlTrackingDHL + byStatus[x].id + '" target="_blank">';
+                            break;
+                        case 'DPD':
+                            text += '<a href="' + urlTrackingDPD + byStatus[x].id + '" target="_blank">';
+                            break;
+                        case 'GLS':
+                            text += '<a href="' + urlTrackingGLS + byStatus[x].id + '" target="_blank">';
+                            break;
+                        case 'UPS':
+                            text += '<a href="' + urlTrackingUPS + byStatus[x].id + '" target="_blank">';
+                            break;
+                        case 'HERMES':
+                            text += '<a href="' + urlTrackingHermes + byStatus[x].id + '" target="_blank">';
+                            break;
+                        case '17TRACK':
+                            break;
+                    }
 
 
 
-                text += '<img class="vis-owl-parcel-source" src="';
-                switch (byStatus[x].source.toUpperCase()) {
-                    case 'AMZ':
-                        text += imgAMZ;
-                        break;
-                    case 'DHL':
-                        text += imgDHL;
-                        break;
-                    case 'DPD':
-                        text += imgDPD;
-                        break;
-                    case 'GLS':
-                        text += imgGLS;
-                        break;
-                    case 'UPS':
-                        text += imgUPS;
-                        break;
-                    case 'HERMES':
-                        text += imgHERMES;
-                        break;
-                    case '17TRACK':
-                        text += img17T;
-                        break;
+                    text += '<img class="vis-owl-parcel-source" src="';
+                    switch (byStatus[x].source.toUpperCase()) {
+                        case 'AMZ':
+                            text += imgAMZ;
+                            break;
+                        case 'DHL':
+                            text += imgDHL;
+                            break;
+                        case 'DPD':
+                            text += imgDPD;
+                            break;
+                        case 'GLS':
+                            text += imgGLS;
+                            break;
+                        case 'UPS':
+                            text += imgUPS;
+                            break;
+                        case 'HERMES':
+                            text += imgHERMES;
+                            break;
+                        case '17TRACK':
+                            text += img17T;
+                            break;
+                    }
+                    text += '">';
+                    text += '</div>';
+
+                    if (byStatus[x].source.toUpperCase() == 'DHL' || byStatus[x].source.toUpperCase() == 'DPD' || byStatus[x].source.toUpperCase() == 'GLS' || byStatus[x].source.toUpperCase() == 'UPS' || byStatus[x].source.toUpperCase() == 'HERMES') {
+                        text += '</a>';
+                    }
+
+                    //left += 60;
+                    text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
+                    //left += 200;
+                    text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
+                    top += 20;
+                    //left = 70;
+                    text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
+                    text += '</div>';
+                    //left = 10;
+                    top += 35;
+                    if (data.separateEntries) {
+                        text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';
+                        top += parseInt(data.separatorHeight);
+                    }
                 }
-                text += '">';
                 text += '</div>';
-
-                if (byStatus[x].source.toUpperCase() == 'DHL' || byStatus[x].source.toUpperCase() == 'DPD' || byStatus[x].source.toUpperCase() == 'GLS' || byStatus[x].source.toUpperCase() == 'UPS' || byStatus[x].source.toUpperCase() == 'HERMES') {
-                    text += '</a>';
-                }
-
-                //left += 60;
-                text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
-                //left += 200;
-                text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
-                top += 20;
-                //left = 70;
-                text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
-                text += '</div>';
-                //left = 10;
-                top += 35;
-                if (data.separateEntries) {
-                    text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';
-                    top += parseInt(data.separatorHeight);
-                }
             }
-            text += '</div>';
-
+            else {
+                let txtHint = '';
+                if (data['txtNoDelivery'] != undefined) {txtHint == data['txtNoDelivery'];}
+                text = '<div class="vis-widget vis-owl-parcel-noparcel ' + data.class + '">';
+                //text = '<div>';
+                text += '<img src="' + imgNoDelivery + '">';
+                text += '<div class="vis-owl-parcel-noparcel-text ' + data.class + '">' + data.txtNoDelivery + '</div>';
+                //text += '</div>';
+                text += '</div>';
+                
+            }
             $('#' + widgetID).html(text);
 
         }
