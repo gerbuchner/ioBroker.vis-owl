@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.9"
+    version: "0.2.10"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -29,6 +29,7 @@ $.extend(
         // }
         "txtHeader": { "en": "Headline", "de": "Überschrift", "ru": "" },
         "oidJson": { "en": "DP Json", "de": "DP Json", "ru": "" },
+        "heightParcel": { "en": "Height parcel", "de": "Höhe Sendung", "ru": "" },
         "numParcels": { "en": "Number parcels", "de": "Anzahl Sendungen", "ru": "" },
         "showDelivered": { "en": "Show delivered", "de": "Zeige zugestellte", "ru": "" },
         "separateEntries": { "en": "Separate entries", "de": "Trennlinie zwischen Sendungen", "ru": "" },
@@ -97,7 +98,7 @@ $.extend(
 
 
 vis.binds["vis-owlParcel"] = {
-    version: "0.2.9",
+    version: "0.2.10",
     showVersion: function () {
         if (vis.binds["vis-owlParcel"].version) {
             console.log('Version vis-owlParcel: ' + vis.binds["vis-owlParcel"].version);
@@ -182,7 +183,7 @@ vis.binds["vis-owlParcel"] = {
                 text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
                 for (x = 0; x < maxEntries; x++) {
                     let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelivery" : "";
-                    text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;">';
+                    text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;height: ' + parseInt(data.heightParcel) + 'px;">';
                     // Bild des Paketdienstes
                     text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '">';
 
@@ -245,12 +246,11 @@ vis.binds["vis-owlParcel"] = {
                     text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
                     //left += 200;
                     text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
-                    top += 20;
                     //left = 70;
                     text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
                     text += '</div>';
                     //left = 10;
-                    top += 35;
+                    top += parseInt(data.heightParcel);
                     if (data.separateEntries) {
                         text += '<div class="vis-widget vis-owl-parcel-sepline ' + data.class + '" style="height: ' + data.separatorHeight + 'px; top: ' + top + 'px;"></div>';
                         top += parseInt(data.separatorHeight);

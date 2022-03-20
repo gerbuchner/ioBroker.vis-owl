@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.9",
+        "version": "0.2.10",
         "news": {
+            "0.2.10": {
+                "en": "Beta ended, New logo, Height of shipment entry",
+                "de": "Beta beendet, neue Logo, Höhe Sendungseintrag"
+            },
             "0.2.9": {
                 "en": "Image and text if no shipment",
                 "de": "Bild und Text wenn keine Sendung"

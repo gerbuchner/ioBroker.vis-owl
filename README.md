@@ -24,6 +24,7 @@ Ich nutze es um unsere Fußbodenheizung (3 Steuerungen), normalen Heizkörper (2
 Aktuell noch in einem sehr frühen aber (bei mir) stabilen Zustand. Über Feedback und gerne auch Änderungswünsche würde ich mich freuen.
 
 ## Parcel Control
+<img src="widgets/vis-owl/img/vis-owlparcel.png">
 Widget zur Anzeige von Sendungen (Sendungsverfolgung).
 
 Dank dem [parcel adapter](https://github.com/TA2k/ioBroker.parcel) von [tombox](https://forum.iobroker.net/user/tombox) können von verschiedensten Paket Versendern die Daten zu dem Status von Sendungen ausgelesen und in Datenpunkten gespeichert werden. Das Widget setzt auf dem Adapter auf und stellt eine einfache Möglichkeit zur Verfügung die Daten in der VIS anzuzeigen.
@@ -35,6 +36,10 @@ Siehe Github Wiki
 
 
 ## Changelog
+### 0.2.10 (2022-03-20)
+* [Sendungsverfolgung] Beta entfernt
+* [Sendungsverfolgung] Neues Logo
+* [Sendungsverfolgung] Höhe Sendungseintrag in Einstellungen ausgelagert (nötig wegen Berechnungen)
 ### 0.2.9 (2022-03-14)
 * [Sendungsverfolgung] Bild und Text wenn keine Sendung
 ### 0.2.8 (2022-03-13)
