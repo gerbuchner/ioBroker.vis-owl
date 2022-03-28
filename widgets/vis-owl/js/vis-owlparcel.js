@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.10"
+    version: "0.2.11"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -31,6 +31,7 @@ $.extend(
         "oidJson": { "en": "DP Json", "de": "DP Json", "ru": "" },
         "heightParcel": { "en": "Height parcel", "de": "Höhe Sendung", "ru": "" },
         "numParcels": { "en": "Number parcels", "de": "Anzahl Sendungen", "ru": "" },
+        "maxCharsName": { "en": "Max. characters name", "de": "Maximale Zeichen des Namens", "ru": "" },
         "showDelivered": { "en": "Show delivered", "de": "Zeige zugestellte", "ru": "" },
         "separateEntries": { "en": "Separate entries", "de": "Trennlinie zwischen Sendungen", "ru": "" },
         "separatorHeight": { "en": "Separator height", "de": "Höhe der Trennlinie", "ru": "" },
@@ -98,7 +99,7 @@ $.extend(
 
 
 vis.binds["vis-owlParcel"] = {
-    version: "0.2.10",
+    version: "0.2.11",
     showVersion: function () {
         if (vis.binds["vis-owlParcel"].version) {
             console.log('Version vis-owlParcel: ' + vis.binds["vis-owlParcel"].version);
@@ -138,6 +139,8 @@ vis.binds["vis-owlParcel"] = {
             let top = 0;
             //let left = 10;
 
+            let maxCharsName = 100;
+            if (!isNaN(data.maxCharsName)) { maxCharsName = parseInt(data.maxCharsName); }
             let imgAMZ = data.imgCarrierAmazon;
             if (imgAMZ == '' || imgAMZ == null) { imgAMZ = 'widgets/vis-owl/img/logo-amazon.png'; }
             let imgDHL = data.imgCarrierDhl;
@@ -245,7 +248,7 @@ vis.binds["vis-owlParcel"] = {
                     //left += 60;
                     text += '<div class="vis-widget vis-owl-parcel-id' + classInDelievery + ' ' + data.class + '">' + byStatus[x].id + '</div>';
                     //left += 200;
-                    text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + byStatus[x].name + '</div>';
+                    text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + cutString(byStatus[x].name, maxCharsName) + '</div>';
                     //left = 70;
                     text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
                     text += '</div>';
@@ -273,7 +276,14 @@ vis.binds["vis-owlParcel"] = {
 
         }
 
-
+        function cutString(str, len) {
+            let tmpStr = str;
+            if (str.length > len) {
+                tmpStr = str.substring(0, len);
+                tmpStr = tmpStr.substring(0, tmpStr.lastIndexOf(" ")) + " ...";
+                }
+            return tmpStr;
+        }
 
         function onChangeAllProviderJson(e, newVal, oldVal) {
             buildTable();

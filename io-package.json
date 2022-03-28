@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.10",
+        "version": "0.2.11",
         "news": {
+            "0.2.11": {
+                "en": "Max characters name",
+                "de": "Maximale Zeichen des Namens"
+            },
             "0.2.10": {
                 "en": "Beta ended, New logo, Height of shipment entry",
                 "de": "Beta beendet, neue Logo, Höhe Sendungseintrag"
