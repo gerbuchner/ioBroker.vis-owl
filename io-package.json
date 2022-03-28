@@ -4,8 +4,8 @@
         "version": "0.2.11",
         "news": {
             "0.2.11": {
-                "en": "Max characters name",
-                "de": "Maximale Zeichen des Namens"
+                "en": "Max characters name / state",
+                "de": "Maximale Zeichen Name / Sendungsstatus"
             },
             "0.2.10": {
                 "en": "Beta ended, New logo, Height of shipment entry",

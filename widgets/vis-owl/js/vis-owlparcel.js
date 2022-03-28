@@ -31,7 +31,8 @@ $.extend(
         "oidJson": { "en": "DP Json", "de": "DP Json", "ru": "" },
         "heightParcel": { "en": "Height parcel", "de": "Höhe Sendung", "ru": "" },
         "numParcels": { "en": "Number parcels", "de": "Anzahl Sendungen", "ru": "" },
-        "maxCharsName": { "en": "Max. characters name", "de": "Maximale Zeichen des Namens", "ru": "" },
+        "maxCharsName": { "en": "Max. characters name", "de": "Maximale Zeichen Name", "ru": "" },
+        "maxCharsState": { "en": "Max. characters status", "de": "Maximale Zeichen Status", "ru": "" },
         "showDelivered": { "en": "Show delivered", "de": "Zeige zugestellte", "ru": "" },
         "separateEntries": { "en": "Separate entries", "de": "Trennlinie zwischen Sendungen", "ru": "" },
         "separatorHeight": { "en": "Separator height", "de": "Höhe der Trennlinie", "ru": "" },
@@ -139,8 +140,10 @@ vis.binds["vis-owlParcel"] = {
             let top = 0;
             //let left = 10;
 
-            let maxCharsName = 100;
+            let maxCharsName = 50;
             if (!isNaN(data.maxCharsName)) { maxCharsName = parseInt(data.maxCharsName); }
+            let maxCharsState = 70;
+            if (!isNaN(data.maxCharsState)) { maxCharsState = parseInt(data.maxCharsState); }
             let imgAMZ = data.imgCarrierAmazon;
             if (imgAMZ == '' || imgAMZ == null) { imgAMZ = 'widgets/vis-owl/img/logo-amazon.png'; }
             let imgDHL = data.imgCarrierDhl;
@@ -250,7 +253,7 @@ vis.binds["vis-owlParcel"] = {
                     //left += 200;
                     text += '<div class="vis-widget vis-owl-parcel-name' + classInDelievery + ' ' + data.class + '">' + cutString(byStatus[x].name, maxCharsName) + '</div>';
                     //left = 70;
-                    text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + byStatus[x].status + '</div>';
+                    text += '<div class="vis-widget vis-owl-parcel-status' + classInDelievery + ' ' + data.class + '">' + cutString(byStatus[x].status, maxCharsState) + '</div>';
                     text += '</div>';
                     //left = 10;
                     top += parseInt(data.heightParcel);

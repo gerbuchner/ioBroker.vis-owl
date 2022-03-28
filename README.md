@@ -37,7 +37,7 @@ Siehe Github Wiki
 
 ## Changelog
 ### 0.2.11 (2022-03-28)
-* [Sendungsverfolgung] Maximale Zeichen des Namens
+* [Sendungsverfolgung] Maximale Zeichen Name / Sendungsstatus
 ### 0.2.10 (2022-03-20)
 * [Sendungsverfolgung] Beta entfernt
 * [Sendungsverfolgung] Neues Logo
