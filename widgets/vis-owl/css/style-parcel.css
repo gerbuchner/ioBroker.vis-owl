@@ -75,6 +75,13 @@
     left: 110px;
 }
 
+.vis-owl-parcel-inDelivery{
+    background-color: #a1eccd; 
+    z-index: 13;
+    width: 95%;
+    align-self: center;
+}
+
 .vis-owl-parcel-id-inDelivery{
     color:#195721;
     z-index: 14;
@@ -102,6 +109,39 @@
     left: 110px;
 }
 
+.vis-owl-parcel-DeliveryToday{
+    background-color: #e98686; 
+    z-index: 13;
+    width: 95%;
+    align-self: center;
+}
+
+.vis-owl-parcel-id-DeliveryToday{
+    color:#50130b;
+    z-index: 14;
+    width: 200px;
+    height: 20px;
+    top: 5px;
+    left: 110px;
+}
+
+.vis-owl-parcel-name-DeliveryToday{
+    color:#50130b;
+    z-index: 14;
+    width: 460px;
+    height: 20px;
+    top: 5px;
+    left: 315px;
+}
+
+.vis-owl-parcel-status-DeliveryToday{
+    color:#50130b;
+    z-index: 14;
+    width: 660px;
+    height: 20px;
+    top: 30px;
+    left: 110px;
+}
 .vis-owl-parcel-sepline{
     z-index: 14;
     width: 740px;

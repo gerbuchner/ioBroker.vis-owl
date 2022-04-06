@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.11"
+    version: "0.2.12"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -189,7 +189,8 @@ vis.binds["vis-owlParcel"] = {
                 text += '<div class="vis-widget vis-owl-parcel-container ' + data.class + '">';
                 for (x = 0; x < maxEntries; x++) {
                     let classInDelievery = byStatus[x].delivery_status > 1 ? "-inDelivery" : "";
-                    text += '<div class="vis-widget vis-owl-parcel ' + data.class + '" style="top: ' + top + 'px;height: ' + parseInt(data.heightParcel) + 'px;">';
+                    if (byStatus[x].delivery_status >= 40) { classInDelievery =  "-DeliveryToday"; }
+                    text += '<div class="vis-widget vis-owl-parcel' + classInDelievery + ' ' + data.class + '" style="top: ' + top + 'px;height: ' + parseInt(data.heightParcel) + 'px;">';
                     // Bild des Paketdienstes
                     text += '<div class="vis-widget vis-owl-parcel-source ' + data.class + '">';
 

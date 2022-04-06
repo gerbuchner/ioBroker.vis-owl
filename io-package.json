@@ -1,8 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.11",
+        "version": "0.2.12",
         "news": {
+            "0.2.12": {
+                "en": "Added CSS for 'delivery today'",
+                "de": "CSS für 'Zustellung heute' hinzugefügt"
+            },
             "0.2.11": {
                 "en": "Max characters name / state",
                 "de": "Maximale Zeichen Name / Sendungsstatus"
