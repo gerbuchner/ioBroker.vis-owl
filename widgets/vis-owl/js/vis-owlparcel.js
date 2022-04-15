@@ -1,7 +1,7 @@
 /*
     ioBroker.vis vis-owl Widget-Set
 
-    version: "0.2.12"
+    version: "0.2.13"
 
     Copyright 2022 Buchi temp1@act4you.de
 */
@@ -282,10 +282,12 @@ vis.binds["vis-owlParcel"] = {
 
         function cutString(str, len) {
             let tmpStr = str;
-            if (str.length > len) {
-                tmpStr = str.substring(0, len);
-                tmpStr = tmpStr.substring(0, tmpStr.lastIndexOf(" ")) + " ...";
-                }
+            if (tmpStr != "" && tmpStr != null) {
+                if (str.length > len) {
+                    tmpStr = str.substring(0, len);
+                    tmpStr = tmpStr.substring(0, tmpStr.lastIndexOf(" ")) + " ...";
+                    }
+            }
             return tmpStr;
         }
 

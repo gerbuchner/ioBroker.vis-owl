@@ -1,9 +1,12 @@
 {
     "common": {
         "name": "vis-owl",
-        "version": "0.2.12",
+        "version": "0.2.13",
         "news": {
-            "0.2.12": {
+            "0.2.13": {
+                "en": "Bugfix when fields are empty",
+                "de": "Bugfix wenn Felder ohne Inhalt sind"
+            },"0.2.12": {
                 "en": "Added CSS for 'delivery today'",
                 "de": "CSS für 'Zustellung heute' hinzugefügt"
             },
